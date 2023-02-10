@@ -1,0 +1,76 @@
+.blog-container {
+    margin: 0 20%;
+}
+
+.markdown-container {
+    word-wrap: break-word;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.markdown-container p,
+.markdown-container li {
+    line-height: 2;
+    letter-spacing: -0.017em;
+    -webkit-font-smoothing: antialiased;
+}
+
+.tags {
+    font-size: 13px;
+    color: var(--markdown-tags-color);
+}
+
+#eric-christensen {
+    color: #00ff7f;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    color: var(--markdown-h1-color);
+}
+
+h2 {
+    color: var(--markdown-h2-color);
+}
+
+h3 {
+    color: var(--markdown-h3-color);
+}
+
+h4 {
+    color: var(--markdown-h4-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--markdown-a-color);
+}
+
+// a:hover {
+//     color: var(--markdown-a-hover-color);
+// }
+
+pre {
+    border-radius: 0.3rem;
+    border: 1px solid var(--code-border-color);
+    background-color: var(--code-background-color);
+}
+
+pre code {
+    display: block;
+    overflow-x: auto;
+    padding: 1em;
+    border-radius: 0.3rem;
+    line-height: normal;
+    font-family: 'Nunito', sans-serif;
+    color: #fff;
+}
+
+code {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 3px 5px;
+}

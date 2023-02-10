@@ -1,0 +1,32 @@
+{% extends "./layouts/master.html.j2" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<main>
+    <div class="main-container">
+        <div class="cards-container">
+            {% for meta in metas %}
+            <div class="card">
+                <div class="card-header-info">
+                    <div class="card-header">
+                        <a class="card-header-anchor" href="/{{ meta.slug }}">
+                            <span class="card-title">{{ meta.title }}</span>
+                        </a>
+                    </div>
+                    <span class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</span>
+                </div>
+                <span class="card-categories">
+                    {% for category in meta.categories %}
+                    <a class="card-category" href="/category/{{ category }}">
+                        <span class="card-category-info">{{ category }}</span>
+                    </a>
+                    {% endfor %}
+                </span>
+            </div>
+            {# <p>{{ meta.series }}</p> #}
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}

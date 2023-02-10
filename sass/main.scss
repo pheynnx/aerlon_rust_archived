@@ -1,0 +1,55 @@
+@import "_variables.scss";
+
+html {
+    font-family: 'Nunito', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    background-color: var(--background-color);
+    color: var(--html-color);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    text-rendering: geometricPrecision;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.main-header {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+    color: var(--main-header-color);
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3%;
+    margin-right: 3%;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+@import "./components/_themer.scss";
+@import "./components/_header.scss";
+@import "./components/_navbar.scss";
+@import "./components/_card.scss";
+
+@import "./layouts/_markdown.scss";
+
+@import "_sizing.scss";

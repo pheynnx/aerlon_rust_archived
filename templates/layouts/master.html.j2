@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ericarthurc" />
+    <meta name="msapplication-TileColor" content="#0d1017">
+    <meta name="theme-color" content="#0d1017">
+    <title>{% block title %}{{ title }}{% endblock %}EricArthurC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/public/styles/main.css" />
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    <header>
+        {% include "./includes/header.html.j2" %}
+    </header>
+    {% include "./includes/navbar.html.j2" %}
+    {% block content %}{% endblock %}
+</body>
+
+</html>

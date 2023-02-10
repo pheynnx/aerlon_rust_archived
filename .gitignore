@@ -1,0 +1,12 @@
+# rust
+/target
+.env
+
+# compiled
+public/styles/*
+public/js/*-builder.js
+templates/compiled
+
+# node
+node_modules
+admin/dist

@@ -1,0 +1,26 @@
+.navbar {
+    display: flex;
+    height: 27px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    gap: 15px;
+    justify-content: center;
+}
+
+.navbar-link {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--navbar-link-color);
+    text-decoration: none;
+
+    @media (hover: hover) {
+        &:hover {
+            color: var(--navbar-link-hover-color);
+        }
+    }
+
+    &.active {
+        border-bottom: 2px solid var(--navbar-link-hover-color);
+    }
+}

@@ -1,0 +1,13 @@
+{% extends "./layouts/master.html.j2" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<main>
+    <div class="blog-container">
+        <div class="markdown-container">
+            {{ post.markdown|safe}}
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "./layouts/master.html.j2" %}
+
+{% block title %}Error{% endblock %}
+
+{% block content %}
+<main>
+    <p>{{status_code}}</p>
+    <p>{{error}}</p>
+</main>
+{% endblock %}

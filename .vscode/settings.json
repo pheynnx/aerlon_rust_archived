@@ -1,0 +1,32 @@
+{
+  "files.associations": {
+    "*.j2": "jinja-html",
+    "*.tmTheme": "xml"
+  },
+  "emmet.includeLanguages": {
+    "jinja2": "html",
+    "jinja-html": "html"
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#356353",
+    "activityBar.background": "#356353",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#34213e",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#356353",
+    "statusBar.background": "#234237",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#356353",
+    "statusBarItem.remoteBackground": "#234237",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#234237",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#23423799",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#234237",
+  "editor.fontSize": 15,
+  "editor.fontFamily": "Cascadia Code"
+}
