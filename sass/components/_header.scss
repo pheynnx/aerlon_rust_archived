@@ -1,28 +1,29 @@
 .header {
-    // height: 120px;
-    margin-top: 15px;
-    display: grid;
-    justify-items: center;
+  // height: 120px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: grid;
+  justify-items: center;
 }
 
 .header-logo {
-    height: 80px;
+  height: 80px;
 }
 
 .header-graphic {
-    height: 40px;
-    width: 93%;
-    margin: 0 3%;
-    stroke: #82c361;
+  height: 40px;
+  width: 93%;
+  margin: 0 3%;
+  stroke: #82c361;
 }
 
 .header-graphic * {
-    // stroke-dasharray: 1000;
-    // stroke-dashoffset: 1000;
-    // stroke: var(--header-logo-color);
-    animation: draw 4s ease-in forwards, colors 5s ease-in;
-    width: 93%;
-    margin: 0 3%;
+  // stroke-dasharray: 1000;
+  // stroke-dashoffset: 1000;
+  // stroke: var(--header-logo-color);
+  animation: draw 4s ease-in forwards, colors 5s ease-in;
+  width: 93%;
+  margin: 0 3%;
 }
 
 // .circle-1 {

@@ -3,6 +3,7 @@ use axum::{
     extract::{Path, State},
     response::IntoResponse,
 };
+use http::{Request, Uri};
 use std::{collections::HashMap, sync::Arc};
 
 use crate::{
@@ -17,16 +18,21 @@ use crate::{
 #[template(path = "index.html.j2")]
 struct IndexTemplate {
     metas: Vec<Meta>,
+    url: String,
 }
 
-pub async fn get_metas_handler(
+pub async fn get_metas_handler<T>(
     State(state): State<Arc<AppState>>,
+    req: Request<T>,
 ) -> Result<impl IntoResponse, AppError> {
     let redis_con = state.databases.redis.new_connection().await?;
 
     let metas = get_metas_sorted(redis_con).await?;
 
-    let template = IndexTemplate { metas };
+    let template = IndexTemplate {
+        metas,
+        url: req.uri().to_string(),
+    };
 
     Ok(HtmlTemplate(template))
 }

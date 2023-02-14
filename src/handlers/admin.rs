@@ -1,4 +1,5 @@
 use askama::Template;
+use axum::response::Redirect;
 use axum::{extract, response::IntoResponse, response::Response};
 use http::StatusCode;
 use serde::{Deserialize, Serialize};
@@ -14,22 +15,6 @@ struct AdminTemplate {}
 
 pub async fn admin_handler() -> Result<impl IntoResponse, AppError> {
     Ok(HtmlTemplate(AdminTemplate {}))
-}
-
-#[derive(Template)]
-#[template(path = "compiled/admin_new.html")]
-struct AdminNewTemplate {}
-
-pub async fn admin_new_handler() -> Result<impl IntoResponse, AppError> {
-    Ok(HtmlTemplate(AdminNewTemplate {}))
-}
-
-#[derive(Template)]
-#[template(path = "compiled/admin_update.html")]
-struct AdminUpdateTemplate {}
-
-pub async fn admin_update_handler() -> Result<impl IntoResponse, AppError> {
-    Ok(HtmlTemplate(AdminUpdateTemplate {}))
 }
 
 #[derive(Template)]
@@ -70,14 +55,15 @@ pub async fn post_admin_login_handler(
     Ok((StatusCode::UNAUTHORIZED).into_response())
 }
 
-// pub async fn admin_logout_me_handler(cookies: Cookies) -> Result<impl IntoResponse, AppError> {
-//     let cookie = Cookie::build("auth", "")
-//         .max_age(cookie::time::Duration::days(3))
-//         .secure(true)
-//         .http_only(true)
-//         .path("/")
-//         .finish();
+pub async fn admin_logout_me_handler(cookies: Cookies) -> Result<impl IntoResponse, AppError> {
+    let cookie = Cookie::build("auth", "")
+        .max_age(cookie::time::Duration::days(3))
+        // Needs to be true for production
+        .secure(false)
+        .http_only(true)
+        .path("/")
+        .finish();
 
-//     cookies.remove(cookie);
-//     return Ok(StatusCode::OK);
-// }
+    cookies.remove(cookie);
+    Ok(Redirect::to("/admin/login"))
+}

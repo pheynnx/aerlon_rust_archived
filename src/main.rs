@@ -3,7 +3,7 @@ use axum::{
     handler::Handler,
     middleware,
     response::{Html, IntoResponse},
-    routing::{get, get_service},
+    routing::{delete, get, get_service, post},
     Router,
 };
 use dotenvy::dotenv;
@@ -16,7 +16,7 @@ use utilities::templates::HtmlTemplate;
 use crate::{
     handlers::{
         admin::{
-            admin_handler, admin_new_handler, admin_update_handler, get_admin_login_handler,
+            admin_handler, admin_logout_me_handler, get_admin_login_handler,
             post_admin_login_handler,
         },
         admin_api::{admin_get_post_api, admin_get_posts_api},
@@ -65,14 +65,17 @@ async fn main() -> Result<(), AppError> {
 
     let admin_router = Router::new()
         .route("/", get(admin_handler))
-        .route("/new", get(admin_new_handler))
-        .route("/update", get(admin_update_handler))
         .layer(middleware::from_fn(admin_auth_middleware));
 
     let admin_login_router = Router::new().route(
         "/",
         get(get_admin_login_handler.layer(middleware::from_fn(admin_login_middleware)))
             .post(post_admin_login_handler),
+    );
+
+    let admin_logout_router = Router::new().route(
+        "/",
+        post(admin_logout_me_handler).layer(middleware::from_fn(admin_api_middleware)),
     );
 
     let admin_api_router = Router::new()
@@ -84,6 +87,7 @@ async fn main() -> Result<(), AppError> {
         .nest("/", site_router)
         .nest("/admin", admin_router)
         .nest("/admin/login", admin_login_router)
+        .nest("/admin/logout", admin_logout_router)
         .nest("/admin/api", admin_api_router)
         .nest_service(
             "/public",

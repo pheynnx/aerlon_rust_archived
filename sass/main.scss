@@ -1,48 +1,71 @@
 @import "_variables.scss";
 
 html {
-    font-family: 'Nunito', sans-serif;
-    -webkit-tap-highlight-color: transparent;
-    background-color: var(--background-color);
-    color: var(--html-color);
+  font-family: "Inter", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  background-color: var(--background-color);
+  color: var(--html-color);
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 *,
 *:before,
 *:after {
-    box-sizing: border-box;
-    text-rendering: geometricPrecision;
+  box-sizing: border-box;
+  text-rendering: geometricPrecision;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+
+  &:horizontal {
+    height: 8px;
+  }
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f100;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+
+  &:hover {
+    background: #555;
+  }
 }
 
 p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .main-header {
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 20px;
-    text-transform: capitalize;
-    color: var(--main-header-color);
-    font-weight: bold;
-    font-size: 30px;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  color: var(--main-header-color);
+  font-weight: bold;
+  font-size: 30px;
 }
 
 .main-container {
-    display: flex;
-    flex-direction: column;
-    margin-left: 3%;
-    margin-right: 3%;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 3%;
+  margin-right: 3%;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 @import "./components/_themer.scss";

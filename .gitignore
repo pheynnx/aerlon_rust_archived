@@ -3,8 +3,9 @@
 .env
 
 # compiled
-public/styles/*
-public/js/*-builder.js
+public/css/*
+public/js/*-chunk.js
+public/js/*-entry.js
 templates/compiled
 
 # node

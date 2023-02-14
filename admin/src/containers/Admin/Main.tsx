@@ -1,6 +1,8 @@
 import { Component, createSignal, For, onMount } from "solid-js";
 import axios from "axios";
 
+import "~/styles/admin.scss";
+
 const Main: Component = () => {
   const [posts, setPosts] = createSignal([]);
 
@@ -15,16 +17,20 @@ const Main: Component = () => {
     <main>
       <div>
         <h3>Admin Panel</h3>
-        <a href="/admin/new">New</a>
-        <a href="/admin/update">Update</a>
+        <button>New Post</button>
+        <form action="/admin/logout" method="post">
+          <button type="submit">Logout</button>
+        </form>
         <For each={posts()} fallback={<></>}>
           {(post, i) => (
             <>
               <div data-index={i()}>
-                <p>{post.id}</p>
-                <p>{post.slug}</p>
-                <p>{post.title}</p>
-                <p>{new Date(post.date).toDateString()}</p>
+                {/* <p>{post.id}</p> */}
+                <p>Slug: {post.slug}</p>
+                <p>Title: {post.title}</p>
+                <p>Date: {new Date(post.date).toDateString()}</p>
+                <button>Update</button>
+                <button>Delete</button>
               </div>
               <br />
             </>

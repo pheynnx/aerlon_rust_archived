@@ -14,7 +14,7 @@ use crate::{database::redis::RedisConnection, errors::AppError};
 
 static SYNTECT_ADAPTER: Lazy<SyntectAdapter> = {
     Lazy::new(|| {
-        let themes = ThemeSet::load_from_folder("./themes").unwrap();
+        let themes = ThemeSet::load_from_folder("./code_themes").unwrap();
         SyntectAdapterBuilder::new()
             .theme_set(themes)
             .theme("halcyon")
