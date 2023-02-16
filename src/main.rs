@@ -3,7 +3,7 @@ use axum::{
     handler::Handler,
     middleware,
     response::{Html, IntoResponse},
-    routing::{delete, get, get_service, post},
+    routing::{get, get_service, post},
     Router,
 };
 use dotenvy::dotenv;

@@ -6,10 +6,10 @@
 
 .admin-login-div {
   max-width: 300px;
-  background-color: #7ec958;
+  background-color: #d13737;
   padding: 10px 20px 12px 20px;
   border-radius: 0.25rem;
-  border: 1px solid #004409;
+  border: 1px solid #440000;
   box-shadow: rgb(0 0 0/ 15%) 0px 5px 10px 0px;
 }
 
@@ -47,13 +47,13 @@
 .admin-login-label {
   color: #000000;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 500;
   margin-bottom: 5px;
 }
 
 .admin-login-submit {
   color: #fff;
-  background: #3f8a2d;
+  background: #8a3b3b;
   border: none;
   padding: 0.4rem 1.75rem;
   border-radius: 0.25rem;
@@ -72,6 +72,26 @@
 
   &:hover {
     outline: 0;
-    background: #305f23;
+    background: #5f2323;
   }
+}
+
+.admin-login-status-container {
+  height: 35px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+.admin-login-status {
+  display: none;
+}
+
+.admin-login-status.show {
+  display: block;
+}
+
+.admin-login-status-message {
+  color: #ec6b6b;
+  font-size: 20px;
 }

@@ -1,4 +1,4 @@
-import { Component } from "solid-js";
+import { Component, createSignal } from "solid-js";
 import { createStore } from "solid-js/store";
 import axios from "axios";
 
@@ -8,6 +8,14 @@ const Main: Component = () => {
   const [formData, setFormData] = createStore({
     password: "",
     pin: "",
+  });
+
+  const [formStatus, setFormStatus] = createStore<{
+    message: string;
+    hidder: "hide" | "show";
+  }>({
+    message: "test",
+    hidder: "hide",
   });
 
   const formHandler = async (e: Event) => {
@@ -21,11 +29,19 @@ const Main: Component = () => {
       );
 
       location.href = "/admin";
-    } catch (error) {}
+    } catch (error) {
+      setFormStatus("hidder", "show");
+      setFormStatus("message", "Invalid login credentials");
+    }
   };
 
   return (
     <main class="admin-login-container">
+      <div class="admin-login-status-container">
+        <div class={`admin-login-status ${formStatus.hidder}`}>
+          <span class="admin-login-status-message">{formStatus.message}</span>
+        </div>
+      </div>
       <div class="admin-login-div">
         <form class="admin-login-form" onSubmit={formHandler}>
           <label class="admin-login-label" for="password">

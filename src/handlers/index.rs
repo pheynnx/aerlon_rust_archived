@@ -3,7 +3,7 @@ use axum::{
     extract::{Path, State},
     response::IntoResponse,
 };
-use http::{Request, Uri};
+use http::Request;
 use std::{collections::HashMap, sync::Arc};
 
 use crate::{
@@ -15,6 +15,7 @@ use crate::{
 };
 
 #[derive(Template)]
+#[allow(dead_code)]
 #[template(path = "index.html.j2")]
 struct IndexTemplate {
     metas: Vec<Meta>,

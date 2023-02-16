@@ -2,9 +2,22 @@ import { Component, createSignal, For, onMount } from "solid-js";
 import axios from "axios";
 
 import "~/styles/admin.scss";
+import Spinner from "~/components/Spinner/Spinner";
+
+interface IPost {
+  id: string;
+  date: Date;
+  slug: string;
+  title: string;
+  series: string;
+  categories: string[];
+  markdown: string;
+  created_at: string;
+  updated_at: string;
+}
 
 const Main: Component = () => {
-  const [posts, setPosts] = createSignal([]);
+  const [posts, setPosts] = createSignal<IPost[]>([]);
 
   onMount(async () => {
     try {
@@ -21,11 +34,10 @@ const Main: Component = () => {
         <form action="/admin/logout" method="post">
           <button type="submit">Logout</button>
         </form>
-        <For each={posts()} fallback={<></>}>
+        <For each={posts()} fallback={<Spinner startTime={0}></Spinner>}>
           {(post, i) => (
             <>
               <div data-index={i()}>
-                {/* <p>{post.id}</p> */}
                 <p>Slug: {post.slug}</p>
                 <p>Title: {post.title}</p>
                 <p>Date: {new Date(post.date).toDateString()}</p>
@@ -39,6 +51,14 @@ const Main: Component = () => {
       </div>
     </main>
   );
+};
+
+const Creator: Component = () => {
+  return <></>;
+};
+
+const Updater: Component<IPost> = (props) => {
+  return <></>;
 };
 
 export default Main;
