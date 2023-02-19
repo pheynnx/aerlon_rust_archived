@@ -5,6 +5,7 @@ use crate::{database::redis::RedisConnection, errors::AppError};
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct Series {
     pub series: String,
+    pub published: bool,
 }
 
 impl Series {

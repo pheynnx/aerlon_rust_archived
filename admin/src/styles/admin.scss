@@ -1,0 +1,44 @@
+.admin-header {
+  display: flex;
+  margin: 10px 0;
+  padding: 0 10px;
+  gap: 5px;
+}
+
+.admin-header-logo {
+}
+
+.admin-header-new {
+  &:hover {
+    cursor: pointer;
+    color: red;
+  }
+}
+
+.admin-header-logout {
+  margin-left: auto;
+  &:hover {
+    cursor: pointer;
+    color: red;
+  }
+}
+
+.admin-panel {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  margin: 5px 5px 0px 5px;
+  border-top: 1px solid red;
+}
+
+.admin-panel-posts {
+  min-height: 400px;
+  padding: 5px 5px 5px 0px;
+  border-right: 1px solid red;
+}
+
+.admin-panel-post {
+  margin-bottom: 10px;
+}
+
+.admin-panel-editor {
+}

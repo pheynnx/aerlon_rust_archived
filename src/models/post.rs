@@ -32,6 +32,7 @@ pub struct Post {
     pub series: String,
     pub categories: Vec<String>,
     pub markdown: String,
+    pub published: bool,
     #[serde(rename = "created_at")]
     pub post_created_at: Option<NaiveDateTime>,
     #[serde(rename = "updated_at")]
@@ -63,10 +64,36 @@ impl Post {
     }
 }
 
-// postgres methods
+// postgres site methods checking for published state
+impl Post {
+    pub async fn get_published_posts_postgres(
+        postgres_pool: &Pool<Postgres>,
+    ) -> Result<Vec<Self>, AppError> {
+        let posts = query_as!(Post, r#"select id as "post_id?", date, slug, title, series, categories, markdown, published, created_at as "post_created_at?", updated_at as "post_updated_at?" from post where published = true"#)
+            .fetch_all(postgres_pool)
+            .await?;
+
+        Ok(posts)
+    }
+
+    pub async fn get_published_post_by_id_postgres(
+        postgres_pool: &Pool<Postgres>,
+        post_id: &str,
+    ) -> Result<Self, AppError> {
+        let id = Uuid::parse_str(&post_id)?;
+
+        let post = query_as!(Post, r#"select id as "post_id?", date, slug, title, series, categories, markdown, published, created_at as "post_created_at?", updated_at as "post_updated_at?" from post where id = $1 and published = true"#, &id)
+            .fetch_one(postgres_pool)
+            .await?;
+
+        Ok(post)
+    }
+}
+
+// postgres admin api methods
 impl Post {
     pub async fn get_posts_postgres(postgres_pool: &Pool<Postgres>) -> Result<Vec<Self>, AppError> {
-        let posts = query_as!(Post, r#"select id as "post_id?", date, slug, title, series, categories, markdown, created_at as "post_created_at?", updated_at as "post_updated_at?" from post"#)
+        let posts = query_as!(Post, r#"select id as "post_id?", date, slug, title, series, categories, markdown, published, created_at as "post_created_at?", updated_at as "post_updated_at?" from post"#)
             .fetch_all(postgres_pool)
             .await?;
 
@@ -79,7 +106,7 @@ impl Post {
     ) -> Result<Self, AppError> {
         let id = Uuid::parse_str(&post_id)?;
 
-        let post = query_as!(Post, r#"select id as "post_id?", date, slug, title, series, categories, markdown, created_at as "post_created_at?", updated_at as "post_updated_at?" from post where id = $1"#, &id)
+        let post = query_as!(Post, r#"select id as "post_id?", date, slug, title, series, categories, markdown, published, created_at as "post_created_at?", updated_at as "post_updated_at?" from post where id = $1"#, &id)
             .fetch_one(postgres_pool)
             .await?;
 

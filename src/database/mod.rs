@@ -19,7 +19,7 @@ pub async fn initialize_connections() -> Result<DatabaseState, AppError> {
 
 impl DatabaseState {
     pub async fn startup_cache(&self) -> Result<(), AppError> {
-        let posts = Post::get_posts_postgres(&self.postgres.postgres_pool).await?;
+        let posts = Post::get_published_posts_postgres(&self.postgres.postgres_pool).await?;
 
         let mut redis_con = self.redis.new_connection().await?;
 
@@ -31,7 +31,7 @@ impl DatabaseState {
     }
 
     pub async fn update_cache(&self) -> Result<(), AppError> {
-        let posts = Post::get_posts_postgres(&self.postgres.postgres_pool).await?;
+        let posts = Post::get_published_posts_postgres(&self.postgres.postgres_pool).await?;
 
         let mut redis_con = self.redis.new_connection().await?;
 
