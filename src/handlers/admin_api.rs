@@ -1,4 +1,4 @@
-use axum::extract::{Path, State};
+use axum::extract::{self, Path, State};
 use axum::response::IntoResponse;
 use axum::Json;
 use std::collections::HashMap;
@@ -45,25 +45,28 @@ pub async fn admin_get_post_api(
 //     Ok(Json(created_post))
 // }
 
-// pub async fn admin_update_post_handler(
-//     State(state): State<Arc<AppState>>,
-//     Path(params): Path<HashMap<String, String>>,
-//     extract::Json(post_payload): extract::Json<Post>,
-// ) -> Result<impl IntoResponse, AppError> {
-//     let post_id = params.get("id");
+pub async fn admin_update_post_api(
+    State(state): State<Arc<AppState>>,
+    Path(params): Path<HashMap<String, String>>,
+    extract::Json(post_payload): extract::Json<Post>,
+) -> Result<impl IntoResponse, AppError> {
+    let post_id = params.get("id");
 
-//     let postgres_con = state.databases.postgres.new_connection().await?;
+    match post_id {
+        Some(post_id) => {
+            let updated_post = Post::update_post_postgres(
+                &state.databases.postgres.postgres_pool,
+                post_id,
+                post_payload,
+            )
+            .await?;
+            state.databases.update_cache().await?;
 
-//     match post_id {
-//         Some(post_id) => {
-//             let updated_post =
-//                 Post::update_post_postgres(postgres_con, post_id, post_payload).await?;
-//             state.databases.update_cache().await?;
-//             Ok(Json(updated_post))
-//         }
-//         None => Err(AppError::Custom(String::from("missing parameter"))),
-//     }
-// }
+            Ok(Json(updated_post))
+        }
+        None => Err(AppError::Custom(String::from("missing parameter"))),
+    }
+}
 
 // pub async fn admin_delete_post_handler(
 //     State(state): State<Arc<AppState>>,

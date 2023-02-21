@@ -113,26 +113,28 @@ impl Post {
         Ok(post)
     }
 
-    // pub async fn create_post_postgres<'a>(
-    //     postgres_pool: &Pool<Postgres>,
-    //     new_post: Post,
-    // ) -> Result<Self, AppError> {
-    //     let row = query_as!(Post, r#"INSERT INTO post (slug, title, series, categories, markdown, date) VALUES ($1, $2, $3, $4, $5, $6) returning id as "post_id?", date, slug, title, series, categories, markdown, created_at as "post_created_at?", updated_at as "post_updated_at?""#, new_post.slug, new_post.title, new_post.series, &new_post.categories, new_post.markdown, new_post.date).fetch_one(postgres_pool).await?;
+    pub async fn create_post_postgres<'a>(
+        postgres_pool: &Pool<Postgres>,
+        new_post: Post,
+    ) -> Result<Self, AppError> {
+        let post = query_as!(Post, r#"insert into post (date, slug, title, series, categories, markdown, published) values ($1, $2, $3, $4, $5, $6, $7) returning id as "post_id?", date, slug, title, series, categories, markdown, published, created_at as "post_created_at?", updated_at as "post_updated_at?""#, &new_post.date, &new_post.slug, &new_post.title, &new_post.series, &new_post.categories, &new_post.markdown, &new_post.published).fetch_one(postgres_pool).await?;
 
-    //     Ok(row)
-    // }
+        Ok(post)
+    }
 
-    // pub async fn update_post_postgres<'a>(
-    //     postgres_con: PooledConnection<'a, PostgresConnectionManager<MakeTlsConnector>>,
-    //     post_id: &str,
-    //     updated_post: Post,
-    // ) -> Result<Self, AppError> {
-    //     let id = uuid::Uuid::parse_str(&post_id).unwrap();
+    pub async fn update_post_postgres<'a>(
+        postgres_pool: &Pool<Postgres>,
+        post_id: &str,
+        updated_post: Post,
+    ) -> Result<(), AppError> {
+        let id = uuid::Uuid::parse_str(&post_id).unwrap();
 
-    //     let row = postgres_con.query_one("UPDATE post SET title = $2, series = $3, categories = $4, markdown = $5, date = $6 WHERE id = $1 RETURNING *", &[&id, &updated_post.title, &updated_post.series, &updated_post.categories, &updated_post.markdown, &updated_post.date]).await?;
+        // let post = query_as!(Post, r#"update post SET title = $2, series = $3, categories = $4, markdown = $5, date = $6 where id = $1 returning id as "post_id?", date, slug, title, series, categories, markdown, published, created_at as "post_created_at?", updated_at as "post_updated_at?""#, &id, &updated_post.title, &updated_post.series, &updated_post.categories, &updated_post.markdown, &updated_post.date).fetch_one(postgres_pool).await?;
 
-    //     Ok(Post::try_from(row).unwrap())
-    // }
+        let result = query_as!(Post, r#"update post set date = $2, title = $3, slug = $4, series = $5, categories = $6, markdown = $7, published = $8 where id = $1"#, &id, &updated_post.date, &updated_post.title, &updated_post.slug, &updated_post.series, &updated_post.categories, &updated_post.markdown, &updated_post.published).execute(postgres_pool).await?;
+
+        Ok(())
+    }
 
     // pub async fn delete_post_postgres<'a>(
     //     postgres_con: PooledConnection<'a, PostgresConnectionManager<MakeTlsConnector>>,

@@ -1,31 +1,34 @@
-import { Component, createSignal, For, onMount } from "solid-js";
+import { Component, createSignal, For, Match, onMount, Switch } from "solid-js";
 import axios from "axios";
 
-import "~/styles/admin.scss";
+import Updater from "./modules/Updater";
+import Creator from "./modules/Creator";
 import Spinner from "~/components/Spinner/Spinner";
+import { IPost } from "~/api/types";
 
-interface IPost {
-  id: string;
-  date: Date;
-  slug: string;
-  title: string;
-  series: string;
-  categories: string[];
-  markdown: string;
-  published: boolean;
-  created_at: string;
-  updated_at: string;
-}
+import "~/styles/admin.scss";
+import SidePanel from "./modules/SidePanel";
 
 const Main: Component = () => {
   const [posts, setPosts] = createSignal<IPost[]>([]);
+  const [showCreator, setShowCreator] = createSignal<boolean>(false);
+  const [selectedPost, setSelectedPost] = createSignal<IPost>();
 
   onMount(async () => {
     try {
-      const response = await axios.get("/admin/api/post");
-      setPosts(response.data);
+      await getAllPosts();
     } catch (error) {}
   });
+
+  const getAllPosts = async () => {
+    const response = await axios.get("/admin/api/post");
+    setPosts(response.data);
+  };
+
+  const editorUpdatePostSelector = (post: IPost) => (_: Event) => {
+    setShowCreator(false);
+    setSelectedPost(post);
+  };
 
   return (
     <main>
@@ -33,7 +36,16 @@ const Main: Component = () => {
         <div class="admin-header">
           <span class="admin-header-logo">EAC Admin</span>
           <span>-</span>
-          <span class="admin-header-new">New Post</span>
+          <span
+            onClick={() => {
+              setSelectedPost();
+              // setSelectedPostID();
+              setShowCreator(true);
+            }}
+            class="admin-header-new"
+          >
+            New Post
+          </span>
           <form
             class="admin-header-logout"
             id="admin-logout"
@@ -53,35 +65,24 @@ const Main: Component = () => {
           </form>
         </div>
         <div class="admin-panel">
-          <div class="admin-panel-posts">
-            <For each={posts()} fallback={<Spinner startTime={0}></Spinner>}>
-              {(post, i) => (
-                <>
-                  <div class="admin-panel-post">
-                    <p>Slug: {post.slug}</p>
-                    <p>Title: {post.title}</p>
-                    <p>Date: {new Date(post.date).toDateString()}</p>
-                    <p>Published: {`${post.published}`}</p>
-                    <button>Update</button>
-                    <button>Delete</button>
-                  </div>
-                </>
-              )}
-            </For>
+          <SidePanel
+            posts={posts()}
+            editorUpdatePostSelector={editorUpdatePostSelector}
+          />
+          <div class="admin-panel-editor">
+            <Switch>
+              <Match when={selectedPost()}>
+                <Updater post={selectedPost} fetchAll={getAllPosts} />
+              </Match>
+              <Match when={showCreator()}>
+                <Creator />
+              </Match>
+            </Switch>
           </div>
-          <div class="admin-panel-editor"></div>
         </div>
       </div>
     </main>
   );
-};
-
-const Creator: Component = () => {
-  return <></>;
-};
-
-const Updater: Component<IPost> = (props) => {
-  return <></>;
 };
 
 export default Main;

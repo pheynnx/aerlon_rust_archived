@@ -19,7 +19,7 @@ use crate::{
             admin_handler, admin_logout_me_handler, get_admin_login_handler,
             post_admin_login_handler,
         },
-        admin_api::{admin_get_post_api, admin_get_posts_api},
+        admin_api::{admin_get_post_api, admin_get_posts_api, admin_update_post_api},
     },
     middlewares::admin::{admin_api_middleware, admin_auth_middleware, admin_login_middleware},
 };
@@ -80,7 +80,10 @@ async fn main() -> Result<(), AppError> {
 
     let admin_api_router = Router::new()
         .route("/post", get(admin_get_posts_api))
-        .route("/post/:id", get(admin_get_post_api))
+        .route(
+            "/post/:id",
+            get(admin_get_post_api).post(admin_update_post_api),
+        )
         .layer(middleware::from_fn(admin_api_middleware));
 
     let app = Router::new()
