@@ -8,7 +8,7 @@ interface IProps {
   editorUpdatePostSelector: (post: IPost) => (e: any) => void;
 }
 
-const SidePanel: Component<IProps> = (props) => {
+const PostPanel: Component<IProps> = (props) => {
   return (
     <div class="admin-panel-posts">
       <For
@@ -38,4 +38,4 @@ const SidePanel: Component<IProps> = (props) => {
   );
 };
 
-export default SidePanel;
+export default PostPanel;
