@@ -25,6 +25,30 @@
   }
 }
 
+.admin-console {
+  display: grid;
+  grid-template-columns: 50px auto;
+}
+
+.admin-navigator {
+  background-color: #d13737;
+  height: calc(100vh - 30px);
+}
+
+.admin-navigator-link {
+  height: 40px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-color: #2f2e3a;
+  color: #d13737;
+
+  &:hover {
+    cursor: pointer;
+    background-color: aliceblue;
+  }
+}
+
 .admin-panel {
   display: grid;
   // grid-template-columns: auto auto;
