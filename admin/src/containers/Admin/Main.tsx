@@ -87,12 +87,6 @@ const Main: Component = () => {
   return (
     <main>
       <div>
-        <div class="admin-header">
-          <span class="admin-header-logo">EAC Admin</span>
-          {/* <span onClick={editorCreateSelector} class="admin-header-new">
-            New Post
-          </span> */}
-        </div>
         <div class="admin-console">
           <div class="admin-navigator">
             <Navigator editorCreateSelector={editorCreateSelector} />

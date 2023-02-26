@@ -8,6 +8,9 @@ const Navigator: Component<IProps> = (props) => {
   return (
     <>
       {/* THESE WILL BE SVG/PNG ICONS */}
+      <div class="admin-navigator-link">
+        <span>EAC</span>
+      </div>
       {/* will be a home when posts are true, a back arrow when posts not true */}
       <div class="admin-navigator-link">
         <span>H</span>
@@ -15,6 +18,14 @@ const Navigator: Component<IProps> = (props) => {
       {/* new post button */}
       <div onClick={props.editorCreateSelector} class="admin-navigator-link">
         <span>N</span>
+      </div>
+      {/* refresh cache from database */}
+      <div class="admin-navigator-link">
+        <span>R</span>
+      </div>
+      {/* go to main site */}
+      <div class="admin-navigator-link">
+        <span>G</span>
       </div>
       {/* logout button */}
       <form
