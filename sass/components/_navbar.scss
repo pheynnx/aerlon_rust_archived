@@ -1,32 +1,23 @@
 .navigation-container {
   display: grid;
   width: 100%;
-}
-
-.navigation {
-  display: grid;
-  padding: 7px 3px;
-  background-color: #51b13a;
-  box-shadow: rgb(0 0 0/ 15%) 0px 5px 10px 0px;
-  height: 30px;
-  width: 93%;
-  max-width: 56rem;
-  margin-left: 3%;
-  margin-right: 3%;
-  margin-bottom: 15px;
-  border-radius: 0.2em;
-  justify-self: center;
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
 
 .navbar {
   display: flex;
   justify-self: center;
-  justify-content: center;
-  align-self: center;
+}
+
+.navbar-logo {
+  height: 50px;
+  margin-right: 10px;
 }
 
 .navbar-link {
-  margin: 0px 7px;
+  align-self: center;
+  margin: 0px 10px;
   font-size: 16px;
   font-weight: 400;
   line-height: 1;
