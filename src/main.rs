@@ -94,14 +94,12 @@ async fn main() -> Result<(), AppError> {
         .nest("/admin/api", admin_api_router)
         .nest_service(
             "/public",
-            get_service(ServeDir::new("./public")).handle_error(
-                |error: std::io::Error| async move {
-                    (
-                        StatusCode::INTERNAL_SERVER_ERROR,
-                        format!("unhandled internal error: {}", error),
-                    )
-                },
-            ),
+            get_service(ServeDir::new("./public")).handle_error(|error| async move {
+                (
+                    StatusCode::INTERNAL_SERVER_ERROR,
+                    format!("unhandled internal error: {}", error),
+                )
+            }),
         )
         .fallback(error_fallback)
         .layer(CookieManagerLayer::new())
@@ -117,6 +115,7 @@ async fn main() -> Result<(), AppError> {
     Ok(())
 }
 
+// Temp handler; need to be handled correctly and moved
 async fn error_fallback() -> Result<impl IntoResponse, AppError> {
     Ok((StatusCode::NOT_FOUND, Html("<h3>404</h3>")))
 }
@@ -124,7 +123,7 @@ async fn error_fallback() -> Result<impl IntoResponse, AppError> {
 #[derive(Template)]
 #[template(path = "about.html.j2")]
 struct AboutTemplate {}
-
+// Temp handler; need to be handled correctly and moved
 async fn about_handler() -> Result<impl IntoResponse, AppError> {
     Ok(HtmlTemplate(AboutTemplate {}))
 }

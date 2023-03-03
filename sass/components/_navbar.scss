@@ -17,7 +17,8 @@
 
 .navbar-link {
   align-self: center;
-  margin: 0px 10px;
+  padding: 0px 8px;
+  margin: 0px 6px;
   font-size: 16px;
   font-weight: 400;
   line-height: 1;
@@ -27,7 +28,11 @@
 
   @media (hover: hover) {
     &:hover {
-      color: var(--navbar-link-hover-color);
+      // color: var(--navbar-link-hover-color);
+      color: #ffffff;
+      background-color: #3f3f46;
+      padding: 4px 8px;
+      border-radius: 0.2em;
     }
   }
 

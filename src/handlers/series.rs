@@ -35,6 +35,7 @@ pub async fn get_series_handler(
 #[template(path = "series_$series.html.j2")]
 struct SeriesMetaTemplate {
     metas: Vec<Meta>,
+    series_name: String,
 }
 
 pub async fn get_series_metas_handler(
@@ -49,7 +50,10 @@ pub async fn get_series_metas_handler(
         Some(series_name) => {
             let metas = get_series_metas_sorted_by_name(redis_con, series_name).await?;
 
-            let template = SeriesMetaTemplate { metas };
+            let template = SeriesMetaTemplate {
+                metas,
+                series_name: series_name.to_string(),
+            };
 
             Ok(HtmlTemplate(template))
         }

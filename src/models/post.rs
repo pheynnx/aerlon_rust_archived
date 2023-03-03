@@ -131,7 +131,7 @@ impl Post {
 
         // let post = query_as!(Post, r#"update post SET title = $2, series = $3, categories = $4, markdown = $5, date = $6 where id = $1 returning id as "post_id?", date, slug, title, series, categories, markdown, published, created_at as "post_created_at?", updated_at as "post_updated_at?""#, &id, &updated_post.title, &updated_post.series, &updated_post.categories, &updated_post.markdown, &updated_post.date).fetch_one(postgres_pool).await?;
 
-        let result = query_as!(Post, r#"update post set date = $2, title = $3, slug = $4, series = $5, categories = $6, markdown = $7, published = $8 where id = $1"#, &id, &updated_post.date, &updated_post.title, &updated_post.slug, &updated_post.series, &updated_post.categories, &updated_post.markdown, &updated_post.published).execute(postgres_pool).await?;
+        let _ = query_as!(Post, r#"update post set date = $2, title = $3, slug = $4, series = $5, categories = $6, markdown = $7, published = $8 where id = $1"#, &id, &updated_post.date, &updated_post.title, &updated_post.slug, &updated_post.series, &updated_post.categories, &updated_post.markdown, &updated_post.published).execute(postgres_pool).await?;
 
         Ok(())
     }

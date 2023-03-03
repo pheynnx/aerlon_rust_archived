@@ -14,6 +14,7 @@ use crate::{
 #[template(path = "category_$category.html.j2")]
 struct CategoryTemplate {
     metas: Vec<Meta>,
+    category_name: String,
 }
 
 pub async fn get_categories_handler(
@@ -28,7 +29,10 @@ pub async fn get_categories_handler(
         Some(category_name) => {
             let metas = get_categories_metas_sorted_by_name(redis_con, category_name).await?;
 
-            let template = CategoryTemplate { metas };
+            let template = CategoryTemplate {
+                metas,
+                category_name: category_name.to_string(),
+            };
 
             Ok(HtmlTemplate(template))
         }
