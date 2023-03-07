@@ -3,6 +3,7 @@ use axum::{
     extract::{Path, State},
     response::IntoResponse,
 };
+use http::Request;
 use std::{collections::HashMap, sync::Arc};
 
 use crate::{
@@ -17,16 +18,21 @@ use crate::{
 #[template(path = "series.html.j2")]
 struct SeriesTemplate {
     series: Vec<Series>,
+    uri: String,
 }
 
-pub async fn get_series_handler(
+pub async fn get_series_handler<T>(
     State(state): State<Arc<AppState>>,
+    req: Request<T>,
 ) -> Result<impl IntoResponse, AppError> {
     let redis_con = state.databases.redis.new_connection().await?;
 
     let series = get_series_sorted(redis_con).await?;
 
-    let template = SeriesTemplate { series };
+    let template = SeriesTemplate {
+        series,
+        uri: req.uri().to_string(),
+    };
 
     Ok(HtmlTemplate(template))
 }
@@ -36,11 +42,13 @@ pub async fn get_series_handler(
 struct SeriesMetaTemplate {
     metas: Vec<Meta>,
     series_name: String,
+    uri: String,
 }
 
-pub async fn get_series_metas_handler(
+pub async fn get_series_metas_handler<T>(
     State(state): State<Arc<AppState>>,
     Path(params): Path<HashMap<String, String>>,
+    req: Request<T>,
 ) -> Result<impl IntoResponse, AppError> {
     let series_name = params.get("series");
 
@@ -53,6 +61,7 @@ pub async fn get_series_metas_handler(
             let template = SeriesMetaTemplate {
                 metas,
                 series_name: series_name.to_string(),
+                uri: req.uri().to_string(),
             };
 
             Ok(HtmlTemplate(template))

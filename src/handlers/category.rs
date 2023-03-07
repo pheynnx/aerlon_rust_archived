@@ -3,6 +3,7 @@ use axum::{
     extract::{Path, State},
     response::IntoResponse,
 };
+use http::Request;
 use std::{collections::HashMap, sync::Arc};
 
 use crate::{
@@ -15,11 +16,13 @@ use crate::{
 struct CategoryTemplate {
     metas: Vec<Meta>,
     category_name: String,
+    uri: String,
 }
 
-pub async fn get_categories_handler(
+pub async fn get_categories_handler<T>(
     State(state): State<Arc<AppState>>,
     Path(params): Path<HashMap<String, String>>,
+    req: Request<T>,
 ) -> Result<impl IntoResponse, AppError> {
     let category_name = params.get("category");
 
@@ -32,6 +35,7 @@ pub async fn get_categories_handler(
             let template = CategoryTemplate {
                 metas,
                 category_name: category_name.to_string(),
+                uri: req.uri().to_string(),
             };
 
             Ok(HtmlTemplate(template))

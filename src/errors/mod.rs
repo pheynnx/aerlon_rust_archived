@@ -42,6 +42,7 @@ impl From<serde_json::Error> for AppError {
 struct ErrorTemplate {
     error: String,
     status_code: StatusCode,
+    uri: String,
 }
 
 impl IntoResponse for AppError {
@@ -57,6 +58,7 @@ impl IntoResponse for AppError {
         let template = ErrorTemplate {
             error: error_message,
             status_code: status,
+            uri: String::from(""),
         };
 
         (StatusCode::UNPROCESSABLE_ENTITY, HtmlTemplate(template)).into_response()

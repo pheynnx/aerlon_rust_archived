@@ -1,6 +1,6 @@
 ## Ericarthurc.com
 
-Project version: `0.5.0 alpha | 03/02/2023`
+Project version: `0.5.1 alpha | 03/06/2023`
 
 ## Project Layout
 

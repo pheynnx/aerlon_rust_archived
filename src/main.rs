@@ -7,7 +7,7 @@ use axum::{
     Router,
 };
 use dotenvy::dotenv;
-use http::StatusCode;
+use http::{Request, StatusCode};
 use std::{net::SocketAddr, sync::Arc};
 use tower_cookies::CookieManagerLayer;
 use tower_http::services::ServeDir;
@@ -122,8 +122,12 @@ async fn error_fallback() -> Result<impl IntoResponse, AppError> {
 
 #[derive(Template)]
 #[template(path = "about.html.j2")]
-struct AboutTemplate {}
+struct AboutTemplate {
+    uri: String,
+}
 // Temp handler; need to be handled correctly and moved
-async fn about_handler() -> Result<impl IntoResponse, AppError> {
-    Ok(HtmlTemplate(AboutTemplate {}))
+async fn about_handler<T>(req: Request<T>) -> Result<impl IntoResponse, AppError> {
+    Ok(HtmlTemplate(AboutTemplate {
+        uri: req.uri().to_string(),
+    }))
 }

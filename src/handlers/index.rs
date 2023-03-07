@@ -19,7 +19,7 @@ use crate::{
 #[template(path = "index.html.j2")]
 struct IndexTemplate {
     metas: Vec<Meta>,
-    url: String,
+    uri: String,
 }
 
 pub async fn get_metas_handler<T>(
@@ -32,7 +32,7 @@ pub async fn get_metas_handler<T>(
 
     let template = IndexTemplate {
         metas,
-        url: req.uri().to_string(),
+        uri: req.uri().to_string(),
     };
 
     Ok(HtmlTemplate(template))
@@ -42,11 +42,13 @@ pub async fn get_metas_handler<T>(
 #[template(path = "index_$post.html.j2")]
 struct IndexPostTemplate {
     post: Post,
+    uri: String,
 }
 
-pub async fn get_post_handler(
+pub async fn get_post_handler<T>(
     State(state): State<Arc<AppState>>,
     Path(params): Path<HashMap<String, String>>,
+    req: Request<T>,
 ) -> Result<impl IntoResponse, AppError> {
     let post_slug = params.get("slug");
 
@@ -56,7 +58,10 @@ pub async fn get_post_handler(
         Some(post_slug) => {
             let post = get_post_by_slug(redis_con, post_slug).await?;
 
-            let template = IndexPostTemplate { post };
+            let template = IndexPostTemplate {
+                post,
+                uri: req.uri().to_string(),
+            };
 
             Ok(HtmlTemplate(template))
         }

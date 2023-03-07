@@ -28,8 +28,7 @@
 
   @media (hover: hover) {
     &:hover {
-      // color: var(--navbar-link-hover-color);
-      color: #ffffff;
+      color: var(--navbar-link-hover-color);
       background-color: #3f3f46;
       padding: 4px 8px;
       border-radius: 0.2em;
@@ -37,6 +36,6 @@
   }
 
   &.active {
-    border-bottom: 2px solid var(--navbar-link-hover-color);
+    color: var(--navbar-link-hover-color);
   }
 }
