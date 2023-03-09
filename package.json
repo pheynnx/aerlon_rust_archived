@@ -1,10 +1,11 @@
 {
-  "name": "tests",
+  "name": "eac",
   "scripts": {
+    "update": "cargo update && pnpm update && cd admin && pnpm update",
     "dev": "run-p dev:*",
     "dev:css": "sass --no-source-map --watch sass:public/css",
     "dev:vite": "cd admin && pnpm build-watch",
-    "dev:rust": "cargo run",
+    "dev:rust": "cargo watch -w src -w templates -w code_themes -x run",
     "build": "run-s build:*",
     "build:css": "sass --no-source-map sass:public/css",
     "build:vite": "cd admin && pnpm build",

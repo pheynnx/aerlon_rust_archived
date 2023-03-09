@@ -17,7 +17,7 @@ static SYNTECT_ADAPTER: Lazy<SyntectAdapter> = {
         let themes = ThemeSet::load_from_folder("./code_themes").unwrap();
         SyntectAdapterBuilder::new()
             .theme_set(themes)
-            .theme("halcyon")
+            .theme("eac")
             .build()
     })
 };

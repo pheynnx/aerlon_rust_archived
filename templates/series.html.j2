@@ -5,17 +5,11 @@
 {% block content %}
 <main>
     <div class="main-container">
-        <div class="cards-container">
+        <div class="series-cards-container">
             {% for s in series %}
-            <div class="card">
-                <div class="card-header-info">
-                    <div class="card-header">
-                        <a class="card-header-anchor" href="/series/{{ s.series }}">
-                            <span class="card-title">{{ s.series }}</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <a class="series-card-anchor" href="/series/{{ s.series }}">
+                <span class="series-card-info">{{ s.series }}</span>
+            </a>
             {% endfor %}
         </div>
     </div>
