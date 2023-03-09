@@ -1,16 +1,19 @@
 use askama::Template;
 use axum::{
+    error_handling::HandleErrorLayer,
     handler::Handler,
     middleware,
     response::{Html, IntoResponse},
     routing::{get, get_service, post},
-    Router,
+    BoxError, Router,
 };
 use dotenvy::dotenv;
 use http::{Request, StatusCode};
 use std::{net::SocketAddr, sync::Arc};
+use tower::ServiceBuilder;
 use tower_cookies::CookieManagerLayer;
-use tower_http::services::ServeDir;
+use tower_governor::{errors::display_error, governor::GovernorConfigBuilder, GovernorLayer};
+use tower_http::services::{ServeDir, ServeFile};
 use utilities::templates::HtmlTemplate;
 
 use crate::{
@@ -55,6 +58,14 @@ async fn main() -> Result<(), AppError> {
         databases: database_state,
     });
 
+    let governor_conf = Box::new(
+        GovernorConfigBuilder::default()
+            .per_second(1)
+            .burst_size(10)
+            .finish()
+            .unwrap(),
+    );
+
     let site_router = Router::new()
         .route("/", get(get_metas_handler))
         .route("/:slug", get(get_post_handler))
@@ -87,6 +98,15 @@ async fn main() -> Result<(), AppError> {
         .layer(middleware::from_fn(admin_api_middleware));
 
     let app = Router::new()
+        .route(
+            "/favicon.ico",
+            get_service(ServeFile::new("./public/favicon.ico")).handle_error(|error| async move {
+                (
+                    StatusCode::INTERNAL_SERVER_ERROR,
+                    format!("Unhandled internal error: {}", error),
+                )
+            }),
+        )
         .nest("/", site_router)
         .nest("/admin", admin_router)
         .nest("/admin/login", admin_login_router)
@@ -103,12 +123,22 @@ async fn main() -> Result<(), AppError> {
         )
         .fallback(error_fallback)
         .layer(CookieManagerLayer::new())
+        .layer(
+            ServiceBuilder::new()
+                .layer(HandleErrorLayer::new(|e: BoxError| async move {
+                    // Should be replaced with my own response
+                    display_error(e)
+                }))
+                .layer(GovernorLayer {
+                    config: Box::leak(governor_conf),
+                }),
+        )
         .with_state(shared_state);
 
     let addr = SocketAddr::from(([0, 0, 0, 0], 8040));
     println!("🔶 startup: listening on {}", addr);
     axum::Server::bind(&addr)
-        .serve(app.into_make_service())
+        .serve(app.into_make_service_with_connect_info::<SocketAddr>())
         .await
         .unwrap();
 
