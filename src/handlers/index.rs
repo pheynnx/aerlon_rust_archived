@@ -19,6 +19,7 @@ use crate::{
 #[template(path = "index.html.j2")]
 struct IndexTemplate {
     metas: Vec<Meta>,
+    featured: Vec<Meta>,
     uri: String,
 }
 
@@ -30,8 +31,11 @@ pub async fn get_metas_handler<T>(
 
     let metas = get_metas_sorted(redis_con).await?;
 
+    let (featured, metas) = metas.into_iter().partition(|p| p.featured);
+
     let template = IndexTemplate {
         metas,
+        featured,
         uri: req.uri().to_string(),
     };
 

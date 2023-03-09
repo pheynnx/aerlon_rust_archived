@@ -14,6 +14,7 @@ pub struct Meta {
     pub series: String,
     pub categories: Vec<String>,
     pub published: bool,
+    pub featured: bool,
 }
 
 impl Meta {

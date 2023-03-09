@@ -6,6 +6,7 @@ use crate::{database::redis::RedisConnection, errors::AppError};
 pub struct Series {
     pub series: String,
     pub published: bool,
+    pub featured: bool,
 }
 
 impl Series {
