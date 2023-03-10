@@ -24,7 +24,10 @@ use crate::{
         },
         admin_api::{admin_get_post_api, admin_get_posts_api, admin_update_post_api},
     },
-    middlewares::admin::{admin_api_middleware, admin_auth_middleware, admin_login_middleware},
+    middlewares::{
+        admin::{admin_api_middleware, admin_auth_middleware, admin_login_middleware},
+        test::threaded_middleware,
+    },
 };
 use database::{initialize_connections, DatabaseState};
 use errors::AppError;
@@ -42,6 +45,7 @@ mod models;
 mod services;
 mod utilities;
 
+#[derive(Clone)]
 pub struct AppState {
     pub databases: DatabaseState,
 }
@@ -72,30 +76,50 @@ async fn main() -> Result<(), AppError> {
         .route("/series", get(get_series_handler))
         .route("/series/:series", get(get_series_metas_handler))
         .route("/category/:category", get(get_categories_handler))
-        .route("/about", get(about_handler));
+        .route("/about", get(about_handler))
+        .layer(
+            ServiceBuilder::new()
+                .layer(HandleErrorLayer::new(|e: BoxError| async move {
+                    // Should be replaced with my own response
+                    display_error(e)
+                }))
+                .layer(GovernorLayer {
+                    config: Box::leak(governor_conf),
+                }),
+        );
 
     let admin_router = Router::new()
-        .route("/", get(admin_handler))
-        .layer(middleware::from_fn(admin_auth_middleware));
-
-    let admin_login_router = Router::new().route(
-        "/",
-        get(get_admin_login_handler.layer(middleware::from_fn(admin_login_middleware)))
-            .post(post_admin_login_handler),
-    );
-
-    let admin_logout_router = Router::new().route(
-        "/",
-        post(admin_logout_me_handler).layer(middleware::from_fn(admin_api_middleware)),
-    );
-
-    let admin_api_router = Router::new()
-        .route("/post", get(admin_get_posts_api))
-        .route(
-            "/post/:id",
-            get(admin_get_post_api).post(admin_update_post_api),
+        .nest(
+            "/",
+            Router::new()
+                .route("/", get(admin_handler))
+                .layer(middleware::from_fn(admin_auth_middleware)),
         )
-        .layer(middleware::from_fn(admin_api_middleware));
+        .nest(
+            "/login",
+            Router::new().route(
+                "/",
+                get(get_admin_login_handler.layer(middleware::from_fn(admin_login_middleware)))
+                    .post(post_admin_login_handler),
+            ),
+        )
+        .nest(
+            "/logout",
+            Router::new().route(
+                "/",
+                post(admin_logout_me_handler).layer(middleware::from_fn(admin_api_middleware)),
+            ),
+        )
+        .nest(
+            "/api",
+            Router::new()
+                .route("/post", get(admin_get_posts_api))
+                .route(
+                    "/post/:id",
+                    get(admin_get_post_api).post(admin_update_post_api),
+                )
+                .layer(middleware::from_fn(admin_api_middleware)),
+        );
 
     let app = Router::new()
         .route(
@@ -109,9 +133,6 @@ async fn main() -> Result<(), AppError> {
         )
         .nest("/", site_router)
         .nest("/admin", admin_router)
-        .nest("/admin/login", admin_login_router)
-        .nest("/admin/logout", admin_logout_router)
-        .nest("/admin/api", admin_api_router)
         .nest_service(
             "/public",
             get_service(ServeDir::new("./public")).handle_error(|error| async move {
@@ -121,18 +142,15 @@ async fn main() -> Result<(), AppError> {
                 )
             }),
         )
+        // .route(
+        //     "/tests",
+        //     get(test_handler.layer(middleware::from_fn_with_state(
+        //         shared_state.clone(),
+        //         threaded_middleware,
+        //     ))),
+        // )
         .fallback(error_fallback)
-        .layer(CookieManagerLayer::new())
-        .layer(
-            ServiceBuilder::new()
-                .layer(HandleErrorLayer::new(|e: BoxError| async move {
-                    // Should be replaced with my own response
-                    display_error(e)
-                }))
-                .layer(GovernorLayer {
-                    config: Box::leak(governor_conf),
-                }),
-        )
+        .layer(ServiceBuilder::new().layer(CookieManagerLayer::new()))
         .with_state(shared_state);
 
     let addr = SocketAddr::from(([0, 0, 0, 0], 8040));
@@ -160,4 +178,8 @@ async fn about_handler<T>(req: Request<T>) -> Result<impl IntoResponse, AppError
     Ok(HtmlTemplate(AboutTemplate {
         uri: req.uri().to_string(),
     }))
+}
+
+async fn test_handler() -> Result<impl IntoResponse, ()> {
+    Ok("Hello Test!")
 }

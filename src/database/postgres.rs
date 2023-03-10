@@ -3,6 +3,7 @@ use std::env;
 
 use crate::errors::AppError;
 
+#[derive(Clone)]
 pub struct PostgresDatabase {
     pub postgres_pool: Pool<Postgres>,
 }

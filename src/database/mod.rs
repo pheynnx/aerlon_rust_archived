@@ -4,6 +4,7 @@ use crate::{errors::AppError, models::post::Post};
 pub mod postgres;
 pub mod redis;
 
+#[derive(Clone)]
 pub struct DatabaseState {
     pub redis: RedisDatabase,
     pub postgres: PostgresDatabase,
