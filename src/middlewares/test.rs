@@ -7,18 +7,18 @@ use tokio::time::{sleep, Duration};
 use crate::AppState;
 
 pub async fn threaded_middleware<B>(
-    State(state): State<Arc<AppState>>,
+    State(_state): State<Arc<AppState>>,
     req: Request<B>,
     next: Next<B>,
 ) -> Result<Response, ()> {
-    let uri = req.uri().to_string();
+    // let uri = req.uri().to_string();
+    dbg!(req.headers());
+    dbg!(req.headers().get("host"));
+    dbg!(req.method());
+    dbg!(req.uri());
+    dbg!(req.version());
 
-    task::spawn(async move {
-        println!("[THREAD] spawned");
-        sleep(Duration::from_secs(5)).await;
-        println!("[THREAD] 5 seconds");
-        println!("[THREAD] uri: {}", uri);
-    });
+    // task::spawn(async move {});
 
     Ok(next.run(req).await)
 }

@@ -79,6 +79,10 @@ async fn main() -> Result<(), AppError> {
         .route("/about", get(about_handler))
         .layer(
             ServiceBuilder::new()
+                // .layer(middleware::from_fn_with_state(
+                //     shared_state.clone(),
+                //     threaded_middleware,
+                // ))
                 .layer(HandleErrorLayer::new(|e: BoxError| async move {
                     // Should be replaced with my own response
                     display_error(e)
@@ -142,13 +146,6 @@ async fn main() -> Result<(), AppError> {
                 )
             }),
         )
-        // .route(
-        //     "/tests",
-        //     get(test_handler.layer(middleware::from_fn_with_state(
-        //         shared_state.clone(),
-        //         threaded_middleware,
-        //     ))),
-        // )
         .fallback(error_fallback)
         .layer(ServiceBuilder::new().layer(CookieManagerLayer::new()))
         .with_state(shared_state);
@@ -178,8 +175,4 @@ async fn about_handler<T>(req: Request<T>) -> Result<impl IntoResponse, AppError
     Ok(HtmlTemplate(AboutTemplate {
         uri: req.uri().to_string(),
     }))
-}
-
-async fn test_handler() -> Result<impl IntoResponse, ()> {
-    Ok("Hello Test!")
 }
