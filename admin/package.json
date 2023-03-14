@@ -11,7 +11,7 @@
     "solid-js": "^1.6.14"
   },
   "devDependencies": {
-    "@types/node": "^18.15.0",
+    "@types/node": "^18.15.2",
     "rollup-plugin-copy": "^3.4.0",
     "sass": "^1.59.2",
     "typescript": "^4.9.5",

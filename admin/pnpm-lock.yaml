@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@types/node': ^18.15.0
+  '@types/node': ^18.15.2
   axios: ^1.3.4
   rollup-plugin-copy: ^3.4.0
   sass: ^1.59.2
@@ -15,11 +15,11 @@ dependencies:
   solid-js: 1.6.14
 
 devDependencies:
-  '@types/node': 18.15.0
+  '@types/node': 18.15.2
   rollup-plugin-copy: 3.4.0
   sass: 1.59.2
   typescript: 4.9.5
-  vite: 4.1.4_x7dzuadbe27hczg4caescy3qve
+  vite: 4.1.4_tuubpuhf3jw5mbrri6rd7h53aa
   vite-plugin-solid: 2.6.1_solid-js@1.6.14+vite@4.1.4
 
 packages:
@@ -630,22 +630,22 @@ packages:
   /@types/fs-extra/8.1.2:
     resolution: {integrity: sha512-SvSrYXfWSc7R4eqnOzbQF4TZmfpNSM9FrSWLU3EUnWBuyZqNBOrv1B1JA3byUDPUl9z4Ab3jeZG2eDdySlgNMg==}
     dependencies:
-      '@types/node': 18.15.0
+      '@types/node': 18.15.2
     dev: true
 
   /@types/glob/7.2.0:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 18.15.0
+      '@types/node': 18.15.2
     dev: true
 
   /@types/minimatch/5.1.2:
     resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
     dev: true
 
-  /@types/node/18.15.0:
-    resolution: {integrity: sha512-z6nr0TTEOBGkzLGmbypWOGnpSpSIBorEhC4L+4HeQ2iezKCi4f77kyslRwvHeNitymGQ+oFyIWGP96l/DPSV9w==}
+  /@types/node/18.15.2:
+    resolution: {integrity: sha512-sDPHm2wfx2QhrMDK0pOt2J4KLJMAcerqWNvnED0itPRJWvI+bK+uNHzcH1dFsBlf7G3u8tqXmRF3wkvL9yUwMw==}
     dev: true
 
   /ansi-styles/3.2.1:
@@ -732,14 +732,14 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001464
+      caniuse-lite: 1.0.30001465
       electron-to-chromium: 1.4.328
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
 
-  /caniuse-lite/1.0.30001464:
-    resolution: {integrity: sha512-oww27MtUmusatpRpCGSOneQk2/l5czXANDSFvsc7VuOQ86s3ANhZetpwXNf1zY/zdfP63Xvjz325DAdAoES13g==}
+  /caniuse-lite/1.0.30001465:
+    resolution: {integrity: sha512-HvjgL3MYAJjceTDCcjRnQGjwUz/5qec9n7JPOzUursUoOTIsYCSDOb1l7RsnZE8mjbxG78zVRCKfrBXyvChBag==}
     dev: true
 
   /chalk/2.4.2:
@@ -1337,13 +1337,13 @@ packages:
       merge-anything: 5.1.4
       solid-js: 1.6.14
       solid-refresh: 0.5.1_solid-js@1.6.14
-      vite: 4.1.4_x7dzuadbe27hczg4caescy3qve
+      vite: 4.1.4_tuubpuhf3jw5mbrri6rd7h53aa
       vitefu: 0.2.4_vite@4.1.4
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite/4.1.4_x7dzuadbe27hczg4caescy3qve:
+  /vite/4.1.4_tuubpuhf3jw5mbrri6rd7h53aa:
     resolution: {integrity: sha512-3knk/HsbSTKEin43zHu7jTwYWv81f8kgAL99G5NWBcA1LKvtvcVAC4JjBH1arBunO9kQka+1oGbrMKOjk4ZrBg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -1368,7 +1368,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.15.0
+      '@types/node': 18.15.2
       esbuild: 0.16.17
       postcss: 8.4.21
       resolve: 1.22.1
@@ -1386,7 +1386,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.1.4_x7dzuadbe27hczg4caescy3qve
+      vite: 4.1.4_tuubpuhf3jw5mbrri6rd7h53aa
     dev: true
 
   /wrappy/1.0.2:

@@ -1,6 +1,6 @@
 ## Ericarthurc.com
 
-Project version: `0.6.3 alpha | 03/12/2023`
+Project version: `0.6.4 alpha | 03/13/2023`
 
 ## Project Layout
 
@@ -54,4 +54,4 @@ Project version: `0.6.3 alpha | 03/12/2023`
 - Node Koa | React (2021)
   - wanted to move to Deno
 - Node Express | EJS (2020)
-  - started everything here a couple years back; express
+  - started everything here a couple years back

@@ -26,6 +26,7 @@ use crate::{
     },
     middlewares::{
         admin::{admin_api_middleware, admin_auth_middleware, admin_login_middleware},
+        stats::stats::StatsLayer,
         test::threaded_middleware,
     },
 };
@@ -83,6 +84,9 @@ async fn main() -> Result<(), AppError> {
                 //     shared_state.clone(),
                 //     threaded_middleware,
                 // ))
+                // .layer(StatsLayer {
+                //     state: shared_state.clone(),
+                // })
                 .layer(HandleErrorLayer::new(|e: BoxError| async move {
                     // Should be replaced with my own response
                     display_error(e)
