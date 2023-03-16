@@ -1,7 +1,5 @@
 ## Ericarthurc.com
 
-Project version: `0.6.4 alpha | 03/13/2023`
-
 ## Project Layout
 
 ### Project stack

@@ -16,26 +16,20 @@ use tower_governor::{errors::display_error, governor::GovernorConfigBuilder, Gov
 use tower_http::services::{ServeDir, ServeFile};
 use utilities::templates::HtmlTemplate;
 
-use crate::{
-    handlers::{
-        admin::{
-            admin_handler, admin_logout_me_handler, get_admin_login_handler,
-            post_admin_login_handler,
-        },
-        admin_api::{admin_get_post_api, admin_get_posts_api, admin_update_post_api},
-    },
-    middlewares::{
-        admin::{admin_api_middleware, admin_auth_middleware, admin_login_middleware},
-        stats::stats::StatsLayer,
-        test::threaded_middleware,
-    },
-};
 use database::{initialize_connections, DatabaseState};
 use errors::AppError;
 use handlers::{
+    admin::{
+        admin_handler, admin_logout_me_handler, get_admin_login_handler, post_admin_login_handler,
+    },
+    admin_api::{admin_get_post_api, admin_get_posts_api, admin_update_post_api},
     category::get_categories_handler,
     index::{get_metas_handler, get_post_handler},
     series::{get_series_handler, get_series_metas_handler},
+};
+use middlewares::{
+    admin::{admin_api_middleware, admin_auth_middleware, admin_login_middleware},
+    metrics::threaded_middleware,
 };
 
 mod database;
@@ -80,13 +74,10 @@ async fn main() -> Result<(), AppError> {
         .route("/about", get(about_handler))
         .layer(
             ServiceBuilder::new()
-                // .layer(middleware::from_fn_with_state(
-                //     shared_state.clone(),
-                //     threaded_middleware,
-                // ))
-                // .layer(StatsLayer {
-                //     state: shared_state.clone(),
-                // })
+                .layer(middleware::from_fn_with_state(
+                    shared_state.clone(),
+                    threaded_middleware,
+                ))
                 .layer(HandleErrorLayer::new(|e: BoxError| async move {
                     // Should be replaced with my own response
                     display_error(e)
@@ -130,26 +121,13 @@ async fn main() -> Result<(), AppError> {
         );
 
     let app = Router::new()
-        .route(
+        .route_service(
             "/favicon.ico",
-            get_service(ServeFile::new("./public/favicon.ico")).handle_error(|error| async move {
-                (
-                    StatusCode::INTERNAL_SERVER_ERROR,
-                    format!("Unhandled internal error: {}", error),
-                )
-            }),
+            ServeFile::new("./public/favicon/favicon.ico"),
         )
         .nest("/", site_router)
         .nest("/admin", admin_router)
-        .nest_service(
-            "/public",
-            get_service(ServeDir::new("./public")).handle_error(|error| async move {
-                (
-                    StatusCode::INTERNAL_SERVER_ERROR,
-                    format!("unhandled internal error: {}", error),
-                )
-            }),
-        )
+        .nest_service("/public", ServeDir::new("./public"))
         .fallback(error_fallback)
         .layer(ServiceBuilder::new().layer(CookieManagerLayer::new()))
         .with_state(shared_state);

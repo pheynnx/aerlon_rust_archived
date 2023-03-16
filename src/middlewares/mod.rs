@@ -1,3 +1,2 @@
 pub mod admin;
-pub mod stats;
-pub mod test;
+pub mod metrics;
