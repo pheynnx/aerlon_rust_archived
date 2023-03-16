@@ -29,8 +29,7 @@ use handlers::{
 };
 use middlewares::{
     admin::{admin_api_middleware, admin_auth_middleware, admin_login_middleware},
-    custom::custom::CustomHeaderMiddleware,
-    metrics::threaded_middleware,
+    metrics::layer::MetricsMiddleware,
 };
 
 mod database;
@@ -83,7 +82,7 @@ async fn main() -> Result<(), AppError> {
                     // should handle this custom for all these middleware stacks
                     display_error(e)
                 }))
-                .layer(CustomHeaderMiddleware::new(shared_state.clone()))
+                .layer(MetricsMiddleware::new(shared_state.clone()))
                 .layer(GovernorLayer {
                     config: Box::leak(governor_conf),
                 }),

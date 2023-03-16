@@ -8,35 +8,15 @@ use tower::{BoxError, Layer, Service};
 
 use crate::AppState;
 
-#[derive(Clone)]
-pub struct CustomHeaderMiddleware {
-    state: Arc<AppState>,
-}
-
-impl CustomHeaderMiddleware {
-    pub fn new(state: Arc<AppState>) -> Self {
-        Self { state }
-    }
-}
-
-impl<S> Layer<S> for CustomHeaderMiddleware {
-    type Service = CustomHeaderMiddlewareService<S>;
-
-    fn layer(&self, inner: S) -> Self::Service {
-        CustomHeaderMiddlewareService {
-            inner,
-            state: self.state.clone(),
-        }
-    }
-}
+pub mod layer;
 
 #[derive(Clone)]
-pub struct CustomHeaderMiddlewareService<S> {
+pub struct MetricsMiddlewareService<S> {
     inner: S,
     state: Arc<AppState>,
 }
 
-impl<S, B> Service<Request<B>> for CustomHeaderMiddlewareService<S>
+impl<S, B> Service<Request<B>> for MetricsMiddlewareService<S>
 where
     S: Service<Request<B>, Response = Response> + Send + 'static,
     S::Error: Into<BoxError>,
@@ -52,22 +32,22 @@ where
 
     fn call(&mut self, req: Request<B>) -> Self::Future {
         let header_user_agent = req.headers().get("user-agent").unwrap().to_owned();
+        let uri = req.uri().to_string();
+        let method = req.method().to_string();
+        let version = req.version();
+
+        // Being set by Nginx to pass the client IP through
         let header_user_forwarded = req
             .headers()
             .get("X-Forwarded-For")
-            .unwrap_or(&HeaderValue::from_str("no-value").unwrap())
+            .unwrap_or(&HeaderValue::from_str("not set").unwrap())
             .to_owned();
-        let uri = req.uri().to_string();
-        let header_host = req.headers().get("host").unwrap().to_owned();
-        let method = req.method().to_string();
-        let version = req.version();
 
         task::spawn(async move {
             println!("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             println!("{:#?}", uri);
             println!("{:#?}", header_user_agent);
             println!("{:#?}", header_user_forwarded);
-            println!("{:#?}", header_host);
             println!("{:#?}", method);
             println!("{:#?}", version);
             println!("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
