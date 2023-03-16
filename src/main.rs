@@ -8,8 +8,8 @@ use axum::{
     BoxError, Router,
 };
 use dotenvy::dotenv;
-use http::{Request, StatusCode};
-use std::{net::SocketAddr, sync::Arc};
+use http::{HeaderName, HeaderValue, Request, Response, StatusCode};
+use std::{net::SocketAddr, str::FromStr, sync::Arc};
 use tower::ServiceBuilder;
 use tower_cookies::CookieManagerLayer;
 use tower_governor::{errors::display_error, governor::GovernorConfigBuilder, GovernorLayer};
@@ -29,6 +29,7 @@ use handlers::{
 };
 use middlewares::{
     admin::{admin_api_middleware, admin_auth_middleware, admin_login_middleware},
+    custom::custom::CustomHeaderMiddleware,
     metrics::threaded_middleware,
 };
 
@@ -74,14 +75,15 @@ async fn main() -> Result<(), AppError> {
         .route("/about", get(about_handler))
         .layer(
             ServiceBuilder::new()
-                .layer(middleware::from_fn_with_state(
-                    shared_state.clone(),
-                    threaded_middleware,
-                ))
+                // .layer(middleware::from_fn_with_state(
+                //     shared_state.clone(),
+                //     threaded_middleware,
+                // ))
                 .layer(HandleErrorLayer::new(|e: BoxError| async move {
-                    // Should be replaced with my own response
+                    // should handle this custom for all these middleware stacks
                     display_error(e)
                 }))
+                .layer(CustomHeaderMiddleware::new(shared_state.clone()))
                 .layer(GovernorLayer {
                     config: Box::leak(governor_conf),
                 }),
