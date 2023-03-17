@@ -41,10 +41,20 @@ pub async fn post_admin_login_handler(
     {
         let token = generate_auth_jwt(login_payload.password, login_payload.pin).unwrap();
 
+        let rust_env = env::var("RUST_ENV").unwrap();
+
+        //Maybe security flags can be set at startup and passed through state?
+        let secure = if rust_env == "development" {
+            false
+        } else if rust_env == "production" {
+            true
+        } else {
+            false
+        };
+
         let cookie = Cookie::build("auth", token)
             .max_age(cookie::time::Duration::days(3))
-            // Needs to be true for production
-            .secure(false)
+            .secure(secure)
             .http_only(true)
             .path("/")
             .finish();
@@ -56,10 +66,20 @@ pub async fn post_admin_login_handler(
 }
 
 pub async fn admin_logout_me_handler(cookies: Cookies) -> Result<impl IntoResponse, AppError> {
+    let rust_env = env::var("RUST_ENV").unwrap();
+
+    let secure = if rust_env == "development" {
+        false
+    } else if rust_env == "production" {
+        true
+    } else {
+        false
+    };
+
+    //Maybe security flags can be set at startup and passed through state?
     let cookie = Cookie::build("auth", "")
         .max_age(cookie::time::Duration::days(3))
-        // Needs to be true for production
-        .secure(false)
+        .secure(secure)
         .http_only(true)
         .path("/")
         .finish();
