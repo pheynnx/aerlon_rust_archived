@@ -22,14 +22,23 @@ const PostPanel: Component<IProps> = (props) => {
         {(post, i) => (
           <>
             <div class="admin-panel-post">
-              <p>Slug: {post.slug}</p>
-              <p>Title: {post.title}</p>
-              <p>Date: {new Date(post.date).toLocaleDateString()}</p>
-              <p>Published: {`${post.published}`}</p>
-              <button onClick={props.editorUpdatePostSelector(post)}>
-                Update
-              </button>
-              <button>Delete</button>
+              <span class="admin-panel-post-info">Slug: {post.slug}</span>
+              <span class="admin-panel-post-info">Title: {post.title}</span>
+              <span class="admin-panel-post-info">
+                Date: {new Date(post.date).toLocaleDateString()}
+              </span>
+              <span class="admin-panel-post-info">
+                Published: {`${post.published}`}
+              </span>
+              <div>
+                <button
+                  class="admin-panel-post-button"
+                  onClick={props.editorUpdatePostSelector(post)}
+                >
+                  Update
+                </button>
+                <button class="admin-panel-post-button">Delete</button>
+              </div>
             </div>
           </>
         )}

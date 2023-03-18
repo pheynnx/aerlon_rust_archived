@@ -89,7 +89,10 @@ const Main: Component = () => {
       <div>
         <div class="admin-console">
           <div class="admin-navigator">
-            <Navigator editorCreateSelector={editorCreateSelector} />
+            <Navigator
+              editorCreateSelector={editorCreateSelector}
+              setAdminStore={setAdminStore}
+            />
           </div>
           <div
             class={`admin-panel ${

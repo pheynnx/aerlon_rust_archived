@@ -4,12 +4,12 @@ use axum::{
     handler::Handler,
     middleware,
     response::{Html, IntoResponse},
-    routing::{get, get_service, post},
+    routing::{get, post},
     BoxError, Router,
 };
 use dotenvy::dotenv;
-use http::{HeaderName, HeaderValue, Request, Response, StatusCode};
-use std::{net::SocketAddr, str::FromStr, sync::Arc};
+use http::{Request, StatusCode};
+use std::{net::SocketAddr, sync::Arc};
 use tower::ServiceBuilder;
 use tower_cookies::CookieManagerLayer;
 use tower_governor::{errors::display_error, governor::GovernorConfigBuilder, GovernorLayer};
@@ -74,10 +74,6 @@ async fn main() -> Result<(), AppError> {
         .route("/about", get(about_handler))
         .layer(
             ServiceBuilder::new()
-                // .layer(middleware::from_fn_with_state(
-                //     shared_state.clone(),
-                //     threaded_middleware,
-                // ))
                 .layer(HandleErrorLayer::new(|e: BoxError| async move {
                     // should handle this custom for all these middleware stacks
                     display_error(e)

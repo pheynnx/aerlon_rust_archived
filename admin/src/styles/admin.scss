@@ -4,8 +4,9 @@
 }
 
 .admin-navigator {
-  background-color: #d13737;
-  height: 100vh;
+  background-color: #009456;
+  min-height: 100vh;
+  border-right: 1px solid #009456;
 }
 
 .admin-navigator-link {
@@ -13,12 +14,13 @@
   display: grid;
   justify-content: center;
   align-content: center;
-  background-color: #2f2e3a;
-  color: #d13737;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border-bottom: 1px solid #009456;
 
   &:hover {
     cursor: pointer;
-    background-color: aliceblue;
+    background-color: #4d4d4d;
   }
 }
 
@@ -38,10 +40,10 @@
 
 .admin-panel-posts {
   // text-align: center;
-
   justify-self: center;
   display: grid;
   grid-auto-rows: min-content;
+  margin-top: 5px;
   // grid-template-columns: repeat(auto-fill, minmax(auto, auto));
   // flex-wrap: wrap;
   // width: 500px;
@@ -52,11 +54,48 @@
 }
 
 .admin-panel-post {
-  // width: 100px;
-  // margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
   padding: 5px 2px;
   align-self: start;
-  // height: 50px;
+  background-color: #00dc8017;
+  padding: 10px 20px 12px 20px;
+  border-radius: 0.25rem;
+  border: 1px solid #00dc82;
+  box-shadow: rgb(0 0 0/ 15%) 0px 5px 10px 0px;
+  text-align: center;
+}
+
+.admin-panel-post-info {
+  padding-bottom: 5px;
+
+}
+
+.admin-panel-post-button {
+  color: #fff;
+  background: #00dc82;
+  border: none;
+  margin: 0 5px;
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.25rem;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  align-self: center;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover {
+    outline: 0;
+    background: #007a47;
+  }
 }
 
 .admin-panel-editor {

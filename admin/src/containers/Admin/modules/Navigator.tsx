@@ -1,7 +1,12 @@
 import { Component } from "solid-js";
+import { SetStoreFunction } from "solid-js/store";
 
 interface IProps {
   editorCreateSelector: () => void;
+  setAdminStore: SetStoreFunction<{
+    editor: boolean;
+    posts: boolean;
+  }>;
 }
 
 const Navigator: Component<IProps> = (props) => {
@@ -12,7 +17,10 @@ const Navigator: Component<IProps> = (props) => {
         <span>EAC</span>
       </div>
       {/* will be a home when posts are true, a back arrow when posts not true */}
-      <div class="admin-navigator-link">
+      <div
+        onClick={() => props.setAdminStore({ posts: true, editor: false })}
+        class="admin-navigator-link"
+      >
         <span>H</span>
       </div>
       {/* new post button */}
@@ -33,17 +41,14 @@ const Navigator: Component<IProps> = (props) => {
         id="admin-logout"
         action="/admin/logout"
         method="post"
+        onClick={() => {
+          const form = document.getElementById(
+            "admin-logout"
+          ) as HTMLFormElement;
+          form.submit();
+        }}
       >
-        <span
-          onClick={() => {
-            const form = document.getElementById(
-              "admin-logout"
-            ) as HTMLFormElement;
-            form.submit();
-          }}
-        >
-          L
-        </span>
+        <span>L</span>
       </form>
     </>
   );
