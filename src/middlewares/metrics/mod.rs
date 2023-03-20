@@ -1,6 +1,7 @@
 use axum::{http::Request, response::Response};
 use futures::future::BoxFuture;
 use http::HeaderValue;
+use sqlx::{query, query_as};
 use std::env;
 use std::sync::Arc;
 use std::task::{Context, Poll};
@@ -33,6 +34,8 @@ where
     }
 
     fn call(&mut self, req: Request<B>) -> Self::Future {
+        let postgres_pool = self.state.databases.postgres.postgres_pool.clone();
+
         let header_user_agent = req.headers().get("user-agent").unwrap().to_owned();
         let uri = req.uri().to_string();
         let method = req.method().to_string();
@@ -60,7 +63,15 @@ where
                         .to_owned();
 
                     task::spawn(async move {
-                        // make database calls
+                        query_as!(
+                            Metric,
+                            r#"insert into metric (path, ip) values ($1, $2)"#,
+                            &uri,
+                            &header_user_forwarded.to_str().unwrap()
+                        )
+                        .fetch_optional(&postgres_pool)
+                        .await
+                        .unwrap();
                     });
                 }
                 _ => (),

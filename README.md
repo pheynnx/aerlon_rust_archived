@@ -1,5 +1,7 @@
 ## Ericarthurc.com
 
+## [0.7.1]
+
 ## Project Layout
 
 ### Project stack
