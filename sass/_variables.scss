@@ -1,19 +1,30 @@
 :root {
+  // Html
   --html-color: #ffffff;
   --background-color: #0c0c0d;
-  --navbar-link-color: #ffffff;
-  --navbar-link-hover-color: #00dc82;
-  --header-logo-color: #ffffff;
 
-  --meta-anchor-background: #181515;
-  --meta-anchor-hover-background: #ffffff1c;
-  --meta-anchor-border-color: #01b419;
+  // Navbar
+  --navbar-link: #ffffff;
+  --navbar-link-hover: #009edc;
+  --navbar-link-hover-background: #3f3f46;
 
-  --meta-anchor-series-background: #01b419;
-  --meta-anchor-series-hover-background: #198515;
+  // Card
+  --card-title: #fff;
+  --card-title-hover: #0084dc;
+  --card-date: #fff;
+  --card-category-info: #3f3f46;
+  --card-category-hover-background: #71717a;
 
-  --meta-info-title-color: #ffffff;
-  --meta-info-date-color: #ffffff;
+  // Series Card
+  --card-series-background: #3f3f46;
+  --card-series-border: #555555;
+  --card-series: #fafafa;
+  --card-series-hover-background: #71717a;
+  --card-series-hover-span: #fdfdfd;
+
+  // Featured Card
+  --card-featured-background: #0084dc17;
+  --card-featured-border: #0084dc;
 
   --main-header-color: #ffffff;
 

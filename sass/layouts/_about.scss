@@ -1,0 +1,25 @@
+.about-container {
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 35rem;
+  word-wrap: break-word;
+  justify-content: center;
+}
+
+.about-header {
+  display: flex;
+  gap: 20px;
+}
+
+.about-header-portrait {
+  width: 150px;
+  height: 150px;
+  border: 1.5px solid #00dc82;
+  border-radius: 5em;
+}
+
+.about-content {
+  margin-top: 20px;
+  text-align: center;
+}

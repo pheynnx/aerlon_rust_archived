@@ -74,11 +74,13 @@ async fn main() -> Result<(), AppError> {
         .route("/about", get(about_handler))
         .layer(
             ServiceBuilder::new()
-                .layer(HandleErrorLayer::new(|e: BoxError| async move {
-                    // should handle this custom for all these middleware stacks
-                    display_error(e)
+                .layer(HandleErrorLayer::new(|_: BoxError| async move {
+                    StatusCode::REQUEST_TIMEOUT
                 }))
                 .layer(MetricsMiddleware::new(shared_state.clone()))
+                .layer(HandleErrorLayer::new(|e: BoxError| async move {
+                    display_error(e)
+                }))
                 .layer(GovernorLayer {
                     config: Box::leak(governor_conf),
                 }),

@@ -1,12 +1,12 @@
 use axum::{http::Request, response::Response};
 use futures::future::BoxFuture;
 use http::HeaderValue;
-use sqlx::{query, query_as};
+use sqlx::query_as;
 use std::env;
 use std::sync::Arc;
 use std::task::{Context, Poll};
 use tokio::task;
-use tower::{BoxError, Layer, Service};
+use tower::{BoxError, Service};
 
 use crate::AppState;
 
@@ -76,7 +76,7 @@ where
                 }
                 _ => (),
             },
-            Err(e) => (),
+            Err(_) => (),
         };
 
         let response_future = self.inner.call(req);

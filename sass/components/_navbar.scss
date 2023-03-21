@@ -23,19 +23,19 @@
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0.03em;
-  color: var(--navbar-link-color);
+  color: var(--navbar-link);
   text-decoration: none;
 
   @media (hover: hover) {
     &:hover {
-      color: var(--navbar-link-hover-color);
-      background-color: #3f3f46;
+      color: var(--navbar-link-hover);
+      background-color: var(--navbar-link-hover-background);
       padding: 4px 8px;
       border-radius: 0.2em;
     }
   }
 
   &.active {
-    color: var(--navbar-link-hover-color);
+    color: var(--navbar-link-hover);
   }
 }
