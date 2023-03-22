@@ -11,6 +11,7 @@ interface IProps {
 const PostPanel: Component<IProps> = (props) => {
   return (
     <div class="admin-panel-posts">
+      <h3>Posts</h3>
       <For
         each={props.posts}
         fallback={

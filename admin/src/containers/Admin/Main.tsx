@@ -19,6 +19,8 @@ import SidePanel from "./modules/PostPanel";
 import { createStore } from "solid-js/store";
 import Navigator from "./modules/Navigator";
 
+const MODEWIDTH = 750;
+
 const Main: Component = () => {
   const [posts, setPosts] = createSignal<IPost[]>([]);
   const [showCreator, setShowCreator] = createSignal<boolean>(false);
@@ -36,12 +38,12 @@ const Main: Component = () => {
 
   const handler = (_: Event) => {
     setRect({ height: window.innerHeight, width: window.innerWidth });
-    if (window.innerWidth <= 500) {
+    if (window.innerWidth <= MODEWIDTH) {
       if (adminState.editor) {
         setAdminStore({ posts: false });
       }
     }
-    if (window.innerWidth >= 500) {
+    if (window.innerWidth >= MODEWIDTH) {
       setAdminStore({ posts: true });
     }
   };
@@ -66,7 +68,7 @@ const Main: Component = () => {
     setShowCreator(false);
     setSelectedPost(post);
     setAdminStore({ editor: true });
-    if (window.innerWidth <= 500) {
+    if (window.innerWidth <= MODEWIDTH) {
       if (adminState.editor) {
         setAdminStore({ posts: false });
       }
@@ -77,7 +79,7 @@ const Main: Component = () => {
     setSelectedPost();
     setShowCreator(true);
     setAdminStore({ editor: true });
-    if (window.innerWidth <= 500) {
+    if (window.innerWidth <= MODEWIDTH) {
       if (adminState.editor) {
         setAdminStore({ posts: false });
       }
@@ -96,7 +98,7 @@ const Main: Component = () => {
           </div>
           <div
             class={`admin-panel ${
-              rect().width >= 500 && adminState.editor && adminState.posts
+              rect().width >= MODEWIDTH && adminState.editor && adminState.posts
                 ? "multi-mode"
                 : "single-mode"
             }`}

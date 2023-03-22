@@ -23,6 +23,10 @@ const Navigator: Component<IProps> = (props) => {
       >
         <span>H</span>
       </div>
+      {/* metrics page */}
+      <div class="admin-navigator-link">
+        <span>M</span>
+      </div>
       {/* new post button */}
       <div onClick={props.editorCreateSelector} class="admin-navigator-link">
         <span>N</span>
@@ -32,7 +36,12 @@ const Navigator: Component<IProps> = (props) => {
         <span>R</span>
       </div>
       {/* go to main site */}
-      <div class="admin-navigator-link">
+      <div
+        class="admin-navigator-link"
+        onClick={() => {
+          window.location.href = "/";
+        }}
+      >
         <span>G</span>
       </div>
       {/* logout button */}

@@ -4,9 +4,9 @@
 }
 
 .admin-navigator {
-  background-color: #009456;
+  background-color: #0d1117;
   min-height: 100vh;
-  border-right: 1px solid #009456;
+  border-right: 1px solid #30363d;
 }
 
 .admin-navigator-link {
@@ -14,13 +14,12 @@
   display: grid;
   justify-content: center;
   align-content: center;
-  background-color: #1a1a1a;
+  // background-color: #1a1a1a;
   color: #ffffff;
-  border-bottom: 1px solid #009456;
 
   &:hover {
     cursor: pointer;
-    background-color: #4d4d4d;
+    background-color: #db2e2e;
   }
 }
 
@@ -39,14 +38,14 @@
 }
 
 .admin-panel-posts {
-  // text-align: center;
   justify-self: center;
   display: grid;
   grid-auto-rows: min-content;
-  margin-top: 5px;
-  // grid-template-columns: repeat(auto-fill, minmax(auto, auto));
-  // flex-wrap: wrap;
-  // width: 500px;
+  // margin-top: 5px;
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+  max-width: 900px;
 }
 
 .admin-panel-posts.hidden {
@@ -59,23 +58,23 @@
   margin-bottom: 10px;
   padding: 5px 2px;
   align-self: start;
-  background-color: #00dc8017;
+  background-color: #0d1117;
   padding: 10px 20px 12px 20px;
   border-radius: 0.25rem;
-  border: 1px solid #00dc82;
-  box-shadow: rgb(0 0 0/ 15%) 0px 5px 10px 0px;
+  border: 1px solid #30363d;
   text-align: center;
+  width: 100%;
+  color: #c9d1d9;
 }
 
 .admin-panel-post-info {
   padding-bottom: 5px;
-
 }
 
 .admin-panel-post-button {
   color: #fff;
-  background: #00dc82;
-  border: none;
+  background: #161b22;
+  border: 1px solid #30363d;
   margin: 0 5px;
   padding: 0.25rem 0.6rem;
   border-radius: 0.25rem;
@@ -94,7 +93,7 @@
 
   &:hover {
     outline: 0;
-    background: #007a47;
+    background: #db2e2e;
   }
 }
 
@@ -134,9 +133,3 @@ textarea::-webkit-scrollbar-thumb {
   border-radius: 20px;
   background-clip: padding-box;
 }
-
-// @media only screen and (max-width: 430px) {
-//   .admin-panel {
-//     grid-template-columns: auto;
-//   }
-// }

@@ -15,6 +15,14 @@
   margin-right: 10px;
 }
 
+.navbar-logo-outer {
+  fill: var(--navbar-logo-outer);
+}
+
+.navbar-logo-inner {
+  fill: var(--navbar-logo-inner);
+}
+
 .navbar-link {
   align-self: center;
   padding: 0px 8px;
