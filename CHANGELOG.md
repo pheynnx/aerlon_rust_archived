@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.5] - 2023-03-22
+
+#### Changed
+
+- put `#[allow(unused)]` on unused `Post {}` methods
+
+#### Fixed
+
+- uri check on navbar askama template restored for `active` class
+- boolean checkboxes on the admin updater form were setting the passed prop `Accessor<IPost>` values [still not sure why, could be a bug; but I think it was because `Accessor<T>()` returns `() => T` not `T`] when they should have only set the local signal. Updated the `setPostData()` signal method to take a spread `{ ...props.post() }` of the prop instead of setting the accessor to the signal
+
+#### Added
+
+- placed a proxy on the SolidJs dev server, may not use this but nice to have
+
 ## [0.7.4] - 2023-03-22
 
 #### Changed

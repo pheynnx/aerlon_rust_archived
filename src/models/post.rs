@@ -77,6 +77,7 @@ impl Post {
         Ok(posts)
     }
 
+    #[allow(unused)]
     pub async fn get_published_post_by_id_postgres(
         postgres_pool: &Pool<Postgres>,
         post_id: &str,
@@ -114,6 +115,7 @@ impl Post {
         Ok(post)
     }
 
+    #[allow(unused)]
     pub async fn create_post_postgres<'a>(
         postgres_pool: &Pool<Postgres>,
         new_post: Post,

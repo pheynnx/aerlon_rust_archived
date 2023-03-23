@@ -17,17 +17,16 @@ interface IProps {
 }
 
 const Updater: Component<IProps> = (props) => {
-  const [postData, setPostData] = createSignal<IPost>(props.post());
+  const [postData, setPostData] = createSignal<IPost>({ ...props.post() });
 
   createEffect(
     on(props.post, () => {
-      setPostData(props.post());
-    }),
-    on(postData, () => {
-      console.log(postData().date);
+      setPostData({ ...props.post() });
     })
   );
 
+  // NEED TO ADD FREATURED FIELD
+  // AND ADD + - CATEGORIES
   const updatePostField =
     (
       fieldName:

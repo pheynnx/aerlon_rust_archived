@@ -1,5 +1,6 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
+import devtools from "solid-devtools/vite";
 
 import solidPlugin from "vite-plugin-solid";
 import copy from "rollup-plugin-copy";
@@ -8,6 +9,16 @@ export default defineConfig({
   resolve: {
     alias: {
       "~": resolve(__dirname, "src"),
+    },
+  },
+  server: {
+    proxy: {
+      "/admin": {
+        target: "http://127.0.0.1:8040",
+        changeOrigin: true,
+        secure: false,
+        cookieDomainRewrite: "127.0.0.1",
+      },
     },
   },
   base: "/public",
@@ -33,6 +44,7 @@ export default defineConfig({
   },
   plugins: [
     solidPlugin(),
+    devtools(),
     copy({
       targets: [
         { src: "dist/*.html", dest: "../templates/compiled/" },
