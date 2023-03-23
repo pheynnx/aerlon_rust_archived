@@ -1,4 +1,4 @@
-use chrono::NaiveDateTime;
+use chrono::{DateTime, Utc};
 use comrak::{
     markdown_to_html_with_plugins,
     plugins::syntect::{SyntectAdapter, SyntectAdapterBuilder},
@@ -26,7 +26,7 @@ static SYNTECT_ADAPTER: Lazy<SyntectAdapter> = {
 pub struct Post {
     #[serde(rename = "id")]
     pub post_id: Option<Uuid>,
-    pub date: NaiveDateTime,
+    pub date: DateTime<Utc>,
     pub slug: String,
     pub title: String,
     pub series: String,
@@ -35,9 +35,9 @@ pub struct Post {
     pub published: bool,
     pub featured: bool,
     #[serde(rename = "created_at")]
-    pub post_created_at: Option<NaiveDateTime>,
+    pub post_created_at: Option<DateTime<Utc>>,
     #[serde(rename = "updated_at")]
-    pub post_updated_at: Option<NaiveDateTime>,
+    pub post_updated_at: Option<DateTime<Utc>>,
 }
 
 // state modifiers

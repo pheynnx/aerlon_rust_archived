@@ -1,5 +1,6 @@
-import { Component } from "solid-js";
+import { Component, Setter } from "solid-js";
 import { SetStoreFunction } from "solid-js/store";
+import { IPost } from "~/api/types";
 
 interface IProps {
   editorCreateSelector: () => void;
@@ -7,6 +8,7 @@ interface IProps {
     editor: boolean;
     posts: boolean;
   }>;
+  setSelectedPost: Setter<IPost>;
 }
 
 const Navigator: Component<IProps> = (props) => {
@@ -18,7 +20,10 @@ const Navigator: Component<IProps> = (props) => {
       </div>
       {/* will be a home when posts are true, a back arrow when posts not true */}
       <div
-        onClick={() => props.setAdminStore({ posts: true, editor: false })}
+        onClick={() => {
+          props.setSelectedPost();
+          props.setAdminStore({ posts: true, editor: false });
+        }}
         class="admin-navigator-link"
       >
         <span>H</span>
@@ -59,6 +64,9 @@ const Navigator: Component<IProps> = (props) => {
       >
         <span>L</span>
       </form>
+      <div class="admin-navigator-link">
+        <span>0.7.4</span>
+      </div>
     </>
   );
 };

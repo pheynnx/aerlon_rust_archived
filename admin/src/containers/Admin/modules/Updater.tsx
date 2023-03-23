@@ -64,48 +64,69 @@ const Updater: Component<IProps> = (props) => {
   return (
     <>
       <div class="admin-panel-editor-header">
-        <span>Updating: {postData().slug}</span>
+        <h3>{postData().title}</h3>
       </div>
       <div class="admin-panel-editor-form">
-        <label for="title">Title:</label>
+        <label class="admin-panel-editor-form-label" for="title">
+          Title:
+        </label>
         <input
+          class="admin-panel-editor-form-input"
           id="title"
           type="text"
           onInput={updatePostField("title")}
           value={postData().title}
         ></input>
-        <label for="slug">Slug:</label>
+        <label class="admin-panel-editor-form-label" for="slug">
+          Slug:
+        </label>
         <input
+          class="admin-panel-editor-form-input"
           id="slug"
           type="text"
           onInput={updatePostField("slug")}
           value={postData().slug}
         ></input>
-        <label for="published">Published:</label>
+        <div class="admin-panel-editor-form-published">
+          <label class="admin-panel-editor-form-label" for="published">
+            Published:
+          </label>
+          {/* THERE IS BUG ON THIS INPUT, STATE PERSISTS SOMETIMES */}
+          <input
+            class="admin-panel-editor-form-checkbox"
+            id="published"
+            type="checkbox"
+            onInput={updatePostField("published")}
+            checked={postData().published}
+          ></input>
+        </div>
+        <label class="admin-panel-editor-form-label" for="date">
+          Date:
+        </label>
         <input
-          id="published"
-          type="checkbox"
-          onInput={updatePostField("published")}
-          checked={postData().published}
-        ></input>
-        <label for="date">Date:</label>
-        <input
+          class="admin-panel-editor-form-input"
           id="date"
           type="date"
           onInput={updatePostField("date")}
           value={timeFormatYYYYMMDD(postData().date)}
         ></input>
-        <label for="series">Series:</label>
+        <label class="admin-panel-editor-form-label" for="series">
+          Series:
+        </label>
         <input
+          class="admin-panel-editor-form-input"
           type="series"
           onInput={updatePostField("series")}
           value={postData().series}
         ></input>
-        <label for="categories">Categories:</label>
+        <label class="admin-panel-editor-form-label" for="categories">
+          Categories:
+        </label>
         <Index each={postData().categories}>
           {(c, i) => (
             <>
               <input
+                class="admin-panel-editor-form-input"
                 id="categories"
                 type="text"
                 onInput={updatePostField("categories", i)}
@@ -116,14 +137,17 @@ const Updater: Component<IProps> = (props) => {
           )}
         </Index>
         {/* <button onClick={addCategory}>+</button> */}
-        <label for="markdown">Markdown:</label>
+        <label class="admin-panel-editor-form-label" for="markdown">
+          Markdown:
+        </label>
         <textarea
-          class="admin-textarea"
+          class="admin-panel-editor-form-textarea"
           id="markdown"
           onInput={updatePostField("markdown")}
           value={postData().markdown}
         ></textarea>
         <button
+          class="admin-panel-editor-form-button update"
           onClick={async () => {
             try {
               await axios.post(`/admin/api/post/${postData().id}`, {

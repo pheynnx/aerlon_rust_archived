@@ -1,4 +1,4 @@
-use chrono::NaiveDateTime;
+use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use sqlx::FromRow;
 
@@ -8,5 +8,5 @@ pub struct Metric {
     pub path: String,
     pub ip: String,
     #[serde(rename = "created_at")]
-    pub metric_created_at: Option<NaiveDateTime>,
+    pub metric_created_at: Option<DateTime<Utc>>,
 }

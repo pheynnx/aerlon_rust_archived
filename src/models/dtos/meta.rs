@@ -1,4 +1,4 @@
-use chrono::NaiveDateTime;
+use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
@@ -8,7 +8,7 @@ use crate::{database::redis::RedisConnection, errors::AppError};
 pub struct Meta {
     #[serde(rename = "id")]
     pub post_id: Option<Uuid>,
-    pub date: NaiveDateTime,
+    pub date: DateTime<Utc>,
     pub slug: String,
     pub title: String,
     pub series: String,

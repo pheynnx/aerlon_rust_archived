@@ -94,6 +94,7 @@ const Main: Component = () => {
             <Navigator
               editorCreateSelector={editorCreateSelector}
               setAdminStore={setAdminStore}
+              setSelectedPost={setSelectedPost}
             />
           </div>
           <div
@@ -107,6 +108,7 @@ const Main: Component = () => {
               <SidePanel
                 posts={posts()}
                 editorUpdatePostSelector={editorUpdatePostSelector}
+                selectedPost={selectedPost}
               />
             </Show>
             <Show when={adminState.editor}>

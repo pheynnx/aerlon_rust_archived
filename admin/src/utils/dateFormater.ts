@@ -12,5 +12,5 @@ export function timeFormatISO(inputDate: string): string {
   let trim = inputDate.split("T");
   const date = new Date(`${trim[0]}T00:00:00.00`);
 
-  return date.toISOString().replace("Z", "");
+  return date.toISOString();
 }

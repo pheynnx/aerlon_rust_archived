@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.4] - 2023-03-22
+
+#### Changed
+
+- moved SQL dates to `timestampz`
+  - better supports corredct timezones in JavaScript
+- updated all `NaiveDateTime` types on the SQL models to `DateTime<Utc>`
+  - makes handling the JSON date string much easier on the frontend
+- big style changes to the admin ui
+- some more main site color changes
+
 ## [0.7.3] - 2023-03-21
 
 #### Changed
