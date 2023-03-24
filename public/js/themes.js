@@ -1,29 +1,25 @@
 let theme = localStorage.getItem("theme");
-let themeSwitcherInput = document.querySelector("#themeSwitch");
+let themes = document.getElementsByName("themes");
 
 if (theme === "light") {
   localStorage.setItem("theme", "light");
   document.documentElement.setAttribute("data-theme", "light");
-  themeSwitcherInput.checked = false;
 } else {
   localStorage.setItem("theme", "dark");
   document.documentElement.setAttribute("data-theme", "dark");
-  themeSwitcherInput.checked = true;
 }
 
-themeSwitcherInput.addEventListener("change", (event) => {
-  if (event.target.checked) {
-    localStorage.setItem("theme", "dark");
-    document.documentElement.setAttribute("data-theme", "dark");
-  } else {
-    localStorage.setItem("theme", "light");
-    document.documentElement.setAttribute("data-theme", "light");
-  }
+themes.forEach((el) => {
+  el.addEventListener("click", (e) => {
+    let theme = e.target.attributes["data-theme"].value;
+
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  });
 });
 
 let color = localStorage.getItem("color");
-// let form = document.querySelector("#themeColor");
-let radios = document.getElementsByName("colorRadio");
+let colors = document.getElementsByName("colors");
 
 if (!color) {
   localStorage.setItem("color", "green");
@@ -47,7 +43,7 @@ switch (color) {
     document.documentElement.setAttribute("data-color", "green");
 }
 
-radios.forEach((el) => {
+colors.forEach((el) => {
   el.addEventListener("click", (e) => {
     let color = e.target.attributes["data-color"].value;
 
@@ -57,17 +53,17 @@ radios.forEach((el) => {
 });
 
 let dropdownButton = document.querySelector("#themer-dropdown-button");
-let dropdownContent = document.getElementById("themer-dropdown-content");
+let dropdownContent = document.querySelector("#themer-dropdown-content");
 
-dropdownButton.addEventListener("click", () => {
+dropdownButton.addEventListener("click", (e) => {
   dropdownContent.classList.toggle("show");
   dropdownButton.classList.toggle("spun");
-  dropdownContent.focus();
+  e.stopPropagation();
 });
 
-dropdownContent.addEventListener("focusout", (e) => {
-  if (!e.currentTarget.contains(e.relatedTarget)) {
-    dropdownContent.classList.remove("show");
-    dropdownButton.classList.remove("spun");
-  }
+document.addEventListener("click", (e) => {
+  if (e.target.closest("#themer-dropdown-content")) return;
+
+  dropdownContent.classList.remove("show");
+  dropdownButton.classList.remove("spun");
 });

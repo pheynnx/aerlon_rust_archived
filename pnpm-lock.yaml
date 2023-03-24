@@ -3,12 +3,12 @@ lockfileVersion: 5.4
 specifiers:
   cross-env: ^7.0.3
   npm-run-all: ^4.1.5
-  sass: ^1.59.3
+  sass: ^1.60.0
 
 devDependencies:
   cross-env: 7.0.3
   npm-run-all: 4.1.5
-  sass: 1.59.3
+  sass: 1.60.0
 
 packages:
 
@@ -641,8 +641,8 @@ packages:
       is-regex: 1.1.4
     dev: true
 
-  /sass/1.59.3:
-    resolution: {integrity: sha512-QCq98N3hX1jfTCoUAsF3eyGuXLsY7BCnCEg9qAact94Yc21npG2/mVOqoDvE0fCbWDqiM4WlcJQla0gWG2YlxQ==}
+  /sass/1.60.0:
+    resolution: {integrity: sha512-updbwW6fNb5gGm8qMXzVO7V4sWf7LMXnMly/JEyfbfERbVH46Fn6q02BX7/eHTdKpE7d+oTkMMQpFWNUMfFbgQ==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
