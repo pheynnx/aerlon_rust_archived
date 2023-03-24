@@ -1,3 +1,4 @@
+// default theme - dark and green
 :root {
   // Html
   --html-color: #ffffff;
@@ -7,8 +8,9 @@
   --navbar-link: #ffffff;
   --navbar-link-hover: #00dc82;
   --navbar-link-hover-background: #3f3f46;
-  --navbar-logo-outer: #00dc82;
   --navbar-logo-inner: #fff;
+  --navbar-logo-outer: #00dc82;
+  --navbar-settings: #fff;
 
   // Card
   --card-title: #fff;
@@ -30,6 +32,7 @@
 
   --main-header-color: #ffffff;
 
+  // Markdown
   --code-background-color: transparent;
   --markdown-tags-color: #ffb951;
   --markdown-h1-color: #ffffff;
@@ -45,14 +48,91 @@
 
 [data-theme="light"] {
   --html-color: #2d2d2d;
-  --background-color: #ffffff;
-  --navbar-link-color: #2d2d2d;
-  --header-logo-color: #01b419;
+  --background-color: #f7fdff;
 
-  --meta-anchor-border-color: transparent;
-  --meta-anchor-background: #01b419;
-  --meta-anchor-hover-background: #198515;
+  // Navbar
+  --navbar-link: #2d2d2d;
+  --navbar-link-hover-background: #3f3f46;
+  --navbar-logo-inner: #2d2d2d;
+  --navbar-settings: #2d2d2d;
+
+  // Card
+  --card-title: #2d2d2d;
+  --card-date: #2d2d2d;
+  --card-category-info: #3f3f46;
+  --card-category-hover-background: #71717a;
+
+  // Series Card
+  --card-series-background: #3f3f46;
+  --card-series-border: #555555;
+  --card-series: #fafafa;
+  --card-series-hover-background: #71717a;
+  --card-series-hover-span: #fdfdfd;
 
   --code-background-color: #0d1117;
   --code-border-color: #0d1117;
+}
+
+[data-color="green"] {
+  --theme-main-color: #00dc82;
+
+  // Navbar
+  --navbar-link-hover: #00dc82;
+  --navbar-link-hover-background: #3f3f46;
+  --navbar-logo-outer: #00dc82;
+
+  // Card
+  --card-title-hover: #00dc82;
+
+  // Featured Card
+  --card-featured-background: #00dc8217;
+  --card-featured-border: #00dc82;
+}
+
+[data-color="blue"] {
+  --theme-main-color: #0079dc;
+
+  // Navbar
+  --navbar-link-hover: #0079dc;
+  --navbar-link-hover-background: #3f3f46;
+  --navbar-logo-outer: #0079dc;
+
+  // Card
+  --card-title-hover: #0079dc;
+
+  // Featured Card
+  --card-featured-background: #0079dc17;
+  --card-featured-border: #0079dc;
+}
+
+[data-color="red"] {
+  --theme-main-color: #dc2100;
+
+  // Navbar
+  --navbar-link-hover: #dc2100;
+  --navbar-link-hover-background: #3f3f46;
+  --navbar-logo-outer: #dc2100;
+
+  // Card
+  --card-title-hover: #dc2100;
+
+  // Featured Card
+  --card-featured-background: #dc210017;
+  --card-featured-border: #dc2100;
+}
+
+[data-color="orange"] {
+  --theme-main-color: #dc7d00;
+
+  // Navbar
+  --navbar-link-hover: #dc7d00;
+  --navbar-link-hover-background: #3f3f46;
+  --navbar-logo-outer: #dc7d00;
+
+  // Card
+  --card-title-hover: #dc7d00;
+
+  // Featured Card
+  --card-featured-background: #dc7d0017;
+  --card-featured-border: #dc7d00;
 }

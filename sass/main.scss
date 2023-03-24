@@ -5,6 +5,10 @@ html {
   -webkit-tap-highlight-color: transparent;
   background-color: var(--background-color);
   color: var(--html-color);
+
+  &:focus {
+    outline: 0;
+  }
 }
 
 body {

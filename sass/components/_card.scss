@@ -13,7 +13,6 @@
   background: var(--card-series-background);
   border-radius: 0.4rem;
   border: 1px solid var(--card-series-border);
-  color: var(--card-series);
   line-height: 1;
   text-align: center;
 
@@ -30,7 +29,7 @@
   font-size: 18px;
   text-transform: capitalize;
   font-weight: 400;
-  color: var(--card-title);
+  color: var(--card-series);
 }
 
 .cards-container {
@@ -57,16 +56,20 @@
   align-items: center;
   width: 100%;
   margin-bottom: 20px;
-}
-
-.card-header-anchor {
-  text-decoration: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 
 .card-header-info {
   width: 100%;
   display: grid;
   margin-bottom: 7px;
+}
+
+.card-header-anchor {
+  text-decoration: none;
 }
 
 .card-title {

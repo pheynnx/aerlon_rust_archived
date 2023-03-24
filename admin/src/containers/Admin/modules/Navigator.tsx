@@ -65,7 +65,7 @@ const Navigator: Component<IProps> = (props) => {
         <span>L</span>
       </form>
       <div class="admin-navigator-link">
-        <span>0.7.5</span>
+        <span>0.8.0</span>
       </div>
     </>
   );

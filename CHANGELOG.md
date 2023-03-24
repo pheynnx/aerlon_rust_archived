@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.0] - 2023-03-23
+
+#### Added
+
+- theme switcher for dark/light and color
+  - heavy wip
+  - lots of work required for this area
+  - might turn more into a whole site setting panel versus just a themer
+  - heavy css modifications to get this working correctly
+  - missing a lot of styles and design in the drop down content menu right now
+
 ## [0.7.5] - 2023-03-22
 
 #### Changed
