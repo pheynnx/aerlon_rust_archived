@@ -28,15 +28,15 @@
 .themer-dropdown-content {
   display: none;
   position: absolute;
-  transform: translateX(-50px);
-  background-color: #1f242c;
-  min-width: 120px;
+  transform: translateX(-10px);
+  background-color: var(--themer-content-background);
+  margin-top: 5px;
+  // min-width: 120px;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  padding: 4px 8px;
-  border-radius: 0.25rem;
-  border: 1px solid #30363d;
+  padding: 2px 8px;
+  border-radius: 2rem;
   color: #fff;
 
   text-align: center;
@@ -50,14 +50,53 @@
   }
 }
 
+.themer-content-colors {
+}
+
 // placeholder
 .theme-div {
+  display: flex;
   cursor: pointer;
+  height: 25px;
+  width: 25px;
+  border-radius: 2rem;
+  margin: 5px 0px;
+  // border: 1px solid #57585a;
+
+  &.light {
+    background-color: #f7fdff;
+  }
+
+  &.dark {
+    background-color: #010409;
+  }
+
+  &.green {
+    background-color: #00dc82;
+  }
+
+  &.blue {
+    background-color: #0079dc;
+  }
+
+  &.red {
+    background-color: #dc2100;
+  }
+
+  &.orange {
+    background-color: #ff9100;
+  }
+
+  // &:hover {
+  //   border: 1px solid #e7e43f;
+  // }
 }
 
 // placeholder
 .theme-label {
-  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  // margin: 10px 0;
 }
 
 // .theme-switcher {

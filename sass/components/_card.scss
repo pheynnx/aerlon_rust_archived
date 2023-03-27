@@ -122,3 +122,9 @@
     background: var(--card-category-hover-background);
   }
 }
+
+@supports (-webkit-touch-callout: none) and (not (translate: none)) {
+  .card-category:not(:last-child) {
+    margin-right: 6px;
+  }
+}

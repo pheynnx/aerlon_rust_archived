@@ -73,7 +73,7 @@ p {
 }
 
 .container-heading {
-  color: #00dc82;
+  color: var(--container-header);
   text-transform: capitalize;
   font-size: 35px;
   font-weight: bold;
