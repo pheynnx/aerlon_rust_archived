@@ -1,21 +1,22 @@
 let theme = localStorage.getItem("theme");
-let themes = document.getElementsByName("themes");
+let themeSwitcherInput = document.querySelector("#themeSwitch");
 
 if (theme === "light") {
-  localStorage.setItem("theme", "light");
   document.documentElement.setAttribute("data-theme", "light");
+  themeSwitcherInput.checked = false;
 } else {
-  localStorage.setItem("theme", "dark");
   document.documentElement.setAttribute("data-theme", "dark");
+  themeSwitcherInput.checked = true;
 }
 
-themes.forEach((el) => {
-  el.addEventListener("click", (e) => {
-    let theme = e.target.attributes["data-theme"].value;
-
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  });
+themeSwitcherInput.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    localStorage.setItem("theme", "dark");
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+    document.documentElement.setAttribute("data-theme", "light");
+  }
 });
 
 let color = localStorage.getItem("color");
@@ -38,6 +39,12 @@ switch (color) {
     break;
   case "orange":
     document.documentElement.setAttribute("data-color", "orange");
+    break;
+  case "pink":
+    document.documentElement.setAttribute("data-color", "pink");
+    break;
+  case "purple":
+    document.documentElement.setAttribute("data-color", "purple");
     break;
   default:
     document.documentElement.setAttribute("data-color", "green");

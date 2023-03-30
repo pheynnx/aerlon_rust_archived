@@ -1,6 +1,5 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
-import devtools from "solid-devtools/vite";
 
 import solidPlugin from "vite-plugin-solid";
 import copy from "rollup-plugin-copy";
@@ -44,7 +43,6 @@ export default defineConfig({
   },
   plugins: [
     solidPlugin(),
-    devtools(),
     copy({
       targets: [
         { src: "dist/*.html", dest: "../templates/compiled/" },

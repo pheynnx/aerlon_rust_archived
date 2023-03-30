@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.3] - 2023-03-29
+
+#### Changed
+
+- more ui adjustements to the settings/themer tab
+
+#### Added
+
+- pink and purple themes were added
+
+#### Fixed
+
+- some of the css theme colors were not setting the right color for the featured post background
+
 ## [0.8.2] - 2023-03-27
 
 #### Changed
