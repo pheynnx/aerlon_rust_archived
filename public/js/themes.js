@@ -24,7 +24,6 @@ let colors = document.getElementsByName("colors");
 
 if (!color) {
   localStorage.setItem("color", "green");
-  document.querySelector("#green").checked = true;
 }
 
 switch (color) {
