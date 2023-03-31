@@ -4,11 +4,15 @@ import { IPost } from "~/api/types";
 
 interface IProps {
   editorCreateSelector: () => void;
-  setAdminStore: SetStoreFunction<{
-    editor: boolean;
+  setAdminState: SetStoreFunction<{
     posts: boolean;
+    metrics: boolean;
+    editor: boolean;
+    editorContent: {
+      creator: boolean;
+      editorPost: IPost;
+    };
   }>;
-  setSelectedPost: Setter<IPost>;
 }
 
 const Navigator: Component<IProps> = (props) => {
@@ -55,8 +59,12 @@ const Navigator: Component<IProps> = (props) => {
       <div class="admin-navigator-link">
         <svg
           onClick={() => {
-            props.setSelectedPost();
-            props.setAdminStore({ posts: true, editor: false });
+            props.setAdminState({
+              posts: true,
+              metrics: false,
+              editor: false,
+              editorContent: { creator: false, editorPost: null },
+            });
           }}
           class="admin-navigator-link-svg"
           width="100%"
@@ -74,6 +82,14 @@ const Navigator: Component<IProps> = (props) => {
       {/* metrics page */}
       <div class="admin-navigator-link">
         <svg
+          onClick={() => {
+            props.setAdminState({
+              metrics: true,
+              posts: false,
+              editor: false,
+              editorContent: { creator: false, editorPost: null },
+            });
+          }}
           class="admin-navigator-link-svg"
           width="100%"
           height="100%"
@@ -152,7 +168,13 @@ const Navigator: Component<IProps> = (props) => {
         </svg>
       </form>
       <div class="admin-navigator-link">
-        <span class="admin-version">{version}</span>
+        <a
+          class="admin-version"
+          href="https://github.com/Ericarthurc/ericarthurc.com"
+          target="_blank"
+        >
+          {version}
+        </a>
       </div>
     </>
   );

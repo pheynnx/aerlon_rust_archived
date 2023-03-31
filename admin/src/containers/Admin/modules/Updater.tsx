@@ -1,6 +1,7 @@
 import {
   Accessor,
   Component,
+  createComputed,
   createEffect,
   createSignal,
   Index,
@@ -12,18 +13,26 @@ import { timeFormatISO, timeFormatYYYYMMDD } from "~/utils/dateFormater";
 import { IPost } from "~/api/types";
 
 interface IProps {
-  post: Accessor<IPost>;
+  adminState: {
+    posts: boolean;
+    metrics: boolean;
+    editor: boolean;
+    editorContent: {
+      creator: boolean;
+      editorPost: IPost;
+    };
+  };
   fetchAll: () => Promise<void>;
 }
 
 const Updater: Component<IProps> = (props) => {
-  const [postData, setPostData] = createSignal<IPost>({ ...props.post() });
-
-  createEffect(
-    on(props.post, () => {
-      setPostData({ ...props.post() });
-    })
+  const [postData, setPostData] = createSignal<IPost>(
+    props.adminState.editorContent.editorPost
   );
+
+  createComputed(() => {
+    setPostData(props.adminState.editorContent.editorPost);
+  });
 
   // NEED TO ADD FREATURED FIELD
   // AND ADD + - CATEGORIES

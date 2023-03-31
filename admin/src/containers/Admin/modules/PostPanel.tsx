@@ -6,7 +6,15 @@ import { IPost } from "~/api/types";
 interface IProps {
   posts: IPost[];
   editorUpdatePostSelector: (post: IPost) => (e: any) => void;
-  selectedPost: Accessor<IPost>;
+  adminState: {
+    posts: boolean;
+    metrics: boolean;
+    editor: boolean;
+    editorContent: {
+      creator: boolean;
+      editorPost: IPost;
+    };
+  };
 }
 
 const PostPanel: Component<IProps> = (props) => {
@@ -25,7 +33,9 @@ const PostPanel: Component<IProps> = (props) => {
           <>
             <div
               class={`admin-panel-post ${
-                props.selectedPost()?.id === post.id ? "active" : ""
+                props.adminState.editorContent.editorPost?.id === post.id
+                  ? "active"
+                  : ""
               }`}
             >
               <span class="admin-panel-post-info-title">{post.title}</span>
