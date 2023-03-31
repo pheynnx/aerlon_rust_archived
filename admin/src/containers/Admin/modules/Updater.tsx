@@ -22,7 +22,7 @@ interface IProps {
       editorPost: IPost;
     };
   };
-  fetchAll: () => Promise<void>;
+  fetchPostsHandler: () => Promise<void>;
 }
 
 const Updater: Component<IProps> = (props) => {
@@ -34,8 +34,6 @@ const Updater: Component<IProps> = (props) => {
     setPostData(props.adminState.editorContent.editorPost);
   });
 
-  // NEED TO ADD FREATURED FIELD
-  // AND ADD + - CATEGORIES
   const updatePostField =
     (
       fieldName:
@@ -64,6 +62,9 @@ const Updater: Component<IProps> = (props) => {
           prev.featured = !prev.featured;
           return { ...prev };
         }
+        if (fieldName === "date") {
+          return { ...prev, date: timeFormatISO(inputElement.value) };
+        }
 
         return {
           ...prev,
@@ -71,6 +72,24 @@ const Updater: Component<IProps> = (props) => {
         };
       });
     };
+
+  const addCategory = () => {
+    setPostData((prev) => {
+      if (prev.categories[prev.categories.length - 1] === "") {
+        return { ...prev };
+      }
+      return { ...prev, categories: [...prev.categories, ""] };
+    });
+  };
+
+  const removeCategory = (index: number) => (event: Event) => {
+    setPostData((prev) => {
+      return {
+        ...prev,
+        categories: prev.categories.filter((c) => c !== prev.categories[index]),
+      };
+    });
+  };
 
   const postUpdateSubmit = (e) => {};
 
@@ -148,19 +167,59 @@ const Updater: Component<IProps> = (props) => {
         </label>
         <Index each={postData().categories}>
           {(c, i) => (
-            <>
+            <div class="admin-panel-editor-form-category">
               <input
-                class="admin-panel-editor-form-input"
+                class="admin-panel-editor-form-input-category"
                 id="categories"
                 type="text"
                 onInput={updatePostField("categories", i)}
                 value={c()}
               ></input>
-              {/* <button onClick={removeCategory(i)}>-</button> */}
-            </>
+              <button
+                class="admin-panel-editor-form-category-button remove"
+                onClick={removeCategory(i)}
+              >
+                <svg
+                  class="admin-panel-editor-form-category-button-svg"
+                  width="100%"
+                  height="100%"
+                  viewBox="0 0 188 188"
+                  version="1.1"
+                  style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+                >
+                  <path
+                    d="M142.467,93.967l-97,0"
+                    style="fill:none;stroke:#fff;stroke-width:16.67px;"
+                  />
+                </svg>
+              </button>
+            </div>
           )}
         </Index>
-        {/* <button onClick={addCategory}>+</button> */}
+        <div class="admin-panel-editor-form-category-adder">
+          <button
+            class="admin-panel-editor-form-category-button add"
+            onClick={addCategory}
+          >
+            <svg
+              class="admin-panel-editor-form-category-button-svg"
+              width="100%"
+              height="100%"
+              viewBox="0 0 114 114"
+              version="1.1"
+              style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+            >
+              <path
+                d="M56.833,8.333l0,97"
+                style="fill:none;stroke:#fff;stroke-width:16.67px;"
+              />
+              <path
+                d="M105.333,56.833l-97,0"
+                style="fill:none;stroke:#fff;stroke-width:16.67px;"
+              />
+            </svg>
+          </button>
+        </div>
         <label class="admin-panel-editor-form-label" for="markdown">
           Markdown:
         </label>
@@ -172,14 +231,20 @@ const Updater: Component<IProps> = (props) => {
         ></textarea>
         <button
           class="admin-panel-editor-form-button update"
+          // NEEDS TO MOVE UPWARDS AND NEEDS VALIDATION AND ERROR HANDLING
           onClick={async () => {
+            console.log(postData());
+
             try {
               await axios.post(`/admin/api/post/${postData().id}`, {
                 ...postData(),
+                categories: postData().categories.filter((c) => c != ""),
                 date: timeFormatISO(postData().date),
               });
-              props.fetchAll();
-            } catch (error) {}
+              props.fetchPostsHandler();
+            } catch (error) {
+              console.log(error);
+            }
           }}
         >
           Update

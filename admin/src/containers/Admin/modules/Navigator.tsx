@@ -116,12 +116,55 @@ const Navigator: Component<IProps> = (props) => {
         </svg>
       </div>
       {/* new post button */}
-      <div onClick={props.editorCreateSelector} class="admin-navigator-link">
-        <span>N</span>
-      </div>
-      {/* refresh cache from database */}
       <div class="admin-navigator-link">
-        <span>R</span>
+        <svg
+          onClick={props.editorCreateSelector}
+          class="admin-navigator-link-svg"
+          width="100%"
+          height="100%"
+          viewBox="0 0 188 188"
+          version="1.1"
+          style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        >
+          <circle
+            cx="93.967"
+            cy="93.967"
+            r="85.634"
+            style="fill:none;stroke-width:16.67px;"
+          />
+          <g>
+            <path
+              d="M93.967,45.467l0,97"
+              style="fill:none;stroke-width:16.67px;"
+            />
+            <path
+              d="M142.467,93.967l-97,0"
+              style="fill:none;stroke-width:16.67px;"
+            />
+          </g>
+        </svg>
+      </div>
+      {/* refresh redis cache from database */}
+      <div class="admin-navigator-link">
+        <svg
+          class="admin-navigator-link-svg"
+          width="100%"
+          height="100%"
+          viewBox="0 0 188 209"
+          version="1.1"
+          style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        >
+          <g id="reload">
+            <path
+              d="M93.967,29.332c47.263,0 85.634,38.372 85.634,85.634c-0,47.263 -38.371,85.634 -85.634,85.634c-47.262,-0 -85.634,-38.371 -85.634,-85.634"
+              style="fill:none;stroke-width:16.67px;"
+            />
+            <path
+              d="M74.968,29.132l20.798,21.199l-20.798,-21.199l21.199,-20.799l-21.199,20.799Z"
+              style="fill:none;stroke-width:16.67px;"
+            />
+          </g>
+        </svg>
       </div>
       {/* go to main site */}
       <div

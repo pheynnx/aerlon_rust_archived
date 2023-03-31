@@ -59,7 +59,7 @@ const Main: Component = () => {
   onMount(async () => {
     window.addEventListener("resize", handler);
     try {
-      await getAllPosts();
+      await fetchPostsHandler();
     } catch (error) {}
   });
 
@@ -67,8 +67,14 @@ const Main: Component = () => {
     window.removeEventListener("resize", handler);
   });
 
-  const getAllPosts = async () => {
+  const fetchPostsHandler = async () => {
     const response = await axios.get("/admin/api/post");
+
+    // sorting by date, should also probably sort alphabetically if date is the same
+    response.data.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+
     setPosts(response.data);
   };
 
@@ -134,11 +140,11 @@ const Main: Component = () => {
                       <Match when={adminState.editorContent.editorPost}>
                         <Updater
                           adminState={adminState}
-                          fetchAll={getAllPosts}
+                          fetchPostsHandler={fetchPostsHandler}
                         />
                       </Match>
                       <Match when={adminState.editorContent.creator}>
-                        <Creator />
+                        <Creator fetchPostsHandler={fetchPostsHandler} />
                       </Match>
                     </Switch>
                   </div>

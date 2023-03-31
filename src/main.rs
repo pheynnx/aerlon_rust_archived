@@ -22,7 +22,9 @@ use handlers::{
     admin::{
         admin_handler, admin_logout_me_handler, get_admin_login_handler, post_admin_login_handler,
     },
-    admin_api::{admin_get_post_api, admin_get_posts_api, admin_update_post_api},
+    admin_api::{
+        admin_create_post_handler, admin_get_post_api, admin_get_posts_api, admin_update_post_api,
+    },
     category::get_categories_handler,
     index::{get_metas_handler, get_post_handler},
     series::{get_series_handler, get_series_metas_handler},
@@ -111,7 +113,10 @@ async fn main() -> Result<(), AppError> {
         .nest(
             "/api",
             Router::new()
-                .route("/post", get(admin_get_posts_api))
+                .route(
+                    "/post",
+                    get(admin_get_posts_api).post(admin_create_post_handler),
+                )
                 .route(
                     "/post/:id",
                     get(admin_get_post_api).post(admin_update_post_api),

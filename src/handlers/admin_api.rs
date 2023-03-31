@@ -34,16 +34,15 @@ pub async fn admin_get_post_api(
     }
 }
 
-// pub async fn admin_create_post_handler(
-//     State(state): State<Arc<AppState>>,
-//     extract::Json(post_payload): extract::Json<Post>,
-// ) -> Result<impl IntoResponse, AppError> {
-//     let postgres_con = state.databases.postgres.new_connection().await?;
-
-//     let created_post = Post::create_post_postgres(postgres_con, post_payload).await?;
-//     state.databases.update_cache().await?;
-//     Ok(Json(created_post))
-// }
+pub async fn admin_create_post_handler(
+    State(state): State<Arc<AppState>>,
+    extract::Json(post_payload): extract::Json<Post>,
+) -> Result<impl IntoResponse, AppError> {
+    let created_post =
+        Post::create_post_postgres(&state.databases.postgres.postgres_pool, post_payload).await?;
+    state.databases.update_cache().await?;
+    Ok(Json(created_post))
+}
 
 pub async fn admin_update_post_api(
     State(state): State<Arc<AppState>>,
