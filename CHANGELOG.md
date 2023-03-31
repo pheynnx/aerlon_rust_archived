@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.5] - 2023-03-30
+
+#### Added
+
+- wip svg icons for the admin console
+- admin consoles site version shower is now set by a github api fetch call, and not manually set now
+
+#### Fixed
+
+- set `user-select: none;` on some text that shouldn't be selectable
+
 ## [0.8.4] - 2023-03-29
 
 #### Fixed

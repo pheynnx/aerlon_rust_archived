@@ -17,9 +17,25 @@
   // background-color: #1a1a1a;
   color: #ffffff;
 
+  &.logo {
+    margin-top: 5px;
+  }
+}
+
+.admin-navigator-link-svg-logo {
+  width: 40px;
+  height: 40px;
+  
+}
+
+.admin-navigator-link-svg {
+  width: 30px;
+  height: 30px;
+  stroke: #fff;
+
   &:hover {
     cursor: pointer;
-    background-color: #db2e2e;
+    stroke: #db2e2e;
   }
 }
 
@@ -99,6 +115,10 @@
   font-weight: 500;
   align-self: center;
   cursor: pointer;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none; 
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -206,6 +226,10 @@
   font-weight: 500;
   align-self: center;
   cursor: pointer;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;  
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -241,4 +265,8 @@ textarea::-webkit-scrollbar-thumb {
   background-color: #2f2e3a;
   border-radius: 20px;
   background-clip: padding-box;
+}
+
+.admin-version {
+  font-size: 13px;
 }

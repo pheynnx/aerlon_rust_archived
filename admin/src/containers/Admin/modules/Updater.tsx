@@ -33,6 +33,7 @@ const Updater: Component<IProps> = (props) => {
         | "title"
         | "slug"
         | "published"
+        | "featured"
         | "date"
         | "series"
         | "categories"
@@ -48,6 +49,10 @@ const Updater: Component<IProps> = (props) => {
         }
         if (fieldName === "published") {
           prev.published = !prev.published;
+          return { ...prev };
+        }
+        if (fieldName === "featured") {
+          prev.featured = !prev.featured;
           return { ...prev };
         }
 
@@ -90,13 +95,24 @@ const Updater: Component<IProps> = (props) => {
           <label class="admin-panel-editor-form-label" for="published">
             Published:
           </label>
-          {/* THERE IS BUG ON THIS INPUT, STATE PERSISTS SOMETIMES */}
           <input
             class="admin-panel-editor-form-checkbox"
             id="published"
             type="checkbox"
             onInput={updatePostField("published")}
             checked={postData().published}
+          ></input>
+        </div>
+        <div class="admin-panel-editor-form-published">
+          <label class="admin-panel-editor-form-label" for="featured">
+            Featured:
+          </label>
+          <input
+            class="admin-panel-editor-form-checkbox"
+            id="published"
+            type="checkbox"
+            onInput={updatePostField("featured")}
+            checked={postData().featured}
           ></input>
         </div>
         <label class="admin-panel-editor-form-label" for="date">

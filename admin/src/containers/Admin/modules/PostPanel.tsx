@@ -45,6 +45,9 @@ const PostPanel: Component<IProps> = (props) => {
               <span class="admin-panel-post-info">
                 Published: {`${post.published}`}
               </span>
+              <span class="admin-panel-post-info">
+                Featured: {`${post.featured}`}
+              </span>
               <div>
                 <button
                   class="admin-panel-post-button update"

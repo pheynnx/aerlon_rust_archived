@@ -12,6 +12,7 @@ const Creator: Component = () => {
     categories: [],
     markdown: "",
     published: false,
+    featured: false,
     created_at: "",
     updated_at: "",
   });
@@ -52,6 +53,18 @@ const Creator: Component = () => {
             type="checkbox"
             // onInput={updatePostField('title')}
             checked={newPost().published}
+          ></input>
+        </div>
+        <div class="admin-panel-editor-form-published">
+          <label class="admin-panel-editor-form-label" for="featured">
+            Featured:
+          </label>
+          <input
+            class="admin-panel-editor-form-checkbox"
+            id="featured"
+            type="checkbox"
+            // onInput={updatePostField('title')}
+            checked={newPost().featured}
           ></input>
         </div>
         <label class="admin-panel-editor-form-label" for="date">

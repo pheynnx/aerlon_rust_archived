@@ -36,25 +36,15 @@ where
     fn call(&mut self, req: Request<B>) -> Self::Future {
         let postgres_pool = self.state.databases.postgres.postgres_pool.clone();
 
-        let header_user_agent = req.headers().get("user-agent").unwrap().to_owned();
+        let _header_user_agent = req.headers().get("user-agent").unwrap().to_owned();
         let uri = req.uri().to_string();
-        let method = req.method().to_string();
-        let version = req.version();
+        let _method = req.method().to_string();
+        let _version = req.version();
 
         let rust_env = env::var("RUST_ENV");
 
         match rust_env {
             Ok(r_env) => match r_env.as_str() {
-                "development" => {
-                    task::spawn(async move {
-                        println!("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                        println!("{:#?}", uri);
-                        println!("{:#?}", header_user_agent);
-                        println!("{:#?}", method);
-                        println!("{:#?}", version);
-                        println!("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-                    });
-                }
                 "production" => {
                     let header_user_forwarded = req
                         .headers()
