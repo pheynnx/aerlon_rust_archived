@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.8] - 2023-04-03
+
+#### Changed
+
+- moved the redis service functions to methods on their respective struct
+- removed themer out of navbar and to a absolute position
+- messing with new mirror navbar
+
 ## [0.8.7] - 2023-03-31
 
 #### Added

@@ -1,19 +1,31 @@
 .navigation-container {
   display: grid;
   width: 100%;
-  margin-top: 15px;
+  padding-top: 15px;
   margin-bottom: 20px;
 }
 
 .navbar {
   display: flex;
-  justify-self: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .navbar-logo {
   height: 50px;
   width: 50px;
-  margin-right: 10px;
+  justify-self: center;
+}
+
+.navbar-left {
+  display: flex;
+  width: 100px;
+  justify-content: end;
+}
+
+.navbar-right {
+  width: 100px;
+  justify-content: start;
 }
 
 .navbar-logo-outer {
@@ -27,7 +39,6 @@
 .navbar-link {
   align-self: center;
   padding: 0px 8px;
-  margin: 0px 6px;
   font-size: 16px;
   font-weight: 400;
   line-height: 1;

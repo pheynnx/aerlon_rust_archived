@@ -6,6 +6,7 @@
 <main>
     <div class="main-container">
         <div class="cards-container">
+            {% if !(featured.is_empty()) %}
             <div class="featured-posts">
                 {% for meta in featured %}
                 <div class="card">
@@ -27,6 +28,7 @@
                 </div>
                 {% endfor %}
             </div>
+            {% endif %}
             {% for meta in metas %}
             <div class="card">
                 <div class="card-header-info">

@@ -17,9 +17,9 @@
 
 <body>
     <header>
-        {# {% include "./includes/header.html.j2" %} #}
+        {% include "./includes/themer.html.j2" %}
+        {% include "./includes/navbar.html.j2" %}
     </header>
-    {% include "./includes/navbar.html.j2" %}
     {% block content %}{% endblock %}
     <script src="/public/js/themes.js"></script>
 </body>

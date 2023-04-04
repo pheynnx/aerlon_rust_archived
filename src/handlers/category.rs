@@ -7,8 +7,7 @@ use http::Request;
 use std::{collections::HashMap, sync::Arc};
 
 use crate::{
-    errors::AppError, models::dtos::meta::Meta, services::get_categories_metas_sorted_by_name,
-    utilities::templates::HtmlTemplate, AppState,
+    errors::AppError, models::dtos::meta::Meta, utilities::templates::HtmlTemplate, AppState,
 };
 
 #[derive(Template)]
@@ -30,7 +29,7 @@ pub async fn get_categories_handler<T>(
 
     match category_name {
         Some(category_name) => {
-            let metas = get_categories_metas_sorted_by_name(redis_con, category_name).await?;
+            let metas = Meta::get_categories_metas_sorted_by_name(redis_con, category_name).await?;
 
             let template = CategoryTemplate {
                 metas,

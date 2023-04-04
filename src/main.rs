@@ -39,7 +39,6 @@ mod errors;
 mod handlers;
 mod middlewares;
 mod models;
-mod services;
 mod utilities;
 
 #[derive(Clone)]

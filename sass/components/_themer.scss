@@ -1,8 +1,17 @@
+.themer-container {
+  display: flex;
+  justify-self: flex-end;
+  align-self: start;
+  margin: 10px 10px;
+  position: absolute;
+  right: 0;
+}
+
 .themer-dropdown {
   height: 22px;
   width: 22px;
   align-self: center;
-  margin: 0 10px;
+  // margin: 0 10px;
 }
 
 .themer-dropdown-button {
@@ -10,18 +19,18 @@
   height: 22px;
   width: 22px;
   cursor: pointer;
-  transition: transform 0.7s ease-in-out;
+  // transition: transform 0.7s ease-in-out;
 
   &.spun {
     fill: var(--theme-main-color);
-    transform: rotate(90deg);
+    // transform: rotate(90deg);
   }
 }
 
 @media (hover: hover) and (pointer: fine) {
   .themer-dropdown-button:hover {
     fill: var(--theme-main-color);
-    transform: rotate(90deg);
+    // transform: rotate(90deg);
   }
 }
 

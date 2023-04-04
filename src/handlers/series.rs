@@ -9,7 +9,6 @@ use std::{collections::HashMap, sync::Arc};
 use crate::{
     errors::AppError,
     models::dtos::{meta::Meta, series::Series},
-    services::{get_series_metas_sorted_by_name, get_series_sorted},
     utilities::templates::HtmlTemplate,
     AppState,
 };
@@ -27,7 +26,7 @@ pub async fn get_series_handler<T>(
 ) -> Result<impl IntoResponse, AppError> {
     let redis_con = state.databases.redis.new_connection().await?;
 
-    let series = get_series_sorted(redis_con).await?;
+    let series = Series::get_series_sorted(redis_con).await?;
 
     let template = SeriesTemplate {
         series,
@@ -56,7 +55,7 @@ pub async fn get_series_metas_handler<T>(
 
     match series_name {
         Some(series_name) => {
-            let metas = get_series_metas_sorted_by_name(redis_con, series_name).await?;
+            let metas = Meta::get_series_metas_sorted_by_name(redis_con, series_name).await?;
 
             let template = SeriesMetaTemplate {
                 metas,

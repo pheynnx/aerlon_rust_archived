@@ -1,5 +1,3 @@
-use std::f32::consts::E;
-
 use chrono::{DateTime, Utc};
 use comrak::{
     markdown_to_html_with_plugins,
@@ -61,9 +59,24 @@ impl Post {
 // redis methods
 impl Post {
     pub async fn get_posts_redis(mut redis_con: RedisConnection) -> Result<Vec<Self>, AppError> {
-        let posts: Vec<Post> = redis_con.get_cache_redis().await?;
+        let posts: Vec<Self> = redis_con.get_cache_redis().await?;
 
         Ok(posts)
+    }
+
+    pub async fn get_post_by_slug(
+        redis_con: RedisConnection,
+        post_slug: &str,
+    ) -> Result<Self, AppError> {
+        let posts = Self::get_posts_redis(redis_con).await?;
+
+        match posts.into_iter().find(|p| p.slug == post_slug) {
+            Some(mut p) => {
+                p.convert_markdown_to_html();
+                Ok(p)
+            }
+            None => Err(AppError::Custom(format!("{} not found", post_slug))),
+        }
     }
 }
 

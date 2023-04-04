@@ -9,7 +9,6 @@ use std::{collections::HashMap, sync::Arc};
 use crate::{
     errors::AppError,
     models::{dtos::meta::Meta, post::Post},
-    services::{get_metas_sorted, get_post_by_slug},
     utilities::templates::HtmlTemplate,
     AppState,
 };
@@ -29,7 +28,7 @@ pub async fn get_metas_handler<T>(
 ) -> Result<impl IntoResponse, AppError> {
     let redis_con = state.databases.redis.new_connection().await?;
 
-    let metas = get_metas_sorted(redis_con).await?;
+    let metas = Meta::get_metas_sorted(redis_con).await?;
 
     let (featured, metas) = metas.into_iter().partition(|p| p.featured);
 
@@ -60,7 +59,7 @@ pub async fn get_post_handler<T>(
 
     match post_slug {
         Some(post_slug) => {
-            let post = get_post_by_slug(redis_con, post_slug).await?;
+            let post = Post::get_post_by_slug(redis_con, post_slug).await?;
 
             let template = IndexPostTemplate {
                 post,
