@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+- there is a consideration to move this whole project to a full featured SSR framework
+  - this project is very hybrid and custom, and may be hard to scale nicely in the future
+    - may try Deno's Fresh framework, but I need a lot of custom backend control
+
+## [0.8.9] - 2023-04-05
+
+#### Changed
+
+- adjusted the error html page templates | still wip but better now
+- put the navbar back to its original design with the logo on the left
+- series card background color was adjusted to match other button like elements on the site
+- `\admin` is now named `\vite`, this change is due to the vite builds being apart of more than just the admin console
+
+#### Added
+
+- the RNG page just for fun, will expand that more in the future
+
 ## [0.8.8] - 2023-04-03
 
 #### Changed

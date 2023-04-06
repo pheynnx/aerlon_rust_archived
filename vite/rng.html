@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ericarthurc" />
+    <meta name="msapplication-TileColor" content="#0d1017" />
+    <meta name="theme-color" content="#0d1017" />
+    <title>EAC | RNG</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/public/css/main.css" />
+    {% block head %}{% endblock %}
+  </head>
+
+  <body>
+    <header>
+      {% include "./includes/themer.html.j2" %} {% include
+      "./includes/navbar.html.j2" %}
+    </header>
+    <div id="root"></div>
+    <script type="module" src="./src/views/Rng.tsx"></script>
+    <script src="/public/js/themes.js"></script>
+  </body>
+</html>

@@ -27,6 +27,7 @@ export default defineConfig({
       input: {
         admin: resolve(__dirname, "admin.html"),
         admin_login: resolve(__dirname, "admin_login.html"),
+        rng: resolve(__dirname, "rng.html"),
       },
       output: {
         assetFileNames: (assetInfo) => {

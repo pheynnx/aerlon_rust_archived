@@ -4,6 +4,7 @@ import { createPost } from "~/api/admin";
 
 import { IPost } from "~/api/types";
 import { timeFormatISO, timeFormatYYYYMMDD } from "~/utils/dateFormater";
+import { addCategory, removeCategory, updatePostField } from "./formUpdater";
 
 interface IProps {
   fetchPostsHandler: () => Promise<void>;
@@ -24,64 +25,10 @@ const Creator: Component<IProps> = (props) => {
     updated_at: "",
   });
 
-  const updatePostField =
-    (
-      fieldName:
-        | "title"
-        | "slug"
-        | "published"
-        | "featured"
-        | "date"
-        | "series"
-        | "categories"
-        | "markdown",
-      index?: number
-    ) =>
-    (event: Event) => {
-      const inputElement = event.currentTarget as HTMLInputElement;
-      setNewPost((prev) => {
-        if (fieldName === "categories") {
-          prev.categories[index as number] = inputElement.value;
-          return { ...prev };
-        }
-        if (fieldName === "published") {
-          prev.published = !prev.published;
-          return { ...prev };
-        }
-        if (fieldName === "featured") {
-          prev.featured = !prev.featured;
-          return { ...prev };
-        }
-        if (fieldName === "date") {
-          return { ...prev, date: timeFormatISO(inputElement.value) };
-        }
-
-        return {
-          ...prev,
-          [fieldName]: inputElement.value,
-        };
-      });
-    };
-
-  const addCategory = () => {
-    setNewPost((prev) => {
-      if (prev.categories[prev.categories.length - 1] === "") {
-        return { ...prev };
-      }
-      return { ...prev, categories: [...prev.categories, ""] };
-    });
-  };
-
-  const removeCategory = (index: number) => (event: Event) => {
-    setNewPost((prev) => {
-      return {
-        ...prev,
-        categories: prev.categories.filter((c) => c !== prev.categories[index]),
-      };
-    });
-  };
-
   // NEEDS VALIDATION AND ERROR HANDLING
+  // Handle what happens after a post is created
+  // // maybe close the creator panel and go back to home?
+  // // maybe switch to the update view of that new post?
   const createPostHandler = async () => {
     try {
       await createPost({ ...newPost() });
@@ -102,7 +49,7 @@ const Creator: Component<IProps> = (props) => {
           class="admin-panel-editor-form-input"
           id="title"
           type="text"
-          onInput={updatePostField("title")}
+          onInput={updatePostField(setNewPost, "title")}
           value={newPost().title}
         ></input>
         <label class="admin-panel-editor-form-label" for="slug">
@@ -112,7 +59,7 @@ const Creator: Component<IProps> = (props) => {
           class="admin-panel-editor-form-input"
           id="slug"
           type="text"
-          onInput={updatePostField("slug")}
+          onInput={updatePostField(setNewPost, "slug")}
           value={newPost().slug}
         ></input>
         <div class="admin-panel-editor-form-published">
@@ -123,7 +70,7 @@ const Creator: Component<IProps> = (props) => {
             class="admin-panel-editor-form-checkbox"
             id="published"
             type="checkbox"
-            onInput={updatePostField("published")}
+            onInput={updatePostField(setNewPost, "published")}
             checked={newPost().published}
           ></input>
         </div>
@@ -135,7 +82,7 @@ const Creator: Component<IProps> = (props) => {
             class="admin-panel-editor-form-checkbox"
             id="featured"
             type="checkbox"
-            onInput={updatePostField("featured")}
+            onInput={updatePostField(setNewPost, "featured")}
             checked={newPost().featured}
           ></input>
         </div>
@@ -146,7 +93,7 @@ const Creator: Component<IProps> = (props) => {
           class="admin-panel-editor-form-input"
           id="date"
           type="date"
-          onInput={updatePostField("date")}
+          onInput={updatePostField(setNewPost, "date")}
           value={timeFormatYYYYMMDD(newPost().date)}
         ></input>
         <label class="admin-panel-editor-form-label" for="series">
@@ -155,7 +102,7 @@ const Creator: Component<IProps> = (props) => {
         <input
           class="admin-panel-editor-form-input"
           type="series"
-          onInput={updatePostField("series")}
+          onInput={updatePostField(setNewPost, "series")}
           value={newPost().series}
         ></input>
         <label class="admin-panel-editor-form-label" for="categories">
@@ -168,12 +115,12 @@ const Creator: Component<IProps> = (props) => {
                 class="admin-panel-editor-form-input"
                 id="categories"
                 type="text"
-                onInput={updatePostField("categories", i)}
+                onInput={updatePostField(setNewPost, "categories", i)}
                 value={c()}
               ></input>
               <button
                 class="admin-panel-editor-form-category-button remove"
-                onClick={removeCategory(i)}
+                onClick={removeCategory(setNewPost, i)}
               >
                 <svg
                   class="admin-panel-editor-form-category-button-svg"
@@ -195,7 +142,7 @@ const Creator: Component<IProps> = (props) => {
         <div class="admin-panel-editor-form-category-adder">
           <button
             class="admin-panel-editor-form-category-button add"
-            onClick={addCategory}
+            onClick={() => addCategory(setNewPost)}
           >
             <svg
               class="admin-panel-editor-form-category-button-svg"
@@ -222,7 +169,7 @@ const Creator: Component<IProps> = (props) => {
         <textarea
           class="admin-panel-editor-form-textarea"
           id="markdown"
-          onInput={updatePostField("markdown")}
+          onInput={updatePostField(setNewPost, "markdown")}
           value={newPost().markdown}
         ></textarea>
         <button

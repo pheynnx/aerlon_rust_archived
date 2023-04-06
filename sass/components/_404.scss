@@ -1,0 +1,13 @@
+.error-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  text-align: center;
+}
+
+.error-code {
+  font-size: 30px;
+  font-weight: bold;
+  color: #db2e2e;
+  margin-bottom: 10px;
+}

@@ -41,7 +41,7 @@ impl From<serde_json::Error> for AppError {
 #[template(path = "error.html.j2")]
 struct ErrorTemplate {
     error: String,
-    status_code: StatusCode,
+    status_code: u16,
     uri: String,
 }
 
@@ -57,7 +57,7 @@ impl IntoResponse for AppError {
 
         let template = ErrorTemplate {
             error: error_message,
-            status_code: status,
+            status_code: status.as_u16(),
             uri: String::from(""),
         };
 

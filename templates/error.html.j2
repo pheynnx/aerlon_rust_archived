@@ -4,7 +4,9 @@
 
 {% block content %}
 <main>
-    <p>{{status_code}}</p>
-    <p>{{error}}</p>
+    <div class="error-container">
+        <span class="error-code">{{status_code}}</span>
+        <span class="error-message">Error: {{error}}</span>
+    </div>
 </main>
 {% endblock %}

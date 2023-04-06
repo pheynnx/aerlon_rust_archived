@@ -3,7 +3,7 @@ use axum::{
     error_handling::HandleErrorLayer,
     handler::Handler,
     middleware,
-    response::{Html, IntoResponse},
+    response::IntoResponse,
     routing::{get, post},
     BoxError, Router,
 };
@@ -72,6 +72,7 @@ async fn main() -> Result<(), AppError> {
         .route("/series", get(get_series_handler))
         .route("/series/:series", get(get_series_metas_handler))
         .route("/category/:category", get(get_categories_handler))
+        .route("/rng", get(rng_hander))
         .route("/about", get(about_handler))
         .layer(
             ServiceBuilder::new()
@@ -145,9 +146,22 @@ async fn main() -> Result<(), AppError> {
     Ok(())
 }
 
+#[derive(Template)]
+#[template(path = "error.html.j2")]
+struct ErrorTemplate {
+    error: String,
+    status_code: u16,
+    uri: String,
+}
+
 // Temp handler; need to be handled correctly and moved
-async fn error_fallback() -> Result<impl IntoResponse, AppError> {
-    Ok((StatusCode::NOT_FOUND, Html("<h3>404</h3>")))
+async fn error_fallback<T>(req: Request<T>) -> Result<impl IntoResponse, AppError> {
+    let template = ErrorTemplate {
+        status_code: StatusCode::NOT_FOUND.as_u16(),
+        error: format!("path {} not found", req.uri().to_string()),
+        uri: req.uri().to_string(),
+    };
+    Ok((StatusCode::NOT_FOUND, HtmlTemplate(template)))
 }
 
 #[derive(Template)]
@@ -155,9 +169,22 @@ async fn error_fallback() -> Result<impl IntoResponse, AppError> {
 struct AboutTemplate {
     uri: String,
 }
+
 // Temp handler; need to be handled correctly and moved
 async fn about_handler<T>(req: Request<T>) -> Result<impl IntoResponse, AppError> {
     Ok(HtmlTemplate(AboutTemplate {
         uri: req.uri().to_string(),
+    }))
+}
+
+#[derive(Template)]
+#[template(path = "compiled/rng.html")]
+struct RngTemplate {
+    uri: String,
+}
+
+async fn rng_hander() -> Result<impl IntoResponse, AppError> {
+    Ok(HtmlTemplate(RngTemplate {
+        uri: "/rng".to_string(),
     }))
 }

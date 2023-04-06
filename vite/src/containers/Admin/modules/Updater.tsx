@@ -1,14 +1,7 @@
-import {
-  Accessor,
-  Component,
-  createComputed,
-  createEffect,
-  createSignal,
-  Index,
-  on,
-} from "solid-js";
+import { Component, createComputed, createSignal, Index } from "solid-js";
 import axios from "axios";
 
+import { addCategory, removeCategory, updatePostField } from "./formUpdater";
 import { timeFormatISO, timeFormatYYYYMMDD } from "~/utils/dateFormater";
 import { IPost } from "~/api/types";
 
@@ -31,65 +24,8 @@ const Updater: Component<IProps> = (props) => {
   );
 
   createComputed(() => {
-    setPostData(props.adminState.editorContent.editorPost);
+    setPostData({ ...props.adminState.editorContent.editorPost });
   });
-
-  const updatePostField =
-    (
-      fieldName:
-        | "title"
-        | "slug"
-        | "published"
-        | "featured"
-        | "date"
-        | "series"
-        | "categories"
-        | "markdown",
-      index?: number
-    ) =>
-    (event: Event) => {
-      const inputElement = event.currentTarget as HTMLInputElement;
-      setPostData((prev) => {
-        if (fieldName === "categories") {
-          prev.categories[index as number] = inputElement.value;
-          return { ...prev };
-        }
-        if (fieldName === "published") {
-          prev.published = !prev.published;
-          return { ...prev };
-        }
-        if (fieldName === "featured") {
-          prev.featured = !prev.featured;
-          return { ...prev };
-        }
-        if (fieldName === "date") {
-          return { ...prev, date: timeFormatISO(inputElement.value) };
-        }
-
-        return {
-          ...prev,
-          [fieldName]: inputElement.value,
-        };
-      });
-    };
-
-  const addCategory = () => {
-    setPostData((prev) => {
-      if (prev.categories[prev.categories.length - 1] === "") {
-        return { ...prev };
-      }
-      return { ...prev, categories: [...prev.categories, ""] };
-    });
-  };
-
-  const removeCategory = (index: number) => (event: Event) => {
-    setPostData((prev) => {
-      return {
-        ...prev,
-        categories: prev.categories.filter((c) => c !== prev.categories[index]),
-      };
-    });
-  };
 
   const postUpdateSubmit = (e) => {};
 
@@ -106,7 +42,7 @@ const Updater: Component<IProps> = (props) => {
           class="admin-panel-editor-form-input"
           id="title"
           type="text"
-          onInput={updatePostField("title")}
+          onInput={updatePostField(setPostData, "title")}
           value={postData().title}
         ></input>
         <label class="admin-panel-editor-form-label" for="slug">
@@ -116,7 +52,7 @@ const Updater: Component<IProps> = (props) => {
           class="admin-panel-editor-form-input"
           id="slug"
           type="text"
-          onInput={updatePostField("slug")}
+          onInput={updatePostField(setPostData, "slug")}
           value={postData().slug}
         ></input>
         <div class="admin-panel-editor-form-published">
@@ -127,7 +63,7 @@ const Updater: Component<IProps> = (props) => {
             class="admin-panel-editor-form-checkbox"
             id="published"
             type="checkbox"
-            onInput={updatePostField("published")}
+            onInput={updatePostField(setPostData, "published")}
             checked={postData().published}
           ></input>
         </div>
@@ -139,7 +75,7 @@ const Updater: Component<IProps> = (props) => {
             class="admin-panel-editor-form-checkbox"
             id="published"
             type="checkbox"
-            onInput={updatePostField("featured")}
+            onInput={updatePostField(setPostData, "featured")}
             checked={postData().featured}
           ></input>
         </div>
@@ -150,7 +86,7 @@ const Updater: Component<IProps> = (props) => {
           class="admin-panel-editor-form-input"
           id="date"
           type="date"
-          onInput={updatePostField("date")}
+          onInput={updatePostField(setPostData, "date")}
           value={timeFormatYYYYMMDD(postData().date)}
         ></input>
         <label class="admin-panel-editor-form-label" for="series">
@@ -159,7 +95,7 @@ const Updater: Component<IProps> = (props) => {
         <input
           class="admin-panel-editor-form-input"
           type="series"
-          onInput={updatePostField("series")}
+          onInput={updatePostField(setPostData, "series")}
           value={postData().series}
         ></input>
         <label class="admin-panel-editor-form-label" for="categories">
@@ -172,12 +108,12 @@ const Updater: Component<IProps> = (props) => {
                 class="admin-panel-editor-form-input-category"
                 id="categories"
                 type="text"
-                onInput={updatePostField("categories", i)}
+                onInput={updatePostField(setPostData, "categories", i)}
                 value={c()}
               ></input>
               <button
                 class="admin-panel-editor-form-category-button remove"
-                onClick={removeCategory(i)}
+                onClick={removeCategory(setPostData, i)}
               >
                 <svg
                   class="admin-panel-editor-form-category-button-svg"
@@ -199,7 +135,7 @@ const Updater: Component<IProps> = (props) => {
         <div class="admin-panel-editor-form-category-adder">
           <button
             class="admin-panel-editor-form-category-button add"
-            onClick={addCategory}
+            onClick={() => addCategory(setPostData)}
           >
             <svg
               class="admin-panel-editor-form-category-button-svg"
@@ -226,15 +162,13 @@ const Updater: Component<IProps> = (props) => {
         <textarea
           class="admin-panel-editor-form-textarea"
           id="markdown"
-          onInput={updatePostField("markdown")}
+          onInput={updatePostField(setPostData, "markdown")}
           value={postData().markdown}
         ></textarea>
         <button
           class="admin-panel-editor-form-button update"
           // NEEDS TO MOVE UPWARDS AND NEEDS VALIDATION AND ERROR HANDLING
           onClick={async () => {
-            console.log(postData());
-
             try {
               await axios.post(`/admin/api/post/${postData().id}`, {
                 ...postData(),
