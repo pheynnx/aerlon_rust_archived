@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - this project is very hybrid and custom, and may be hard to scale nicely in the future
     - may try Deno's Fresh framework, but I need a lot of custom backend control
 
+## [0.8.10] - 2023-04-05
+
+#### Changed
+
+- about page is now the readme.md page with the readme markdown parsed to html and the projects source code linked | wip
+
+#### Fixed
+
+- rng pages button hover color was getting stuck in a set position on mobile, fixed with media queries and `:focus:active` selectors
+
 ## [0.8.9] - 2023-04-05
 
 #### Changed

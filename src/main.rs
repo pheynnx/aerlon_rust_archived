@@ -7,9 +7,11 @@ use axum::{
     routing::{get, post},
     BoxError, Router,
 };
+use comrak::{markdown_to_html, ComrakOptions};
 use dotenvy::dotenv;
 use http::{Request, StatusCode};
-use std::{net::SocketAddr, sync::Arc};
+use std::{net::SocketAddr, os, sync::Arc};
+use tokio::fs;
 use tower::ServiceBuilder;
 use tower_cookies::CookieManagerLayer;
 use tower_governor::{errors::display_error, governor::GovernorConfigBuilder, GovernorLayer};
@@ -73,7 +75,7 @@ async fn main() -> Result<(), AppError> {
         .route("/series/:series", get(get_series_metas_handler))
         .route("/category/:category", get(get_categories_handler))
         .route("/rng", get(rng_hander))
-        .route("/about", get(about_handler))
+        .route("/readme", get(readme_handler))
         .layer(
             ServiceBuilder::new()
                 .layer(HandleErrorLayer::new(|_: BoxError| async move {
@@ -165,14 +167,20 @@ async fn error_fallback<T>(req: Request<T>) -> Result<impl IntoResponse, AppErro
 }
 
 #[derive(Template)]
-#[template(path = "about.html.j2")]
-struct AboutTemplate {
+#[template(path = "readme.html.j2")]
+struct ReadmeTemplate {
+    readme_markdown: String,
     uri: String,
 }
 
 // Temp handler; need to be handled correctly and moved
-async fn about_handler<T>(req: Request<T>) -> Result<impl IntoResponse, AppError> {
-    Ok(HtmlTemplate(AboutTemplate {
+async fn readme_handler<T>(req: Request<T>) -> Result<impl IntoResponse, AppError> {
+    let file_contents = fs::read_to_string("./README.md").await.unwrap_or_default();
+
+    let readme_markdown = markdown_to_html(&file_contents, &ComrakOptions::default());
+
+    Ok(HtmlTemplate(ReadmeTemplate {
+        readme_markdown,
         uri: req.uri().to_string(),
     }))
 }

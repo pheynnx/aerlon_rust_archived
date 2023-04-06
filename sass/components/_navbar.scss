@@ -14,6 +14,7 @@
 .navbar-logo {
   height: 50px;
   width: 50px;
+  margin-right: 6px;
 }
 
 .navbar-logo-outer {
@@ -25,9 +26,6 @@
 }
 
 .navbar-links {
-  // display: flex;
-  // width: 100px;
-  // justify-content: end;
 }
 
 .navbar-link {
@@ -47,9 +45,9 @@
   @media (hover: hover) {
     &:hover {
       color: var(--navbar-link-hover);
-      background-color: var(--navbar-link-hover-background);
-      padding: 4px 6px;
-      border-radius: 0.2em;
+      // background-color: var(--navbar-link-hover-background);
+      // padding: 4px 6px;
+      // border-radius: 0.2em;
     }
   }
 

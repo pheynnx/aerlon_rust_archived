@@ -1,0 +1,29 @@
+.readme-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 3%;
+  margin-right: 3%;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.readme-source-link {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--html-color);
+  border-bottom: 1px solid var(--theme-main-color);
+
+  &:hover {
+    color: var(--theme-main-color);
+  }
+}
+
+.readme-markdown {
+  max-width: 56rem;
+  word-wrap: break-word;
+
+  h2:first-of-type {
+    color: var(--theme-main-color);
+  }
+}

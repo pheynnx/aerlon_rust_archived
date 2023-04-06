@@ -120,10 +120,13 @@
   &.purple {
     background-color: #8d44ad;
   }
+}
 
-  // &:hover {
-  //   border: 1px solid #e7e43f;
-  // }
+.theme-switch-title {
+  color: #eee;
+  font-size: 13px;
+  font-weight: 300;
+  align-self: center;
 }
 
 .theme-switch-label {

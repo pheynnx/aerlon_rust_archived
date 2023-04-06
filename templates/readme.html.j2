@@ -1,0 +1,15 @@
+{% extends "./layouts/master.html.j2" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<main>
+    <div class="readme-container">
+        <div class="readme-markdown">
+            <a class="readme-source-link" href="https://github.com/Ericarthurc/ericarthurc.com" target="_blank">Source
+                Code Link</a>
+            {{readme_markdown|safe}}
+        </div>
+    </div>
+</main>
+{% endblock %}
