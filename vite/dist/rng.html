@@ -13,7 +13,6 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/public/css/main.css" />
-    {% block head %}{% endblock %}
     <script type="module" crossorigin src="/public/js/rng-entry.js"></script>
     <link rel="modulepreload" crossorigin href="/public/js/web-chunk.js">
     <link rel="stylesheet" href="/public/css/rng-asset.css">
@@ -21,7 +20,7 @@
 
   <body>
     <header>
-      {% include "./includes/themer.html.j2" %} {% include
+      {% include "./includes/sidebar.html.j2" %} {% include
       "./includes/navbar.html.j2" %}
     </header>
     <div id="root"></div>

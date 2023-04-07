@@ -85,3 +85,32 @@
     margin-right: 4%;
   }
 }
+
+@media only screen and (max-width: 380px) {
+  .themer-dropdown-content {
+    flex-direction: column;
+    justify-content: start;
+  }
+  .side-navbar {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    padding: 0px 10px;
+  }
+
+  .navbar-link {
+    // align-self: flex-start;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    // should be set by variable
+    color: #fff;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-logo {
+    margin-right: 0;
+  }
+}

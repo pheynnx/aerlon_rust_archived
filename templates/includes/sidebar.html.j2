@@ -12,8 +12,14 @@
                 d="M176.5,5.287c0,-2.918 -2.369,-5.287 -5.287,-5.287l-165.926,0c-2.918,0 -5.287,2.369 -5.287,5.287l0,10.573c0,2.918 2.369,5.287 5.287,5.287l165.926,0c2.918,0 5.287,-2.369 5.287,-5.287l0,-10.573Z" />
         </svg>
         <div tabindex="0" class="themer-dropdown-content" id="themer-dropdown-content">
+            <div class="side-navbar">
+                <span class="themes-container-title">Links</span>
+                <a class="navbar-link{%- if uri=="/" %} active{% endif %}" href="/">Blog</a>
+                <a class="navbar-link{%- if uri=="/series" %} active{% endif %}" href="/series">Series</a>
+                <a class="navbar-link{%- if uri=="/rng" %} active{% endif %}" href="/rng">RNG</a>
+                <a class="navbar-link{%- if uri=="/readme" %} active{% endif %}" href="/readme">Readme.md</a>
+            </div>
             <div class="themer-content-themes-container">
-                <span class="theme-switch-title">WIP</span>
                 <div class="themes-container-title">
                     <span>Switch Theme</span>
                 </div>

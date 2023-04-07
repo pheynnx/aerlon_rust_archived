@@ -5,11 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.8.11] - 2023-04-06
 
-- there is a consideration to move this whole project to a full featured SSR framework
-  - this project is very hybrid and custom, and may be hard to scale nicely in the future
-    - may try Deno's Fresh framework, but I need a lot of custom backend control
+#### Added
+
+- the navbar will now hide at <= 380 pixel screen width and links will now appear in the sidebar
+
+#### Changed
+
+- renamed themer.html.j2 to sidebar.html.j2 to better describe the function change
+  - css class names will be changed in a future update, most of the current classes on this file are already placeholder names anyway
 
 ## [0.8.10] - 2023-04-05
 
