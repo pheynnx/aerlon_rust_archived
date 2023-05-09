@@ -75,20 +75,20 @@ async fn main() -> Result<(), AppError> {
         .route("/series/:series", get(get_series_metas_handler))
         .route("/category/:category", get(get_categories_handler))
         .route("/rng", get(rng_hander))
-        .route("/readme", get(readme_handler))
-        .layer(
-            ServiceBuilder::new()
-                .layer(HandleErrorLayer::new(|_: BoxError| async move {
-                    StatusCode::REQUEST_TIMEOUT
-                }))
-                .layer(MetricsMiddleware::new(shared_state.clone()))
-                .layer(HandleErrorLayer::new(|e: BoxError| async move {
-                    display_error(e)
-                }))
-                .layer(GovernorLayer {
-                    config: Box::leak(governor_conf),
-                }),
-        );
+        .route("/readme", get(readme_handler));
+    // .layer(
+    // ServiceBuilder::new()
+    //     .layer(HandleErrorLayer::new(|_: BoxError| async move {
+    //         StatusCode::REQUEST_TIMEOUT
+    //     }))
+    //     .layer(MetricsMiddleware::new(shared_state.clone()))
+    //     .layer(HandleErrorLayer::new(|e: BoxError| async move {
+    //         display_error(e)
+    //     }))
+    //     .layer(GovernorLayer {
+    //         config: Box::leak(governor_conf),
+    //     }),
+    // );
 
     let admin_router = Router::new()
         .nest(
