@@ -10,7 +10,7 @@ use axum::{
 use comrak::{markdown_to_html, ComrakOptions};
 use dotenvy::dotenv;
 use http::{Request, StatusCode};
-use std::{net::SocketAddr, os, sync::Arc};
+use std::{net::SocketAddr, sync::Arc};
 use tokio::fs;
 use tower::ServiceBuilder;
 use tower_cookies::CookieManagerLayer;
