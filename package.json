@@ -1,7 +1,7 @@
 {
   "name": "eac",
   "scripts": {
-    "update": "cargo update && pnpm update && cd vite && pnpm update",
+    "update": "cargo update && pnpm update",
     "dev": "run-p -l dev:css dev:webpack dev:rust",
     "dev-watch": "run-p -l dev:css dev:webpack dev:watcher",
     "dev:css": "sass --no-source-map --watch sass:public/css",
@@ -10,7 +10,7 @@
     "dev:watcher": "cargo watch -w src -w templates -w code_themes -x run",
     "build": "run-s -l build:*",
     "build:css": "sass --no-source-map sass:public/css",
-    "build:vite": "cd vite && pnpm build",
+    "build:webpack": "webpack",
     "build:rust": "cargo run --release",
     "webpack": "webpack"
   },

@@ -1,10 +1,11 @@
 import { Component, createSignal } from "solid-js";
 import { createStore } from "solid-js/store";
 import axios from "axios";
+import { MountableElement, render } from "solid-js/web";
 
 // import "~/styles/admin-login.scss";
 
-const Main: Component = () => {
+const Main = () => {
   const [formData, setFormData] = createStore({
     password: "",
     pin: "",
@@ -73,4 +74,4 @@ const Main: Component = () => {
   );
 };
 
-export default Main;
+render(Main, document.getElementById("root") as MountableElement);

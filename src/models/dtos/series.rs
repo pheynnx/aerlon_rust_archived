@@ -7,6 +7,7 @@ pub struct Series {
     pub series: String,
     pub published: bool,
     pub featured: bool,
+    pub series_snippet: String,
 }
 
 // redis methods

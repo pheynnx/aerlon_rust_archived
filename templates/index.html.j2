@@ -7,8 +7,8 @@
     <div class="main-container">
         <div class="cards-container">
             {% if !(featured.is_empty()) %}
+            {% for meta in featured %}
             <div class="featured-posts">
-                {% for meta in featured %}
                 <div class="card">
                     <div class="card-header-info">
                         <div class="card-header">
@@ -17,7 +17,7 @@
                             </a>
                         </div>
                         <div class="card-snippet-container">
-                            <span class="card-snippet">{{ meta.snippet }}</span>
+                            <span class="card-snippet">{{ meta.post_snippet }}</span>
                         </div>
                         <span class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</span>
                     </div>
@@ -29,8 +29,9 @@
                         {% endfor %}
                     </span>
                 </div>
-                {% endfor %}
             </div>
+            {% endfor %}
+
             {% endif %}
             {% for meta in metas %}
             <div class="card">
@@ -41,7 +42,7 @@
                         </a>
                     </div>
                     <div class="card-snippet-container">
-                        <span class="card-snippet">{{ meta.snippet }}</span>
+                        <span class="card-snippet">{{ meta.post_snippet }}</span>
                     </div>
                     <span class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</span>
                 </div>

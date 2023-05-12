@@ -3,9 +3,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const config = {
   entry: {
-    benchmarks: { import: "./webpack/benchmarks.tsx", dependOn: "shared" },
-    admin: { import: "./webpack/admin.tsx", dependOn: "shared" },
-    rng: { import: "./webpack/Rng/Main.tsx" },
+    admin_login: {
+      import: "./webpack/pages/admin_login/Main.tsx",
+      dependOn: "shared",
+    },
+    rng: { import: "./webpack/pages/rng/Main.tsx" },
     shared: ["solid-js", "solid-js/web"],
   },
   output: {

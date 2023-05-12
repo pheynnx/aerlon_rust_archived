@@ -13,6 +13,7 @@ pub struct Meta {
     pub title: String,
     pub series: String,
     pub categories: Vec<String>,
+    pub post_snippet: String,
     pub published: bool,
     pub featured: bool,
 }

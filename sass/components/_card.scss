@@ -33,11 +33,10 @@
 }
 
 .cards-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto;
   justify-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  max-width: 400px;
 }
 
 .featured-posts {
@@ -95,7 +94,6 @@
     color: var(--card-title-hover);
   }
 }
-
 
 .card-date {
   font-size: 16px;

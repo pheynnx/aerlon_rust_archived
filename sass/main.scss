@@ -55,8 +55,8 @@ body {
   margin-bottom: 20px;
 }
 
-@import "./components/_themer.scss";
 @import "./components/_navbar.scss";
+@import "./components/_sidebar.scss";
 @import "./components/_card.scss";
 @import "./components/_readme.scss";
 @import "./components/_404.scss";

@@ -18,7 +18,8 @@
             <a class="navbar-link{%- if uri=="/" %} active{% endif %}" href="/">Blog</a>
             <a class="navbar-link{%- if uri=="/series" %} active{% endif %}" href="/series">Series</a>
             <a class="navbar-link{%- if uri=="/rng" %} active{% endif %}" href="/rng">RNG</a>
-            <a class="navbar-link{%- if uri=="/readme" %} active{% endif %}" href="/readme">Readme.md</a>
+            <a class="navbar-link{%- if uri=="/readme" %} active{% endif %}" href="/readme">Readme</a>
         </div>
+        {% include "./includes/sidebar.html.j2" %}
     </nav>
 </div>

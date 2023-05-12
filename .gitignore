@@ -4,8 +4,8 @@
 
 # compiled
 public/css/*
-public/js/*-chunk.js
-public/js/*-entry.js
+public/js/*.bundle.js
+public/js/*.bundle.js.*
 templates/compiled
 
 # node

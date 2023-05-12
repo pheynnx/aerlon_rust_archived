@@ -1,29 +1,23 @@
 ## Ericarthurc.com
 
-## [0.9.0]
+## [0.9.1]
 
 ## Project Layout
 
 ### Project stack
 
-- Rust | handling all things https
+- Rust
   - Axum
   - Askama
   - Comrak
-- Node | used for compiling the static assets for the admin console
-  - Vite
+- Node
+  - Webpack
   - Solidjs
 
 ### Database stack
 
 - CockroachDB
 - Redis
-
-### Functionality
-
-- main blog site is handled by Axum and Askama templates (dynamic pages)
-- admin console is multi-SPAs rendered from Vite and then served by Axum
-  - solidjs is broken up into multiple entry points and then rendered to html/css/js for each respective 'view'; then Axum/Askama handles serving these at their own router points. This lets me run backend middleware before each page is rendered to the frontend and perform authentication and redirection as needed.
 
 ## Previous stacks
 

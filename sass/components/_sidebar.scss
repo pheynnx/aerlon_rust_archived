@@ -1,8 +1,8 @@
 .themer-container {
   display: flex;
   justify-self: flex-end;
-  align-self: start;
-  margin: 10px 10px;
+  // align-self: start;
+  margin-right: 20px;
   position: absolute;
   right: 0;
 }
@@ -15,16 +15,17 @@
 }
 
 .themer-dropdown-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.themer-dropdown-button-icon {
   fill: var(--navbar-settings);
   height: 18px;
   width: 18px;
   cursor: pointer;
-  // transition: transform 0.7s ease-in-out;
-
-  &.spun {
-    fill: var(--theme-main-color);
-    // transform: rotate(90deg);
-  }
 }
 
 @media (hover: hover) and (pointer: fine) {
