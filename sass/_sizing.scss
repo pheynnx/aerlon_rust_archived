@@ -1,24 +1,26 @@
-@media only screen and (min-width: 320px) {
+@media only screen and (min-width: 400px) {
   .main-container {
-    margin-left: 3%;
-    margin-right: 3%;
-    font-size: 16px;
+    margin-left: 10%;
+    margin-right: 10%;
   }
 }
 
-@media only screen and (min-width: 481px) {
+@media only screen and (min-width: 600px) {
   .main-container {
-    margin-left: 3%;
-    margin-right: 3%;
-    font-size: 17px;
+    margin-left: 15%;
+    margin-right: 15%;
   }
 }
 
-@media only screen and (min-width: 641px) {
+@media only screen and (min-width: 800px) {
   .main-container {
-    margin-left: 3%;
-    margin-right: 3%;
-    font-size: 17px;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  .cards-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
   }
 }
 

@@ -2,7 +2,7 @@ import { Component, createSignal } from "solid-js";
 import { createStore } from "solid-js/store";
 import axios from "axios";
 
-import "~/styles/admin-login.scss";
+// import "~/styles/admin-login.scss";
 
 const Main: Component = () => {
   const [formData, setFormData] = createStore({

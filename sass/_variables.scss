@@ -1,195 +1,198 @@
-// default theme - dark and green
 :root {
-  // Html
-  --html-color: #ffffff;
-  --background-color: #010409;
+	// Html
+	--html-color: #ffffff;
+	--background-color: #131314;
 
-  // Navbar
-  --navbar-link: #ffffff;
-  --navbar-link-hover: #00dc82;
-  --navbar-link-hover-background: #3f3f46;
-  --navbar-logo-inner: #fff;
-  --navbar-logo-outer: #00dc82;
-  --navbar-settings: #fff;
+	// Navbar
+	--navbar-background: #000;
+	--navbar-border-color: #333;
+	--navbar-link: #ffffff;
+	--navbar-link-hover: #00dc82;
+	--navbar-link-hover-background: #3f3f46;
+	--navbar-logo-inner: #fff;
+	--navbar-logo-outer: #00dc82;
+	--navbar-settings: #fff;
 
-  // Card
-  --card-title: #fff;
-  --card-title-hover: #00dc82;
-  --card-date: #fff;
-  --card-category-info: #3f3f46;
-  --card-category-hover-background: #71717a;
+	// Sidebar
+	--themer-content-background: #000000;
 
-  // Series Card
-  --card-series-background: #161b22;
-  --card-series-border: #30363d;
-  --card-series: #fafafa;
-  --card-series-hover-background: #71717a;
-  --card-series-hover-span: #fdfdfd;
+	// Card
+	--card-title: #ffffff;
+	--card-title-hover: #00dc82;
+	--card-date: #c8c8c8;
+	--card-category-info: #3f3f46;
+	--card-category-hover-background: #71717a;
 
-  // Featured Card
-  --card-featured-background: #00dc8217;
-  --card-featured-border: #00dc82;
+	// Series Card
+	--card-series-background: #161b22;
+	--card-series-border: #30363d;
+	--card-series: #fafafa;
+	--card-series-hover-background: #71717a;
+	--card-series-hover-span: #fdfdfd;
 
-  --container-header: #00dc82;
-  --main-header-color: #d4d4da;
+	// Featured Card
+	--card-featured-background: #00dc8217;
+	--card-featured-border: #00dc82;
 
-  // Themer
-  --themer-content-background: #0d1117;
+	--container-header: #00dc82;
+	--main-header-color: #d4d4da;
 
-  // Markdown
-  --markdown-p: #d4d4da;
-  --code-background-color: transparent;
-  --markdown-tags-color: #ffb951;
-  --markdown-h1-color: #d4d4da;
-  --markdown-h2-color: #d008eb;
-  --markdown-h3-color: #ff2ea4;
-  --markdown-h4-color: #8be9fd;
-  --markdown-a-color: #40d0f0;
-  --markdown-a-hover-color: #40d0f0c0;
+	// Markdown
+	--markdown-color: #babac2;
+	--code-background-color: transparent;
+	--markdown-tags-color: #ffb951;
+	--markdown-h1-color: #d4d4da;
+	--markdown-h2-color: #d008eb;
+	--markdown-h3-color: #ff2ea4;
+	--markdown-h4-color: #8be9fd;
+	--markdown-a-color: #40d0f0;
+	--markdown-a-hover-color: #40d0f0c0;
 
-  --code-background-color: #01790b07;
+	--code-background-color: #01790b07;
 }
 
-[data-theme="light"] {
-  --html-color: #2d2d2d;
-  --background-color: #f7fdff;
+[data-theme='light'] {
+	--html-color: #272727;
+	--background-color: #fafafa;
 
-  // Navbar
-  --navbar-link: #2d2d2d;
-  --navbar-link-hover-background: #3f3f46;
-  --navbar-logo-inner: #2d2d2d;
-  --navbar-settings: #2d2d2d;
+	// Navbar
+	--navbar-background: #ffffff;
+	--navbar-border-color: #eaeaea;
+	--navbar-link: #272727;
+	--navbar-link-hover-background: #3f3f46;
+	--navbar-logo-inner: #2d2d2d;
+	--navbar-settings: #2d2d2d;
 
-  // Card
-  --card-title: #2d2d2d;
-  --card-date: #2d2d2d;
-  --card-category-info: #3f3f46;
-  --card-category-hover-background: #71717a;
+	// Sidebar
+	--themer-content-background: #0d1117;
 
-  // Series Card
-  --card-series-background: #161b22;
-  --card-series-border: #30363d;
-  --card-series: #fafafa;
-  --card-series-hover-background: #71717a;
-  --card-series-hover-span: #fdfdfd;
+	// Card
+	--card-title: #2d2d2d;
+	--card-date: #2d2d2d;
+	--card-category-info: #3f3f46;
+	--card-category-hover-background: #71717a;
 
-  --code-background-color: #0d1117;
-  --code-border-color: #0d1117;
+	// Series Card
+	--card-series-background: #161b22;
+	--card-series-border: #30363d;
+	--card-series: #fafafa;
+	--card-series-hover-background: #71717a;
+	--card-series-hover-span: #fdfdfd;
 
-  --main-header-color: #2d2d2d;
+	--code-background-color: #0d1117;
+	--code-border-color: #0d1117;
 
-  // Themer
-  --themer-content-background: #0d1117;
+	--main-header-color: #2d2d2d;
 
-  // Markdown
-  --markdown-p: #2d2d2d;
-  --markdown-h1-color: #2d2d2d;
+	// Markdown
+	--markdown-color: #2d2d2d;
+	--markdown-h1-color: #2d2d2d;
 }
 
-[data-color="green"] {
-  --theme-main-color: #00dc82;
+[data-color='green'] {
+	--theme-main-color: #00dc82;
 
-  // Navbar
-  --navbar-link-hover: #00dc82;
-  --navbar-link-hover-background: #3f3f46;
-  --navbar-logo-outer: #00dc82;
+	// Navbar
+	--navbar-link-hover: #00dc82;
+	--navbar-link-hover-background: #3f3f46;
+	--navbar-logo-outer: #00dc82;
 
-  // Card
-  --card-title-hover: #00dc82;
+	// Card
+	--card-title-hover: #00dc82;
 
-  // Featured Card
-  --card-featured-background: #00dc8217;
-  --card-featured-border: #00dc82;
+	// Featured Card
+	--card-featured-background: #00dc8217;
+	--card-featured-border: #00dc82;
 
-  --container-header: #00dc82;
+	--container-header: #00dc82;
 }
 
-[data-color="blue"] {
-  --theme-main-color: #0079dc;
+[data-color='blue'] {
+	--theme-main-color: #0079dc;
 
-  // Navbar
-  --navbar-link-hover: #0079dc;
-  --navbar-link-hover-background: #3f3f46;
-  --navbar-logo-outer: #0079dc;
+	// Navbar
+	--navbar-link-hover: #0079dc;
+	--navbar-link-hover-background: #3f3f46;
+	--navbar-logo-outer: #0079dc;
 
-  // Card
-  --card-title-hover: #0079dc;
+	// Card
+	--card-title-hover: #0079dc;
 
-  // Featured Card
-  --card-featured-background: #0079dc17;
-  --card-featured-border: #0079dc;
+	// Featured Card
+	--card-featured-background: #0079dc17;
+	--card-featured-border: #0079dc;
 
-  --container-header: #0079dc;
+	--container-header: #0079dc;
 }
 
-[data-color="red"] {
-  --theme-main-color: #dc2100;
+[data-color='red'] {
+	--theme-main-color: #dc2100;
 
-  // Navbar
-  --navbar-link-hover: #dc2100;
-  --navbar-link-hover-background: #3f3f46;
-  --navbar-logo-outer: #dc2100;
+	// Navbar
+	--navbar-link-hover: #dc2100;
+	--navbar-link-hover-background: #3f3f46;
+	--navbar-logo-outer: #dc2100;
 
-  // Card
-  --card-title-hover: #dc2100;
+	// Card
+	--card-title-hover: #dc2100;
 
-  // Featured Card
-  --card-featured-background: #dc210017;
-  --card-featured-border: #dc2100;
+	// Featured Card
+	--card-featured-background: #dc210017;
+	--card-featured-border: #dc2100;
 
-  --container-header: #dc2100;
+	--container-header: #dc2100;
 }
 
-[data-color="orange"] {
-  --theme-main-color: #fea501;
+[data-color='orange'] {
+	--theme-main-color: #fea501;
 
-  // Navbar
-  --navbar-link-hover: #fea501;
-  --navbar-link-hover-background: #3f3f46;
-  --navbar-logo-outer: #fea501;
+	// Navbar
+	--navbar-link-hover: #fea501;
+	--navbar-link-hover-background: #3f3f46;
+	--navbar-logo-outer: #fea501;
 
-  // Card
-  --card-title-hover: #fea501;
+	// Card
+	--card-title-hover: #fea501;
 
-  // Featured Card
-  --card-featured-background: #fea50117;
-  --card-featured-border: #fea501;
+	// Featured Card
+	--card-featured-background: #fea50117;
+	--card-featured-border: #fea501;
 
-  --container-header: #fea501;
+	--container-header: #fea501;
 }
 
-[data-color="pink"] {
-  --theme-main-color: #e74392;
+[data-color='pink'] {
+	--theme-main-color: #e74392;
 
-  // Navbar
-  --navbar-link-hover: #e74392;
-  --navbar-link-hover-background: #3f3f46;
-  --navbar-logo-outer: #e74392;
+	// Navbar
+	--navbar-link-hover: #e74392;
+	--navbar-link-hover-background: #3f3f46;
+	--navbar-logo-outer: #e74392;
 
-  // Card
-  --card-title-hover: #e74392;
+	// Card
+	--card-title-hover: #e74392;
 
-  // Featured Card
-  --card-featured-background: #e7439217;
-  --card-featured-border: #e74392;
+	// Featured Card
+	--card-featured-background: #e7439217;
+	--card-featured-border: #e74392;
 
-  --container-header: #e74392;
+	--container-header: #e74392;
 }
 
-[data-color="purple"] {
-  --theme-main-color: #8d44ad;
+[data-color='purple'] {
+	--theme-main-color: #c072d4;
 
-  // Navbar
-  --navbar-link-hover: #8d44ad;
-  --navbar-link-hover-background: #3f3f46;
-  --navbar-logo-outer: #8d44ad;
+	// Navbar
+	--navbar-link-hover: #c072d4;
+	--navbar-link-hover-background: #3f3f46;
+	--navbar-logo-outer: #c072d4;
 
-  // Card
-  --card-title-hover: #8d44ad;
+	// Card
+	--card-title-hover: #c072d4;
 
-  // Featured Card
-  --card-featured-background: #8d44ad17;
-  --card-featured-border: #8d44ad;
+	// Featured Card
+	--card-featured-background: #8d44ad17;
+	--card-featured-border: #c072d4;
 
-  --container-header: #8d44ad;
+	--container-header: #c072d4;
 }

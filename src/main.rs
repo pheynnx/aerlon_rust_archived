@@ -186,7 +186,7 @@ async fn readme_handler<T>(req: Request<T>) -> Result<impl IntoResponse, AppErro
 }
 
 #[derive(Template)]
-#[template(path = "compiled/rng.html")]
+#[template(path = "rng.html.j2")]
 struct RngTemplate {
     uri: String,
 }

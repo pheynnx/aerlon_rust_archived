@@ -1,8 +1,7 @@
 import { Component, createSignal } from "solid-js";
+import { MountableElement, render } from "solid-js/web";
 
-import "~/styles/rng.scss";
-
-const Main: Component = () => {
+const Main = () => {
   const [rng, setRNG] = createSignal<number>(Math.floor(Math.random() * 101));
   return (
     <div class="rng-container">
@@ -19,4 +18,4 @@ const Main: Component = () => {
   );
 };
 
-export default Main;
+render(Main, document.getElementById("root") as MountableElement);

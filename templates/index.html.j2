@@ -16,6 +16,9 @@
                                 <span class="card-title">{{ meta.title }}</span>
                             </a>
                         </div>
+                        <div class="card-snippet-container">
+                            <span class="card-snippet">{{ meta.snippet }}</span>
+                        </div>
                         <span class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</span>
                     </div>
                     <span class="card-categories">
@@ -36,6 +39,9 @@
                         <a class="card-header-anchor" href="/{{ meta.slug }}">
                             <span class="card-title">{{ meta.title }}</span>
                         </a>
+                    </div>
+                    <div class="card-snippet-container">
+                        <span class="card-snippet">{{ meta.snippet }}</span>
                     </div>
                     <span class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</span>
                 </div>
