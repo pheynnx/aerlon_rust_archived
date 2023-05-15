@@ -25,8 +25,15 @@
     <header>
         {% include "./includes/navbar.html.j2" %}
     </header>
+    <div class="wip-container">
+        <div class="wip">
+            <span class="wip-title">Site is under active development!</span>
+            <span class="wip-details">Many things are broken or placeholder</span>
+        </div>
+    </div>
+
     {% block content %}{% endblock %}
-    <script src="/public/js/themes.js"></script>
+    <script src="/public/js/sidebar.bundle.js"></script>
 </body>
 
 </html>

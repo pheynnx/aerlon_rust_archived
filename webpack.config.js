@@ -7,8 +7,9 @@ const config = {
       import: "./webpack/pages/admin_login/Main.tsx",
       dependOn: "shared",
     },
-    rng: { import: "./webpack/pages/rng/Main.tsx" },
     shared: ["solid-js", "solid-js/web"],
+    rng: "./webpack/pages/rng/Main.tsx",
+    sidebar: "./webpack/scripts/sidebar.js",
   },
   output: {
     filename: "[name].bundle.js",

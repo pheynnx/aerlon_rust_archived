@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.9.2] - 2023-05-14
+
+#### Added
+
+- a warning about the site being a wip
+
+#### Changed
+
+- more adjustements to some of the css
+  - css is now minifed by dart sass
+- moved all scripts to be compiled by webpack
+  - admin site still broken
+
 ## [0.9.1] - 2023-05-12 | build will not compile
 
 #### Changed
