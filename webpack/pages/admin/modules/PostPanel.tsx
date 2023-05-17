@@ -1,7 +1,7 @@
 import { Accessor, Component, For } from "solid-js";
 
-import Spinner from "~/components/Spinner/Spinner";
-import { IPost } from "~/api/types";
+import Spinner from "../components/Spinner/Spinner";
+import { IPost } from "../api/types";
 
 interface IProps {
   posts: IPost[];

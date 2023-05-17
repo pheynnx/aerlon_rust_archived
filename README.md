@@ -1,6 +1,6 @@
 ## Ericarthurc.com
 
-## [0.9.2]
+## [0.9.3]
 
 ## Project Layout
 
@@ -40,7 +40,7 @@
 - F# Giraffe (2022)
   - F# is an awesome language, just very niche and still relies on .Net. I just have a hard time finding a use case for F#
 - C# Blazor/Razor (2022)
-  - want to love C# but don't enjoy the .Net framework; and I am a bigger fan of functional/procedural coding styles over OOP
+  - I want to love C# but don't enjoy the .Net framework; and I am a bigger fan of functional/procedural coding styles over OOP
 - Nim Prologue | Karax (2021)
   - nim is an amazing language but still very immature
 - Deno Oak | ETA (2021)

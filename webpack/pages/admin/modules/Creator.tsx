@@ -1,9 +1,9 @@
 import axios from "axios";
 import { Component, createSignal, Index } from "solid-js";
-import { createPost } from "~/api/admin";
+import { createPost } from "../api/admin";
 
-import { IPost } from "~/api/types";
-import { timeFormatISO, timeFormatYYYYMMDD } from "~/utils/dateFormater";
+import { IPost } from "../api/types";
+import { timeFormatISO, timeFormatYYYYMMDD } from "../utils/dateFormater";
 import { addCategory, removeCategory, updatePostField } from "./formUpdater";
 
 interface IProps {
@@ -19,6 +19,8 @@ const Creator: Component<IProps> = (props) => {
     series: "",
     categories: [],
     markdown: "",
+    post_snippet: "",
+    series_snippet: "",
     published: false,
     featured: false,
     created_at: "",
@@ -163,6 +165,15 @@ const Creator: Component<IProps> = (props) => {
             </svg>
           </button>
         </div>
+        <label class="admin-panel-editor-form-label" for="post_snippet">
+          Post Snippet:
+        </label>
+        <textarea
+          class="admin-panel-editor-form-textarea"
+          id="post_snippet"
+          onInput={updatePostField(setNewPost, "post_snippet")}
+          value={newPost().post_snippet}
+        ></textarea>
         <label class="admin-panel-editor-form-label" for="markdown">
           Markdown:
         </label>

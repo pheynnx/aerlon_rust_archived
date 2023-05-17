@@ -11,6 +11,7 @@
             <div class="featured-posts">
                 <div class="card">
                     <div class="card-header-info">
+                        <span class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</span>
                         <div class="card-header">
                             <a class="card-header-anchor" href="/{{ meta.slug }}">
                                 <span class="card-title">{{ meta.title }}</span>
@@ -19,7 +20,6 @@
                         <div class="card-snippet-container">
                             <span class="card-snippet">{{ meta.post_snippet }}</span>
                         </div>
-                        <span class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</span>
                     </div>
                     <span class="card-categories">
                         {% for category in meta.categories %}
@@ -36,6 +36,7 @@
             {% for meta in metas %}
             <div class="card">
                 <div class="card-header-info">
+                    <span class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</span>
                     <div class="card-header">
                         <a class="card-header-anchor" href="/{{ meta.slug }}">
                             <span class="card-title">{{ meta.title }}</span>
@@ -44,7 +45,6 @@
                     <div class="card-snippet-container">
                         <span class="card-snippet">{{ meta.post_snippet }}</span>
                     </div>
-                    <span class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</span>
                 </div>
                 <span class="card-categories">
                     {% for category in meta.categories %}

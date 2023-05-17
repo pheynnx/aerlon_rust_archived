@@ -1,7 +1,5 @@
 import { Component, createEffect, createSignal, onCleanup } from "solid-js";
 
-import "./spinner.scss";
-
 interface IProps {
   startTime: number;
 }

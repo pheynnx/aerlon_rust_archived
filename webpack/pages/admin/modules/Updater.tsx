@@ -2,8 +2,8 @@ import { Component, createComputed, createSignal, Index } from "solid-js";
 import axios from "axios";
 
 import { addCategory, removeCategory, updatePostField } from "./formUpdater";
-import { timeFormatISO, timeFormatYYYYMMDD } from "~/utils/dateFormater";
-import { IPost } from "~/api/types";
+import { timeFormatISO, timeFormatYYYYMMDD } from "../utils/dateFormater";
+import { IPost } from "../api/types";
 
 interface IProps {
   adminState: {
@@ -27,7 +27,7 @@ const Updater: Component<IProps> = (props) => {
     setPostData({ ...props.adminState.editorContent.editorPost });
   });
 
-  const postUpdateSubmit = (e) => {};
+  // const postUpdateSubmit = () => {};
 
   return (
     <>
@@ -156,6 +156,15 @@ const Updater: Component<IProps> = (props) => {
             </svg>
           </button>
         </div>
+        <label class="admin-panel-editor-form-label" for="post_snippet">
+          Post Snippet:
+        </label>
+        <textarea
+          class="admin-panel-editor-form-textarea"
+          id="post_snippet"
+          onInput={updatePostField(setPostData, "post_snippet")}
+          value={postData().post_snippet}
+        ></textarea>
         <label class="admin-panel-editor-form-label" for="markdown">
           Markdown:
         </label>

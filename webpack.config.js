@@ -7,6 +7,10 @@ const config = {
       import: "./webpack/pages/admin_login/Main.tsx",
       dependOn: "shared",
     },
+    admin: {
+      import: "./webpack/pages/admin/Main.tsx",
+      dependOn: "shared",
+    },
     shared: ["solid-js", "solid-js/web"],
     rng: "./webpack/pages/rng/Main.tsx",
     sidebar: "./webpack/scripts/sidebar.js",

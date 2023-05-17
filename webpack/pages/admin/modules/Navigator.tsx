@@ -1,6 +1,6 @@
 import { Component, Setter, createSignal, onMount } from "solid-js";
 import { SetStoreFunction } from "solid-js/store";
-import { IPost } from "~/api/types";
+import { IPost } from "../api/types";
 
 interface IProps {
   editorCreateSelector: () => void;
@@ -79,6 +79,35 @@ const Navigator: Component<IProps> = (props) => {
           />
         </svg>
       </div>
+      {/* new post button */}
+      <div class="admin-navigator-link">
+        <svg
+          onClick={props.editorCreateSelector}
+          class="admin-navigator-link-svg"
+          width="100%"
+          height="100%"
+          viewBox="0 0 188 188"
+          version="1.1"
+          style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        >
+          <circle
+            cx="93.967"
+            cy="93.967"
+            r="85.634"
+            style="fill:none;stroke-width:16.67px;"
+          />
+          <g>
+            <path
+              d="M93.967,45.467l0,97"
+              style="fill:none;stroke-width:16.67px;"
+            />
+            <path
+              d="M142.467,93.967l-97,0"
+              style="fill:none;stroke-width:16.67px;"
+            />
+          </g>
+        </svg>
+      </div>
       {/* metrics page */}
       <div class="admin-navigator-link">
         <svg
@@ -113,35 +142,6 @@ const Navigator: Component<IProps> = (props) => {
             d="M122.333,151.333l0,-118"
             style="fill:none;stroke-width:16.67px;"
           />
-        </svg>
-      </div>
-      {/* new post button */}
-      <div class="admin-navigator-link">
-        <svg
-          onClick={props.editorCreateSelector}
-          class="admin-navigator-link-svg"
-          width="100%"
-          height="100%"
-          viewBox="0 0 188 188"
-          version="1.1"
-          style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
-        >
-          <circle
-            cx="93.967"
-            cy="93.967"
-            r="85.634"
-            style="fill:none;stroke-width:16.67px;"
-          />
-          <g>
-            <path
-              d="M93.967,45.467l0,97"
-              style="fill:none;stroke-width:16.67px;"
-            />
-            <path
-              d="M142.467,93.967l-97,0"
-              style="fill:none;stroke-width:16.67px;"
-            />
-          </g>
         </svg>
       </div>
       {/* refresh redis cache from database */}

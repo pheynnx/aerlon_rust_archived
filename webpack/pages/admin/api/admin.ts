@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { IPost } from "./types";
-import { timeFormatISO } from "~/utils/dateFormater";
+import { timeFormatISO } from "../utils/dateFormater";
 
 export async function updatePost(postData: IPost) {
   try {

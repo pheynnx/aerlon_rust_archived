@@ -7,13 +7,13 @@ import {
   Show,
   Switch,
 } from "solid-js";
+import { MountableElement, render } from "solid-js/web";
 import axios from "axios";
 
 import Updater from "./modules/Updater";
 import Creator from "./modules/Creator";
-import { IPost } from "~/api/types";
+import { IPost } from "./api/types";
 
-import "~/styles/admin.scss";
 import PostPanel from "./modules/PostPanel";
 import { createStore } from "solid-js/store";
 import Navigator from "./modules/Navigator";
@@ -21,7 +21,7 @@ import Metrics from "./metrics/Metrics";
 
 const MODEWIDTH = 750;
 
-const Main: Component = () => {
+const Main = () => {
   const [posts, setPosts] = createSignal<IPost[]>([]);
 
   const [rect, setRect] = createSignal({
@@ -161,4 +161,4 @@ const Main: Component = () => {
   );
 };
 
-export default Main;
+render(Main, document.getElementById("root") as MountableElement);

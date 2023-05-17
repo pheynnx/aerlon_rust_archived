@@ -1,7 +1,7 @@
 import { Setter } from "solid-js";
 
-import { IPost } from "~/api/types";
-import { timeFormatISO } from "~/utils/dateFormater";
+import { IPost } from "../api/types";
+import { timeFormatISO } from "../utils/dateFormater";
 
 export const updatePostField =
   (
@@ -14,7 +14,8 @@ export const updatePostField =
       | "date"
       | "series"
       | "categories"
-      | "markdown",
+      | "markdown"
+      | "post_snippet",
     index?: number
   ) =>
   (event: Event) => {

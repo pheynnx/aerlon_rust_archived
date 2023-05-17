@@ -5,8 +5,12 @@
 
 .admin-navigator {
   background-color: #0d1117;
-  min-height: 100vh;
+  height: 100vh;
   border-right: 1px solid #30363d;
+  position: sticky;
+  top: 0;
+  left: 0;
+  color: white;
 }
 
 .admin-navigator-link {
@@ -357,4 +361,55 @@ textarea::-webkit-scrollbar-thumb {
   &:hover {
     color: #db2e2e;
   }
+}
+
+.spinner-container {
+  display: grid;
+  grid-template: 1fr / 1fr;
+  place-items: center;
+}
+
+.spinner-container > * {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  height: 25px;
+}
+
+.spinner {
+  animation: loading-spinner 1s linear infinite;
+  opacity: 0;
+}
+
+.spinner path {
+  stroke: #f7fff7;
+}
+
+@keyframes loading-spinner {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-partial {
+  stroke: #db2e2e;
+  animation: loading-spinner-partial 2s linear infinite;
+  opacity: 0;
+}
+
+@keyframes loading-spinner-partial {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.show {
+  opacity: 1;
 }
