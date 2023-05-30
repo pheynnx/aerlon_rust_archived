@@ -10,6 +10,7 @@ use axum::{
 };
 use comrak::{markdown_to_html, ComrakOptions};
 use dotenvy::dotenv;
+use generator::CachedBlogState;
 use http::{Request, StatusCode};
 use models::post::Post;
 use std::{collections::HashMap, net::SocketAddr, sync::Arc};
@@ -29,8 +30,8 @@ use handlers::{
     admin_api::{
         admin_create_post_handler, admin_get_post_api, admin_get_posts_api, admin_update_post_api,
     },
+    blog::{get_metas_handler, get_post_handler},
     category::get_categories_handler,
-    index::{get_metas_handler, get_post_handler},
     series::{get_series_handler, get_series_metas_handler},
 };
 use middlewares::{
@@ -49,7 +50,7 @@ mod utilities;
 #[derive(Clone)]
 pub struct AppState {
     pub databases: DatabaseState,
-    pub html_map: HashMap<String, String>,
+    pub cache_blog_state: CachedBlogState,
 }
 
 #[tokio::main]
@@ -60,11 +61,11 @@ async fn main() -> Result<(), AppError> {
 
     database_state.startup_cache().await?;
 
-    let html_map = generator::generator(database_state.clone()).await;
+    let cache_blog_state = CachedBlogState::generator(database_state.clone()).await;
 
     let shared_state = Arc::new(AppState {
         databases: database_state,
-        html_map,
+        cache_blog_state,
     });
 
     let governor_conf = Box::new(
@@ -76,9 +77,16 @@ async fn main() -> Result<(), AppError> {
     );
 
     let site_router = Router::new()
-        .route("/", get(get_metas_handler))
-        .route("/map/:slug", get(get_map_handler))
-        .route("/:slug", get(get_post_handler))
+        .route(
+            "/",
+            get(|| async {
+                HtmlTemplate(IndexTemplate {
+                    uri: "".to_string(),
+                })
+            }),
+        )
+        .route("/blog", get(get_metas_handler))
+        .route("/blog/:slug", get(get_post_handler))
         .route("/series", get(get_series_handler))
         .route("/series/:series", get(get_series_metas_handler))
         .route("/category/:category", get(get_categories_handler))
@@ -157,6 +165,12 @@ async fn main() -> Result<(), AppError> {
 }
 
 #[derive(Template)]
+#[template(path = "index.html.j2")]
+struct IndexTemplate {
+    uri: String,
+}
+
+#[derive(Template)]
 #[template(path = "error.html.j2")]
 struct ErrorTemplate {
     error: String,
@@ -203,15 +217,4 @@ async fn rng_hander() -> Result<impl IntoResponse, AppError> {
     Ok(HtmlTemplate(RngTemplate {
         uri: "/rng".to_string(),
     }))
-}
-
-async fn get_map_handler(
-    State(state): State<Arc<AppState>>,
-    Path(params): Path<HashMap<String, String>>,
-) -> Result<impl IntoResponse, AppError> {
-    let post_slug = params.get("slug").unwrap();
-
-    let post = state.html_map[post_slug].clone();
-
-    Ok(Html(post))
 }

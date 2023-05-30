@@ -5,56 +5,12 @@
 {% block content %}
 <main>
     <div class="main-container">
-        <div class="cards-container">
-            {% if !(featured.is_empty()) %}
-            {% for meta in featured %}
-            <div class="featured-posts">
-                <div class="card">
-                    <div class="card-header-info">
-                        <span class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</span>
-                        <div class="card-header">
-                            <a class="card-header-anchor" href="/{{ meta.slug }}">
-                                <span class="card-title">{{ meta.title }}</span>
-                            </a>
-                        </div>
-                        <div class="card-snippet-container">
-                            <span class="card-snippet">{{ meta.post_snippet }}</span>
-                        </div>
-                    </div>
-                    <span class="card-categories">
-                        {% for category in meta.categories %}
-                        <a class="card-category" href="/category/{{ category }}">
-                            <span class="card-category-info">{{ category }}</span>
-                        </a>
-                        {% endfor %}
-                    </span>
-                </div>
-            </div>
-            {% endfor %}
-
-            {% endif %}
-            {% for meta in metas %}
-            <div class="card">
-                <div class="card-header-info">
-                    <span class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</span>
-                    <div class="card-header">
-                        <a class="card-header-anchor" href="/{{ meta.slug }}">
-                            <span class="card-title">{{ meta.title }}</span>
-                        </a>
-                    </div>
-                    <div class="card-snippet-container">
-                        <span class="card-snippet">{{ meta.post_snippet }}</span>
-                    </div>
-                </div>
-                <span class="card-categories">
-                    {% for category in meta.categories %}
-                    <a class="card-category" href="/category/{{ category }}">
-                        <span class="card-category-info">{{ category }}</span>
-                    </a>
-                    {% endfor %}
-                </span>
-            </div>
-            {% endfor %}
+        <div class="home-content">
+            <h1>Blog and HTTP Benchmarking site</h1>
+            <h3>
+                My goal is to benchmark HTTP libraries across large sets of languages, hardware and data
+                structures...
+            </h3>
         </div>
     </div>
 </main>

@@ -2,7 +2,7 @@ use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
-use crate::{database::redis::RedisConnection, errors::AppError};
+use crate::{database::redis::RedisConnection, errors::AppError, models::post::Post};
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct Meta {
@@ -16,6 +16,22 @@ pub struct Meta {
     pub post_snippet: String,
     pub published: bool,
     pub featured: bool,
+}
+
+impl From<Post> for Meta {
+    fn from(value: Post) -> Self {
+        Self {
+            post_id: value.post_id,
+            date: value.date,
+            slug: value.slug,
+            title: value.title,
+            series: value.series,
+            categories: value.categories,
+            post_snippet: value.post_snippet,
+            published: value.published,
+            featured: value.featured,
+        }
+    }
 }
 
 // redis methods
