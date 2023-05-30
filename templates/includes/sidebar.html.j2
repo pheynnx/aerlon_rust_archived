@@ -14,17 +14,7 @@
             </svg>
         </button>
         <div tabindex="0" class="themer-dropdown-content" id="themer-dropdown-content">
-            <div class="side-navbar">
-                <span class="themes-container-title">Links</span>
-                <a class="navbar-link{%- if uri=="/" %} active{% endif %}" href="/">Blog</a>
-                <a class="navbar-link{%- if uri=="/series" %} active{% endif %}" href="/series">Series</a>
-                <a class="navbar-link{%- if uri=="/rng" %} active{% endif %}" href="/rng">RNG</a>
-                <a class="navbar-link{%- if uri=="/readme" %} active{% endif %}" href="/readme">Readme</a>
-            </div>
             <div class="themer-content-themes-container">
-                <div class="themes-container-title">
-                    <span>Switch Theme</span>
-                </div>
                 <div class="theme-label">
                     <span class="theme-switch-label">Light</span>
                     <div class="theme-switcher">
@@ -35,19 +25,13 @@
                     </div>
                     <span class="theme-switch-label">Dark</span>
                 </div>
-                <div class="themes-container-title">
-                    <span>Pick a Color</span>
-                </div>
-                {# placeholder class #}
-                <div class="theme-label">
-                    {# placeholder class #}
-                    <span class="theme-div green" name="colors" data-color="green"></span>
-                    <span class="theme-div blue" name="colors" data-color="blue"></span>
-                    <span class="theme-div red" name="colors" data-color="red"></span>
-                    <span class="theme-div orange" name="colors" data-color="orange"></span>
-                    <span class="theme-div pink" name="colors" data-color="pink"></span>
-                    <span class="theme-div purple" name="colors" data-color="purple"></span>
-                </div>
+            </div>
+            <div class="side-navbar">
+            <a class="sidenav navbar-link{%- if uri=="/" %} active{% endif %}" href="/">Blog</a>
+            {# <a class="navbar-link{%- if uri=="/series" %} active{% endif %}" href="/series">Series</a> #}
+            <a class="sidenav navbar-link{%- if uri=="/benchmarks" %} active{% endif %}" href="/benchmarks">Benchmarks</a>
+            <a class="sidenav navbar-link{%- if uri=="/rng" %} active{% endif %}" href="/rng">RNG</a>
+            <a class="sidenav navbar-link{%- if uri=="/readme" %} active{% endif %}" href="/readme">Readme</a>
             </div>
         </div>
     </div>

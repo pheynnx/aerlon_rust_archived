@@ -1,6 +1,6 @@
 ## Ericarthurc.com
 
-## [0.9.3]
+## [0.10.0]
 
 ## Project Layout
 

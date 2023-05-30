@@ -18,16 +18,14 @@
 <body>
     <script>
         const storageTheme = localStorage.getItem("theme") || "dark";
-        const colorTheme = localStorage.getItem("color") || "green";
         document.documentElement.setAttribute("data-theme", storageTheme);
-        document.documentElement.setAttribute("data-color", colorTheme);
     </script>
-    <header>
-        {% include "./includes/navbar.html.j2" %}
-    </header>
+
+    {% include "./includes/navbar.html.j2" %}
+
     <div class="wip-container">
         <div class="wip">
-            <span class="wip-title">Site is under active development!</span>
+            <span class="wip-title">Site is under heavy active development!</span>
             <span class="wip-details">Many things are broken or placeholder</span>
         </div>
     </div>

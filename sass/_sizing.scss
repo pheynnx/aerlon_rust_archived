@@ -36,6 +36,11 @@
     margin-left: 10%;
     margin-right: 10%;
   }
+
+  .navbar {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 }
 
 @media only screen and (min-width: 1281px) {
@@ -58,6 +63,37 @@
 
   code {
     font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .navbar {
+    justify-content: start;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-logo {
+    margin-left: 24px;
+    margin-right: 0px;
+  }
+
+  .themer-dropdown-content {
+    flex-direction: column;
+    justify-content: start;
+  }
+
+  .themer-container {
+    margin-right: 24px;
+  }
+
+  .side-navbar {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    padding: 0px 10px;
   }
 }
 
@@ -85,34 +121,5 @@
   .main-container {
     margin-left: 4%;
     margin-right: 4%;
-  }
-}
-
-@media only screen and (max-width: 380px) {
-  .themer-dropdown-content {
-    flex-direction: column;
-    justify-content: start;
-  }
-  .side-navbar {
-    display: flex;
-    flex-direction: column;
-    margin-top: 5px;
-    padding: 0px 10px;
-  }
-
-  .navbar-link {
-    // align-self: flex-start;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    // should be set by variable
-    color: #fff;
-  }
-
-  .navbar-links {
-    display: none;
-  }
-
-  .navbar-logo {
-    margin-right: 0;
   }
 }

@@ -1,16 +1,18 @@
 use askama::Template;
 use axum::{
     error_handling::HandleErrorLayer,
+    extract::{Path, State},
     handler::Handler,
     middleware,
-    response::IntoResponse,
+    response::{Html, IntoResponse},
     routing::{get, post},
     BoxError, Router,
 };
 use comrak::{markdown_to_html, ComrakOptions};
 use dotenvy::dotenv;
 use http::{Request, StatusCode};
-use std::{net::SocketAddr, sync::Arc};
+use models::post::Post;
+use std::{collections::HashMap, net::SocketAddr, sync::Arc};
 use tokio::fs;
 use tower::ServiceBuilder;
 use tower_cookies::CookieManagerLayer;
@@ -38,6 +40,7 @@ use middlewares::{
 
 mod database;
 mod errors;
+mod generator;
 mod handlers;
 mod middlewares;
 mod models;
@@ -46,6 +49,7 @@ mod utilities;
 #[derive(Clone)]
 pub struct AppState {
     pub databases: DatabaseState,
+    pub html_map: HashMap<String, String>,
 }
 
 #[tokio::main]
@@ -56,8 +60,11 @@ async fn main() -> Result<(), AppError> {
 
     database_state.startup_cache().await?;
 
+    let html_map = generator::generator(database_state.clone()).await;
+
     let shared_state = Arc::new(AppState {
         databases: database_state,
+        html_map,
     });
 
     let governor_conf = Box::new(
@@ -70,6 +77,7 @@ async fn main() -> Result<(), AppError> {
 
     let site_router = Router::new()
         .route("/", get(get_metas_handler))
+        .route("/map/:slug", get(get_map_handler))
         .route("/:slug", get(get_post_handler))
         .route("/series", get(get_series_handler))
         .route("/series/:series", get(get_series_metas_handler))
@@ -195,4 +203,15 @@ async fn rng_hander() -> Result<impl IntoResponse, AppError> {
     Ok(HtmlTemplate(RngTemplate {
         uri: "/rng".to_string(),
     }))
+}
+
+async fn get_map_handler(
+    State(state): State<Arc<AppState>>,
+    Path(params): Path<HashMap<String, String>>,
+) -> Result<impl IntoResponse, AppError> {
+    let post_slug = params.get("slug").unwrap();
+
+    let post = state.html_map[post_slug].clone();
+
+    Ok(Html(post))
 }

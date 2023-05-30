@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.10.0] - 2023-05-29
+
+#### Added
+
+- [not in production] testing prerendering the blog index and content in a in-memory `hashmap<String, String>` for really fast content draw times
+  - askama is very quick, but I/O is not; so real-time rendering with all the I/O calls are slowing things down a lot
+  - early tests show roughly ~40x more requests per second when the HTML is prerendered and then served from application memory verse realtime rendering
+
+#### Changed
+
+- migrated all ui updates from the sveltekit build
+- a lot of changes to the navbar; more to come
+
+#### Removed
+
+- color changing of the site; could come back in the future
+
 ## [0.9.3] - 2023-05-16
 
 #### Fixed

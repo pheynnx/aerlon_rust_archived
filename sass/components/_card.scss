@@ -40,13 +40,13 @@
 }
 
 .featured-posts {
-  min-width: 100%;
-  padding: 15px 15px 0px 15px;
+  padding: 10px 10px 0px 10px;
   background: var(--card-featured-background);
   border: 1px solid var(--card-featured-border);
   border-radius: 0.4rem;
   margin-bottom: 20px;
   height: min-content;
+  width: 100%;
 }
 
 .card {

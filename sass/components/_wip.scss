@@ -1,5 +1,6 @@
 .wip-container {
   display: grid;
+  margin: 0 4%;
 }
 
 .wip {
@@ -7,7 +8,6 @@
   flex-direction: column;
   text-align: center;
   justify-self: center;
-  width: max-content;
   padding: 15px 15px 15px 15px;
   background: #ffa60010;
   border: 1px solid #ffa500;
@@ -20,27 +20,5 @@
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 5px;
-  -webkit-animation: colorchange 20s infinite ease-in;
-}
-
-@-webkit-keyframes colorchange {
-  0% {
-    color: #ffbc04;
-  }
-
-  25% {
-    color: #ff3604;
-  }
-
-  50% {
-    color: #fffb04;
-  }
-
-  75% {
-    color: #ffbc04;
-  }
-
-  100% {
-    color: #ff3604;
-  }
+  color: #ff3604;
 }

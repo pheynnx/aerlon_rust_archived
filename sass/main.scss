@@ -1,7 +1,8 @@
 @import "_variables.scss";
+@import "_fonts.scss";
 
 html {
-  font-family: "Inter", sans-serif;
+  font-family: "Gx", sans-serif;
   -webkit-tap-highlight-color: transparent;
   background-color: var(--background-color);
   color: var(--html-color);
@@ -26,10 +27,10 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 
   &:horizontal {
-    height: 6px;
+    height: 4px;
   }
 }
 
@@ -39,7 +40,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--theme-main-color);
-  border-radius: 10px;
+  border-radius: 4px;
 
   &:hover {
     background: #555;

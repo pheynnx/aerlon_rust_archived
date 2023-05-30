@@ -22,7 +22,7 @@ static SYNTECT_ADAPTER: Lazy<SyntectAdapter> = {
     })
 };
 
-#[derive(FromRow, Debug, Serialize, Deserialize)]
+#[derive(FromRow, Debug, Serialize, Deserialize, Clone)]
 pub struct Post {
     #[serde(rename = "id")]
     pub post_id: Option<Uuid>,

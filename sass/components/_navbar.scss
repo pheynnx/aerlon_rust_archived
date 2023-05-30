@@ -1,22 +1,23 @@
 .navigation-container {
   display: grid;
+  position: sticky;
+  top: 0;
   width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   background-color: var(--navbar-background);
-  border-bottom: 1px solid var(--navbar-border-color);
 }
 
 .navbar {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 12px 0px;
 }
 
 .navbar-logo {
-  height: 45px;
-  width: 45px;
-  margin-right: 6px;
+  height: 37px;
+  width: 37px;
+  margin-right: 10px;
 }
 
 .navbar-logo-outer {
@@ -37,8 +38,8 @@
 
 .navbar-link {
   align-self: center;
-  padding: 0px 6px;
-  font-size: 16px;
+  padding: 0px 10px;
+  font-size: 17px;
   font-weight: 400;
   line-height: 1;
   color: var(--navbar-link);
@@ -51,9 +52,6 @@
   @media (hover: hover) {
     &:hover {
       color: var(--navbar-link-hover);
-      // background-color: var(--navbar-link-hover-background);
-      // padding: 4px 6px;
-      // border-radius: 0.2em;
     }
   }
 
