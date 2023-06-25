@@ -5,30 +5,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Ericarthurc" />
+    <meta name="description" content="Aerlon" />
     <meta name="msapplication-TileColor" content="#0d1017">
     <meta name="theme-color" content="#0d1017">
-    <title>{% block title %}{{ title }}{% endblock %}EricArthurC</title>
+    <title>{% block title %}{{ title }}{% endblock %}Aerlon</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="/public/css/main.css" />
     {% block head %}{% endblock %}
+    <script src="/public/js/htmx.min.js"></script>
 </head>
 
 <body>
+    {#
     <script>
         const storageTheme = localStorage.getItem("theme") || "dark";
         document.documentElement.setAttribute("data-theme", storageTheme);
-    </script>
-
-    {% include "./includes/navbar.html.j2" %}
+    </script> #}
 
     <div class="wip-container">
-        <div class="wip">
-            <span class="wip-title">Site is under heavy active development!</span>
-            <span class="wip-details">Many things are broken or placeholder</span>
-        </div>
+        <span class="wip-title">Version α</span>
+
     </div>
+
+    {% include "./includes/navbar.html.j2" %}
 
     {% block content %}{% endblock %}
     <script src="/public/js/sidebar.bundle.js"></script>

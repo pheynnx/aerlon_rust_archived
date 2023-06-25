@@ -3,7 +3,9 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-<div id="root"></div>
+<div class="main-container">
+    <button hx-get="/rng_value" hx-target="#value-one" hx-trigger="click">Generate</button>
+    <h3 hx-get="/rng_value" hx-trigger="load" id="value-one"></h3>
+</div>
 
-<script src="/public/js/rng.bundle.js"></script>
 {% endblock %}

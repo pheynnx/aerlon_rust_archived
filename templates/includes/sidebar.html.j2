@@ -14,24 +14,13 @@
             </svg>
         </button>
         <div tabindex="0" class="themer-dropdown-content" id="themer-dropdown-content">
-            <div class="themer-content-themes-container">
-                <div class="theme-label">
-                    <span class="theme-switch-label">Light</span>
-                    <div class="theme-switcher">
-                        <label class="theme-switcher-container">
-                            <input class="theme-switcher-container-input" id="themeSwitch" type="checkbox" />
-                            <span class="theme-switcher-container-span"></span>
-                        </label>
-                    </div>
-                    <span class="theme-switch-label">Dark</span>
-                </div>
-            </div>
             <div class="side-navbar">
-            <a class="sidenav navbar-link{%- if uri=="/blog" %} active{% endif %}" href="/blog">Blog</a>
-            {# <a class="navbar-link{%- if uri=="/series" %} active{% endif %}" href="/series">Series</a> #}
-            <a class="sidenav navbar-link{%- if uri=="/benchmarks" %} active{% endif %}" href="/benchmarks">Benchmarks</a>
-            <a class="sidenav navbar-link{%- if uri=="/rng" %} active{% endif %}" href="/rng">RNG</a>
-            <a class="sidenav navbar-link{%- if uri=="/readme" %} active{% endif %}" href="/readme">Readme</a>
+                <a class="sidenav navbar-link{%- if uri=="/blog" %} active{% endif %}" href="/blog">Blog</a>
+                {# <a class="navbar-link{%- if uri==" /series" %} active{% endif %}" href="/series">Series</a> #}
+                <a class="sidenav navbar-link{%- if uri=="/benchmarks" %} active{% endif %}"
+                    href="/benchmarks">Benchmarks</a>
+                <a class="sidenav navbar-link{%- if uri=="/rng" %} active{% endif %}" href="/rng">RNG</a>
+                <a class="sidenav navbar-link{%- if uri=="/readme" %} active{% endif %}" href="/readme">Readme</a>
             </div>
         </div>
     </div>

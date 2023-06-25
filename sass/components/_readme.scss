@@ -12,10 +12,10 @@
   font-size: 20px;
   font-weight: 600;
   color: var(--html-color);
-  border-bottom: 1px solid var(--theme-main-color);
+  border-bottom: 1px solid #237498;
 
   &:hover {
-    color: var(--theme-main-color);
+    color: #237498;
   }
 }
 
@@ -24,6 +24,6 @@
   word-wrap: break-word;
 
   h2:first-of-type {
-    color: var(--theme-main-color);
+    color: #237498;
   }
 }

@@ -86,13 +86,14 @@
   }
 
   .themer-container {
+    display: flex;
     margin-right: 24px;
   }
 
   .side-navbar {
     display: flex;
     flex-direction: column;
-    margin-top: 5px;
+    margin-top: 30px;
     padding: 0px 10px;
   }
 }

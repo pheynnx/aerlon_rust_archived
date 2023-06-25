@@ -1,5 +1,4 @@
 {
-  "name": "eac",
   "scripts": {
     "update": "cargo update && pnpm update",
     "dev": "run-p -l dev:css dev:webpack dev:rust",
@@ -15,19 +14,19 @@
     "webpack": "webpack"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.1",
-    "@babel/preset-env": "^7.22.4",
-    "@babel/preset-typescript": "^7.21.5",
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "@babel/preset-typescript": "^7.22.5",
     "axios": "^1.4.0",
     "babel-loader": "^9.1.2",
     "babel-preset-solid": "^1.7.4",
     "cross-env": "^7.0.3",
-    "html-webpack-plugin": "^5.5.1",
+    "html-webpack-plugin": "^5.5.3",
     "npm-run-all": "^4.1.5",
-    "sass": "^1.62.1",
-    "solid-js": "^1.7.5",
-    "webpack": "^5.84.1",
-    "webpack-cli": "^5.1.1",
-    "webpack-dev-server": "^4.15.0"
+    "sass": "^1.63.6",
+    "solid-js": "^1.7.6",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   }
 }

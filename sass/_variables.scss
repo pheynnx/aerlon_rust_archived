@@ -1,3 +1,5 @@
+$theme-color: #dc0000;
+
 :root {
   // Html
   --html-color: #ffffff;
@@ -7,10 +9,10 @@
   --navbar-background: #111111ee;
   --navbar-border-color: #333;
   --navbar-link: #ffffff;
-  --navbar-link-hover: #00dc82;
+  --navbar-link-hover: #{$theme-color};
   --navbar-link-hover-background: #3f3f46;
   --navbar-logo-inner: #fff;
-  --navbar-logo-outer: #00dc82;
+  --navbar-logo-outer: #{$theme-color};
   --navbar-settings: #fff;
 
   // Sidebar
@@ -18,7 +20,7 @@
 
   // Card
   --card-title: #ffffff;
-  --card-title-hover: #00dc82;
+  --card-title-hover: #{$theme-color};
   --card-date: #c8c8c8;
   --card-category-info: #3f3f46;
   --card-category-hover-background: #71717a;
@@ -31,10 +33,10 @@
   --card-series-hover-span: #fdfdfd;
 
   // Featured Card
-  --card-featured-background: #00dc8217;
-  --card-featured-border: #00dc82;
+  --card-featured-background: #{rgba($theme-color, 0.05)};
+  --card-featured-border: #{$theme-color};
 
-  --container-header: #00dc82;
+  --container-header: #{$theme-color};
   --main-header-color: #d4d4da;
 
   // Markdown
@@ -50,57 +52,13 @@
 
   --code-background-color: #01790b07;
 
-  --theme-main-color: #00dc82;
-
   // Navbar
-  --navbar-link-hover: #00dc82;
+  --navbar-link-hover: #{$theme-color};
   --navbar-link-hover-background: #3f3f46;
-  --navbar-logo-outer: #00dc82;
+  --navbar-logo-outer: #{$theme-color};
 
   // Card
-  --card-title-hover: #00dc82;
+  --card-title-hover: #{$theme-color};
 
-  // Featured Card
-  --card-featured-background: #00dc8217;
-  --card-featured-border: #00dc82;
-
-  --container-header: #00dc82;
-}
-
-[data-theme="light"] {
-  --html-color: #272727;
-  --background-color: #fafafa;
-
-  // Navbar
-  --navbar-background: #fafafaee;
-  --navbar-border-color: #eaeaea;
-  --navbar-link: #272727;
-  --navbar-link-hover-background: #3f3f46;
-  --navbar-logo-inner: #2d2d2d;
-  --navbar-settings: #2d2d2d;
-
-  // Sidebar
-  --themer-content-background: #0d1117;
-
-  // Card
-  --card-title: #2d2d2d;
-  --card-date: #2d2d2d;
-  --card-category-info: #3f3f46;
-  --card-category-hover-background: #71717a;
-
-  // Series Card
-  --card-series-background: #161b22;
-  --card-series-border: #30363d;
-  --card-series: #fafafa;
-  --card-series-hover-background: #71717a;
-  --card-series-hover-span: #fdfdfd;
-
-  --code-background-color: #0d1117;
-  --code-border-color: #0d1117;
-
-  --main-header-color: #2d2d2d;
-
-  // Markdown
-  --markdown-color: #2d2d2d;
-  --markdown-h1-color: #2d2d2d;
+  --container-header: #{$theme-color};
 }

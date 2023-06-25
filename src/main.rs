@@ -32,6 +32,7 @@ use handlers::{
     },
     blog::{get_metas_handler, get_post_handler},
     category::get_categories_handler,
+    rng::{rng_hander, rng_value},
     series::{get_series_handler, get_series_metas_handler},
 };
 use middlewares::{
@@ -91,6 +92,7 @@ async fn main() -> Result<(), AppError> {
         .route("/series/:series", get(get_series_metas_handler))
         .route("/category/:category", get(get_categories_handler))
         .route("/rng", get(rng_hander))
+        .route("/rng_value", get(rng_value))
         .route("/readme", get(readme_handler));
     // .layer(
     // ServiceBuilder::new()
@@ -204,17 +206,5 @@ async fn readme_handler<T>(req: Request<T>) -> Result<impl IntoResponse, AppErro
     Ok(HtmlTemplate(ReadmeTemplate {
         readme_markdown,
         uri: req.uri().to_string(),
-    }))
-}
-
-#[derive(Template)]
-#[template(path = "rng.html.j2")]
-struct RngTemplate {
-    uri: String,
-}
-
-async fn rng_hander() -> Result<impl IntoResponse, AppError> {
-    Ok(HtmlTemplate(RngTemplate {
-        uri: "/rng".to_string(),
     }))
 }

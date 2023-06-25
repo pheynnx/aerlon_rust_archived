@@ -1,24 +1,21 @@
 .wip-container {
-  display: grid;
-  margin: 0 4%;
-}
-
-.wip {
+  z-index: 100;
+  width: 100%;
+  position: sticky;
+  top: 0;
   display: flex;
   flex-direction: column;
   text-align: center;
   justify-self: center;
-  padding: 15px 15px 15px 15px;
-  background: #ffa60010;
-  border: 1px solid #ffa500;
-  border-radius: 0.4rem;
-  margin-bottom: 20px;
+  background: #030303;
+  border-bottom: 1px solid #a444f3;
   height: min-content;
+  color: #fff;
 }
 
 .wip-title {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #ff3604;
+  font-size: 15px;
+  font-weight: 400;
+  padding: 4px 0;
+  line-height: 1;
 }

@@ -38,8 +38,9 @@ body {
   background: #f1f1f100;
 }
 
+// FIXME
 ::-webkit-scrollbar-thumb {
-  background: var(--theme-main-color);
+  background: #237498;
   border-radius: 4px;
 
   &:hover {
