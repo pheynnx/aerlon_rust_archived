@@ -18,27 +18,27 @@ struct CategoryTemplate {
     uri: String,
 }
 
-pub async fn get_categories_handler<T>(
-    State(state): State<Arc<AppState>>,
-    Path(params): Path<HashMap<String, String>>,
-    req: Request<T>,
-) -> Result<impl IntoResponse, AppError> {
-    let category_name = params.get("category");
+// pub async fn get_categories_handler<T>(
+//     State(state): State<Arc<AppState>>,
+//     Path(params): Path<HashMap<String, String>>,
+//     req: Request<T>,
+// ) -> Result<impl IntoResponse, AppError> {
+//     let category_name = params.get("category");
 
-    let redis_con = state.databases.redis.new_connection().await?;
+//     let redis_con = state.databases.redis.new_connection().await?;
 
-    match category_name {
-        Some(category_name) => {
-            let metas = Meta::get_categories_metas_sorted_by_name(redis_con, category_name).await?;
+//     match category_name {
+//         Some(category_name) => {
+//             let metas = Meta::get_categories_metas_sorted_by_name(redis_con, category_name).await?;
 
-            let template = CategoryTemplate {
-                metas,
-                category_name: category_name.to_string(),
-                uri: req.uri().to_string(),
-            };
+//             let template = CategoryTemplate {
+//                 metas,
+//                 category_name: category_name.to_string(),
+//                 uri: req.uri().to_string(),
+//             };
 
-            Ok(HtmlTemplate(template))
-        }
-        None => Err(AppError::Custom(String::from("missing parameter"))),
-    }
-}
+//             Ok(HtmlTemplate(template))
+//         }
+//         None => Err(AppError::Custom(String::from("missing parameter"))),
+//     }
+// }

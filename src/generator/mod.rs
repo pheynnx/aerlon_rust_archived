@@ -1,4 +1,5 @@
 use askama::Template;
+use sqlx::{Pool, Postgres};
 use std::collections::HashMap;
 
 use crate::{
@@ -30,7 +31,7 @@ struct BlogTemplate {
 }
 
 impl CachedBlogState {
-    pub async fn generator(databases: DatabaseState) -> Self {
+    pub async fn generator(databases: &DatabaseState) -> Self {
         let posts = Post::get_published_posts_postgres(&databases.postgres.postgres_pool)
             .await
             .unwrap();
@@ -58,7 +59,7 @@ impl CachedBlogState {
         let blog_index_template = BlogTemplate {
             metas,
             featured,
-            uri: "blog".to_string(),
+            uri: "/blog".to_string(),
         };
         let render = blog_index_template.render().unwrap();
 
@@ -66,5 +67,12 @@ impl CachedBlogState {
             blog_index: render,
             blog_posts_map,
         }
+    }
+
+    pub async fn updater(&mut self, databases: &DatabaseState) {
+        let cache = Self::generator(databases).await;
+
+        self.blog_index = cache.blog_index;
+        self.blog_posts_map = cache.blog_posts_map;
     }
 }

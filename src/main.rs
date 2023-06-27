@@ -14,7 +14,7 @@ use generator::CachedBlogState;
 use http::{Request, StatusCode};
 use models::post::Post;
 use std::{collections::HashMap, net::SocketAddr, sync::Arc};
-use tokio::fs;
+use tokio::{fs, sync::Mutex};
 use tower::ServiceBuilder;
 use tower_cookies::CookieManagerLayer;
 use tower_governor::{errors::display_error, governor::GovernorConfigBuilder, GovernorLayer};
@@ -31,9 +31,7 @@ use handlers::{
         admin_create_post_handler, admin_get_post_api, admin_get_posts_api, admin_update_post_api,
     },
     blog::{get_metas_handler, get_post_handler},
-    category::get_categories_handler,
     rng::{rng_hander, rng_value},
-    series::{get_series_handler, get_series_metas_handler},
 };
 use middlewares::{
     admin::{admin_api_middleware, admin_auth_middleware, admin_login_middleware},
@@ -59,15 +57,12 @@ async fn main() -> Result<(), AppError> {
     dotenv().expect(".env file not found");
 
     let database_state = initialize_connections().await?;
+    let cache_blog_state = CachedBlogState::generator(&database_state).await;
 
-    database_state.startup_cache().await?;
-
-    let cache_blog_state = CachedBlogState::generator(database_state.clone()).await;
-
-    let shared_state = Arc::new(AppState {
+    let shared_state = Arc::new(Mutex::new(AppState {
         databases: database_state,
         cache_blog_state,
-    });
+    }));
 
     let governor_conf = Box::new(
         GovernorConfigBuilder::default()
@@ -88,9 +83,9 @@ async fn main() -> Result<(), AppError> {
         )
         .route("/blog", get(get_metas_handler))
         .route("/blog/:slug", get(get_post_handler))
-        .route("/series", get(get_series_handler))
-        .route("/series/:series", get(get_series_metas_handler))
-        .route("/category/:category", get(get_categories_handler))
+        // .route("/series", get(get_series_handler))
+        // .route("/series/:series", get(get_series_metas_handler))
+        // .route("/category/:category", get(get_categories_handler))
         .route("/rng", get(rng_hander))
         .route("/rng_value", get(rng_value))
         .route("/readme", get(readme_handler));

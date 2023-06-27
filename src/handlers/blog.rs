@@ -5,6 +5,7 @@ use axum::{
 };
 use http::Request;
 use std::{collections::HashMap, sync::Arc};
+use tokio::sync::Mutex;
 
 use crate::{
     errors::AppError,
@@ -23,21 +24,25 @@ use crate::{
 // }
 
 pub async fn get_metas_handler(
-    State(state): State<Arc<AppState>>,
+    State(state): State<Arc<Mutex<AppState>>>,
 ) -> Result<impl IntoResponse, AppError> {
-    let index = state.cache_blog_state.blog_index.clone();
+    let data = state.lock().await;
+
+    let index = data.cache_blog_state.blog_index.clone();
 
     Ok(Html(index))
 }
 
 pub async fn get_post_handler(
-    State(state): State<Arc<AppState>>,
+    State(state): State<Arc<Mutex<AppState>>>,
     Path(params): Path<HashMap<String, String>>,
 ) -> Result<impl IntoResponse, AppError> {
     let post_slug = params.get("slug");
 
+    let data = state.lock().await;
+
     match post_slug {
-        Some(post_slug) => match state.cache_blog_state.blog_posts_map.get(post_slug) {
+        Some(post_slug) => match data.cache_blog_state.blog_posts_map.get(post_slug) {
             Some(v) => Ok(Html(v.clone())),
             None => Err(AppError::Custom("not found".to_string())),
         },

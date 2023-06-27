@@ -24,8 +24,14 @@
     </script> #}
 
     <div class="wip-container">
-        <span class="wip-title">Version α</span>
+        <span class="wip-title">Version: {{ env!("CARGO_PKG_VERSION") }}α</span>
+    </div>
 
+    <div class="">
+    </div>
+
+    <div>
+        <h2>Aerlon</h2>
     </div>
 
     {% include "./includes/navbar.html.j2" %}
