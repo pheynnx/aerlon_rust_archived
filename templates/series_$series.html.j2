@@ -3,31 +3,29 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-<main>
-    <div class="main-container">
-        <span class="container-heading">{{ series_name }} Series</span>
-        <div class="cards-container">
-            {% for meta in metas %}
-            <div class="card">
-                <div class="card-header-info">
-                    <div class="card-header">
-                        <a class="card-header-anchor" href="/{{ meta.slug }}">
-                            <span class="card-title">{{ meta.title }}</span>
-                        </a>
-                    </div>
-                    <span class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</span>
-                </div>
-                <span class="card-categories">
-                    {% for category in meta.categories %}
-                    <a class="card-category" href="/category/{{ category }}">
-                        <span class="card-category-info">{{ category }}</span>
+<div class="main-container">
+    <span class="container-heading">{{ series_name }} Series</span>
+    <div class="cards-container">
+        {% for meta in metas %}
+        <div class="card">
+            <div class="card-header-info">
+                <div class="card-header">
+                    <a class="card-header-anchor" href="/{{ meta.slug }}">
+                        <span class="card-title">{{ meta.title }}</span>
                     </a>
-                    {% endfor %}
-                </span>
+                </div>
+                <span class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</span>
             </div>
-            {# <p>{{ meta.series }}</p> #}
-            {% endfor %}
+            <span class="card-categories">
+                {% for category in meta.categories %}
+                <a class="card-category" href="/category/{{ category }}">
+                    <span class="card-category-info">{{ category }}</span>
+                </a>
+                {% endfor %}
+            </span>
         </div>
+        {# <p>{{ meta.series }}</p> #}
+        {% endfor %}
     </div>
-</main>
+</div>
 {% endblock %}

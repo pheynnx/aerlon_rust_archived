@@ -76,7 +76,7 @@ async fn main() -> Result<(), AppError> {
         .route(
             "/",
             get(|| async {
-                HtmlTemplate(IndexTemplate {
+                HtmlTemplate(StationTemplate {
                     uri: "".to_string(),
                 })
             }),
@@ -86,6 +86,7 @@ async fn main() -> Result<(), AppError> {
         // .route("/series", get(get_series_handler))
         // .route("/series/:series", get(get_series_metas_handler))
         // .route("/category/:category", get(get_categories_handler))
+        .route("/benchmarks", get(benchmarks_handler))
         .route("/rng", get(rng_hander))
         .route("/rng_value", get(rng_value))
         .route("/readme", get(readme_handler));
@@ -162,8 +163,8 @@ async fn main() -> Result<(), AppError> {
 }
 
 #[derive(Template)]
-#[template(path = "index.html.j2")]
-struct IndexTemplate {
+#[template(path = "station.html.j2")]
+struct StationTemplate {
     uri: String,
 }
 
@@ -200,6 +201,18 @@ async fn readme_handler<T>(req: Request<T>) -> Result<impl IntoResponse, AppErro
 
     Ok(HtmlTemplate(ReadmeTemplate {
         readme_markdown,
+        uri: req.uri().to_string(),
+    }))
+}
+
+#[derive(Template)]
+#[template(path = "benchmarks.html.j2")]
+struct BenchmarksTemplate {
+    uri: String,
+}
+
+async fn benchmarks_handler<T>(req: Request<T>) -> Result<impl IntoResponse, AppError> {
+    Ok(HtmlTemplate(BenchmarksTemplate {
         uri: req.uri().to_string(),
     }))
 }

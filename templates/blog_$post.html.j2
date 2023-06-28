@@ -3,23 +3,21 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-<main>
-    <div class="blog-container">
-        <div class="markdown-container">
-            <h1>{{post.title}}</h1>
-            <div class="card-categories-markdown-container">
-                {% for c in post.categories %}
-                <a class="card-category-anchor-markdown" href="/category/{{ c }}">
-                    <span class="card-category-markdown">
-                        {{c}}
-                    </span>
-                </a>
-                {% endfor %}
-            </div>
-            <div class="markdown">
-                {{ post.markdown|safe}}
-            </div>
+<div class="blog-container">
+    <div class="markdown-container">
+        <h1>{{post.title}}</h1>
+        <div class="card-categories-markdown-container">
+            {% for c in post.categories %}
+            <a class="card-category-anchor-markdown" href="/category/{{ c }}">
+                <span class="card-category-markdown">
+                    {{c}}
+                </span>
+            </a>
+            {% endfor %}
+        </div>
+        <div class="markdown">
+            {{ post.markdown|safe}}
         </div>
     </div>
-</main>
+</div>
 {% endblock %}

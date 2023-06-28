@@ -3,10 +3,8 @@
 {% block title %}Error{% endblock %}
 
 {% block content %}
-<main>
-    <div class="error-container">
-        <span class="error-code">{{status_code}}</span>
-        <span class="error-message">Error: {{error}}</span>
-    </div>
-</main>
+<div class="error-container">
+    <span class="error-code">{{status_code}}</span>
+    <span class="error-message">Error: {{error}}</span>
+</div>
 {% endblock %}

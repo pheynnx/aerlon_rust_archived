@@ -1,12 +1,15 @@
 $theme-color: #4169e1;
 
 :root {
+  --theme-main-color: #203061;
+
   // Html
   --html-color: #ffffff;
   --background-color: #111111;
 
   // Navbar
-  --navbar-background: #111111ee;
+  --navbar-background: #203061;
+  // --navbar-background: #111111ee;
   --navbar-border-color: #333;
   --navbar-link: #ffffff;
   --navbar-link-hover: #{$theme-color};

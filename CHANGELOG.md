@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.11.2] - 2023-06-26
+
+#### Changed
+
+- cleaning up a lot of stuff thats just 'haning' in messy code mode haha
+- lots of css changes
+- changed index naming to 'station'
+- webpack is still in use but will be migrated to esbuild most likely
+- more work with htmx, getting `<a>` tags to work correctly with boosting
+
 ## [0.11.1] - 2023-06-25
 
 #### Added

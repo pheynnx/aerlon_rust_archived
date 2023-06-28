@@ -1,0 +1,27 @@
+{% extends "./layouts/station.html.j2" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <div class="station-container">
+        <h1>Blog and HTTP Benchmarking site</h1>
+        <h3>
+            My goal is to benchmark HTTP libraries across large sets of languages, hardware and data
+            structures...
+        </h3>
+    </div>
+    <div class="station-navigation">
+        <nav hx-boost="true" class="station-navbar">
+            <div class="station-links">
+                <a class="station-link{%- if uri=="/blog" %} active{% endif %}" href="/blog">Blog</a>
+                {# <a class="station-link{%- if uri==" /series" %} active{% endif %}" href="/series">Series</a> #}
+                <a class="station-link{%- if uri=="/benchmarks" %} active{% endif %}"
+                    href="/benchmarks">Benchmarks</a>
+                <a class="station-link{%- if uri=="/rng" %} active{% endif %}" href="/rng">RNG</a>
+                <a class="station-link{%- if uri=="/readme" %} active{% endif %}" href="/readme">Readme</a>
+            </div>
+        </nav>
+    </div>
+</div>
+{% endblock %}

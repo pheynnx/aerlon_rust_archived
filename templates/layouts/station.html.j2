@@ -17,12 +17,6 @@
 </head>
 
 <body>
-    {#
-    <script>
-        const storageTheme = localStorage.getItem("theme") || "dark";
-        document.documentElement.setAttribute("data-theme", storageTheme);
-    </script> #}
-
     <div class="wip-container">
         <span class="wip-title">Version: {{ env!("CARGO_PKG_VERSION") }}α</span>
     </div>
@@ -32,11 +26,7 @@
         <span class="top-logo">Aerlon</span>
     </div>
 
-    {% include "./includes/navbar.html.j2" %}
-
     {% block content %}{% endblock %}
-    <script defer src="/public/js/navbar.bundle.js"></script>
-    <script defer src="/public/js/sidebar.bundle.js"></script>
 </body>
 
 </html>

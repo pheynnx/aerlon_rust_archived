@@ -15,15 +15,14 @@ html {
 body {
   margin: 0;
   padding: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
 }
 
 *,
 *:before,
 *:after {
   box-sizing: border-box;
-  text-rendering: geometricPrecision;
 }
 
 ::-webkit-scrollbar {
@@ -57,6 +56,20 @@ body {
   margin-bottom: 20px;
 }
 
+.top-container {
+  background: var(--theme-main-color);
+  padding: 15px 0;
+  display: grid;
+}
+
+.top-logo {
+  text-align: center;
+  line-height: 1;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+}
+
 @import "./components/_navbar.scss";
 @import "./components/_sidebar.scss";
 @import "./components/_card.scss";
@@ -64,7 +77,7 @@ body {
 @import "./components/_404.scss";
 @import "./components/_wip.scss";
 
-@import "./layouts/_index.scss";
+@import "./layouts/_station.scss";
 @import "./layouts/_markdown.scss";
 @import "./layouts/_about.scss";
 @import "./layouts/_admin-login";

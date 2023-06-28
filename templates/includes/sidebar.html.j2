@@ -14,7 +14,8 @@
             </svg>
         </button>
         <div tabindex="0" class="themer-dropdown-content" id="themer-dropdown-content">
-            <div class="side-navbar">
+            <div hx-boost="true" class="side-navbar">
+                <a class="sidenav navbar-link{%- if uri=="/" %} active{% endif %}" href="/">Station</a>
                 <a class="sidenav navbar-link{%- if uri=="/blog" %} active{% endif %}" href="/blog">Blog</a>
                 {# <a class="navbar-link{%- if uri==" /series" %} active{% endif %}" href="/series">Series</a> #}
                 <a class="sidenav navbar-link{%- if uri=="/benchmarks" %} active{% endif %}"

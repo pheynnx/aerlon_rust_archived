@@ -3,15 +3,13 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-<main>
-    <div class="main-container">
-        <div class="series-cards-container">
-            {% for s in series %}
-            <a class="series-card-anchor" href="/series/{{ s.series }}">
-                <span class="series-card-info">{{ s.series }}</span>
-            </a>
-            {% endfor %}
-        </div>
+<div class="main-container">
+    <div class="series-cards-container">
+        {% for s in series %}
+        <a class="series-card-anchor" href="/series/{{ s.series }}">
+            <span class="series-card-info">{{ s.series }}</span>
+        </a>
+        {% endfor %}
     </div>
-</main>
+</div>
 {% endblock %}
