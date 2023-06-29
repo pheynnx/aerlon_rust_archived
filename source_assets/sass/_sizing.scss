@@ -1,21 +1,21 @@
 @media only screen and (min-width: 400px) {
   .main-container {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 }
 
 @media only screen and (min-width: 600px) {
   .main-container {
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-left: 10%;
+    margin-right: 10%;
   }
 }
 
 @media only screen and (min-width: 800px) {
   .main-container {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 15%;
+    margin-right: 15%;
   }
 
   .cards-container {
@@ -26,27 +26,15 @@
 
 @media only screen and (min-width: 961px) {
   .main-container {
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
   }
 }
 
 @media only screen and (min-width: 1025px) {
-  .main-container {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-
   .navbar {
     margin-left: 5%;
     margin-right: 5%;
-  }
-}
-
-@media only screen and (min-width: 1281px) {
-  .main-container {
-    margin-left: 15%;
-    margin-right: 15%;
   }
 }
 
@@ -80,12 +68,7 @@
     margin-right: 0px;
   }
 
-  .themer-dropdown-content {
-    flex-direction: column;
-    justify-content: start;
-  }
-
-  .themer-container {
+  .dropdown-navigation {
     display: flex;
     margin-right: 15px;
   }

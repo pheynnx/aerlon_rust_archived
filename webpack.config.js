@@ -13,8 +13,7 @@ const config = {
     },
     shared: ["solid-js", "solid-js/web"],
     rng: "./webpack/pages/rng/Main.tsx",
-    sidebar: "./webpack/scripts/sidebar.js",
-    navbar: "./webpack/scripts/navbar.js",
+    navigation: "./webpack/scripts/navigation.js",
   },
   output: {
     filename: "[name].bundle.js",

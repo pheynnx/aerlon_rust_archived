@@ -1,18 +1,18 @@
-$theme-color: #4169e1;
+$theme-color: #62acf1;
 
 :root {
-  --theme-main-color: #203061;
+  --theme-main-color: #{$theme-color};
 
   // Html
   --html-color: #ffffff;
-  --background-color: #111111;
+  --background-color: #161616;
 
   // Navbar
-  --navbar-background: #203061;
+  --navbar-background: #{$theme-color};
   // --navbar-background: #111111ee;
   --navbar-border-color: #333;
   --navbar-link: #ffffff;
-  --navbar-link-hover: #{$theme-color};
+  --navbar-link-hover: #0f63e2;
   --navbar-link-hover-background: #3f3f46;
   --navbar-logo-inner: #fff;
   --navbar-logo-outer: #{$theme-color};
@@ -54,11 +54,6 @@ $theme-color: #4169e1;
   --markdown-a-hover-color: #40d0f0c0;
 
   --code-background-color: #01790b07;
-
-  // Navbar
-  --navbar-link-hover: #{$theme-color};
-  --navbar-link-hover-background: #3f3f46;
-  --navbar-logo-outer: #{$theme-color};
 
   // Card
   --card-title-hover: #{$theme-color};

@@ -4,8 +4,8 @@
 
 {% block content %}
 <div class="main-container">
-    <div class="cards-container">
-        {% if !(featured.is_empty()) %}
+    {% if !(featured.is_empty()) %}
+    <div class="featured-posts-container">
         {% for meta in featured %}
         <div class="featured-posts">
             <div class="card">
@@ -30,8 +30,9 @@
             </div>
         </div>
         {% endfor %}
-
-        {% endif %}
+    </div>
+    {% endif %}
+    <div class="cards-container">
         {% for meta in metas %}
         <div class="card">
             <div class="card-header-info">
