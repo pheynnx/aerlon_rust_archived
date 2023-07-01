@@ -4,8 +4,10 @@
 html {
   font-family: "Gx", sans-serif;
   -webkit-tap-highlight-color: transparent;
-  background-color: var(--background-color);
+  background: var(--background);
+  // background-size: 100% 100vh;
   color: var(--html-color);
+  min-height: 100%;
 
   &:focus {
     outline: 0;

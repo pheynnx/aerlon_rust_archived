@@ -5,12 +5,16 @@
   top: 22px;
   width: 100%;
   margin-bottom: 15px;
-  background-color: var(--navbar-background);
-  height: 43px;
-  border-bottom: 2px solid var(--theme-main-color);
+  // background-color: var(--navbar-background);
+  height: 50px;
+
+  &.expanded {
+    background-color: rgb(17, 17, 17);
+    border-bottom: 1px solid var(--theme-main-color);
+  }
 
   &.scrolled {
-    transition: background 0.5s ease-in;
+    transition: background 0.2s ease-in;
     background-color: #111111ee;
   }
 }
@@ -42,15 +46,15 @@
 
 .navbar-links {
   letter-spacing: 0.03em;
-  background: var(--navbar-background);
+  background: none;
   justify-content: center;
 
   &.expanded {
-    border-bottom: 2px solid var(--theme-main-color);
+    // border-bottom: 2px solid var(--theme-main-color);
     display: flex;
     padding: 20px 0;
-    margin-top: 43px;
-    background: var(--navbar-background);
+    margin-top: 50px;
+    background-color: rgb(17, 17, 17);
     position: sticky;
     justify-content: start;
     height: min-content;
@@ -64,8 +68,8 @@
     }
   }
 
-  &.scrolled {
-    transition: background 0.5s ease-in;
+  &.expanded.scrolled {
+    transition: background 0.2s ease-in;
     background-color: #111111ee;
   }
 }

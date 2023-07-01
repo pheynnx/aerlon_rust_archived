@@ -17,13 +17,10 @@
 </head>
 
 <body>
+    <script src="/public/js/timeThemer.bundle.js"></script>
+
     <div class="wip-container">
         <span class="wip-title">Version: {{ env!("CARGO_PKG_VERSION") }}α</span>
-    </div>
-
-
-    <div class="top-container">
-        <span class="top-logo">Aerlon</span>
     </div>
 
     {% block content %}{% endblock %}

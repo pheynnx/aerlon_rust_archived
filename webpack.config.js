@@ -14,6 +14,7 @@ const config = {
     shared: ["solid-js", "solid-js/web"],
     rng: "./webpack/pages/rng/Main.tsx",
     navigation: "./webpack/scripts/navigation.js",
+    timeThemer: "./webpack/scripts/timeThemer.js",
   },
   output: {
     filename: "[name].bundle.js",

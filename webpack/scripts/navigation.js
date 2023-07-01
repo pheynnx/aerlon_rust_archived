@@ -3,7 +3,7 @@ const navDropDownButton = document.querySelector("#dropdown-navigation-button");
 const navbarLinks = document.querySelector("#navbar-links");
 
 window.addEventListener("scroll", () => {
-  if (window.scrollY >= 60) {
+  if (window.scrollY >= 10) {
     navbar.classList.add("scrolled");
     // if (navbarLinks.classList.contains("expanded")) {
     // }
@@ -21,6 +21,7 @@ window.addEventListener("resize", () => {
 });
 
 navDropDownButton.addEventListener("click", (e) => {
+  navbar.classList.toggle("expanded");
   navbarLinks.classList.toggle("expanded");
   e.stopPropagation();
 });

@@ -22,14 +22,10 @@
         const storageTheme = localStorage.getItem("theme") || "dark";
         document.documentElement.setAttribute("data-theme", storageTheme);
     </script> #}
+    <script src="/public/js/timeThemer.bundle.js"></script>
 
     <div class="wip-container">
         <span class="wip-title">Version: {{ env!("CARGO_PKG_VERSION") }}α</span>
-    </div>
-
-
-    <div class="top-container">
-        <span class="top-logo">Aerlon</span>
     </div>
 
     {% include "./includes/navbar.html.j2" %}

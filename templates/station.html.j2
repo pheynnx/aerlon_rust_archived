@@ -5,21 +5,19 @@
 {% block content %}
 <div class="main-container">
     <div class="station-container">
-        <h1>Blog and HTTP Benchmarking site</h1>
+        <h1>Aerlon</h1>
         <h3>
-            My goal is to benchmark HTTP libraries across large sets of languages, hardware and data
-            structures...
+            Air station where knowledge and wisdom are traded among all voyagers
         </h3>
+        <h4>Personal blog and HTTP benchmarking</h4>
     </div>
     <div class="station-navigation">
         <nav hx-boost="true" class="station-navbar">
             <div class="station-links">
-                <a class="station-link{%- if uri=="/blog" %} active{% endif %}" href="/blog">Blog</a>
-                {# <a class="station-link{%- if uri==" /series" %} active{% endif %}" href="/series">Series</a> #}
-                <a class="station-link{%- if uri=="/benchmarks" %} active{% endif %}"
-                    href="/benchmarks">Benchmarks</a>
-                <a class="station-link{%- if uri=="/rng" %} active{% endif %}" href="/rng">RNG</a>
-                <a class="station-link{%- if uri=="/readme" %} active{% endif %}" href="/readme">Readme</a>
+                <a class="station-link" href="/blog">Blog</a>
+                <a class="station-link" href="/benchmarks">Benchmarks</a>
+                <a class="station-link" href="/rng">RNG</a>
+                <a class="station-link" href="/readme">Readme</a>
             </div>
         </nav>
     </div>
