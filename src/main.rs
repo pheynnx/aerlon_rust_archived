@@ -87,20 +87,20 @@ async fn main() -> Result<(), AppError> {
         .route("/benchmarks", get(benchmarks_handler))
         .route("/rng", get(rng_hander))
         .route("/rng_value", get(rng_value))
-        .route("/readme", get(readme_handler))
-        .layer(
-            ServiceBuilder::new()
-                // .layer(HandleErrorLayer::new(|_: BoxError| async move {
-                //     StatusCode::REQUEST_TIMEOUT
-                // }))
-                // .layer(MetricsMiddleware::new(shared_state.clone()))
-                .layer(HandleErrorLayer::new(|e: BoxError| async move {
-                    display_error(e)
-                }))
-                .layer(GovernorLayer {
-                    config: Box::leak(governor_conf),
-                }),
-        );
+        .route("/readme", get(readme_handler));
+    // .layer(
+    //     ServiceBuilder::new()
+    //         .layer(HandleErrorLayer::new(|_: BoxError| async move {
+    //             StatusCode::REQUEST_TIMEOUT
+    //         }))
+    //         .layer(MetricsMiddleware::new(shared_state.clone()))
+    //         .layer(HandleErrorLayer::new(|e: BoxError| async move {
+    //             display_error(e)
+    //         }))
+    //         .layer(GovernorLayer {
+    //             config: Box::leak(governor_conf),
+    //         }),
+    // );
 
     let admin_router = Router::new()
         .nest(
