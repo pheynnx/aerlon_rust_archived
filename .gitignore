@@ -4,9 +4,7 @@
 
 # compiled
 public/css/*
-public/js/*.bundle.js
-public/js/*.bundle.js.*
-templates/compiled
+public/js/compiled
 
 # node
 node_modules
