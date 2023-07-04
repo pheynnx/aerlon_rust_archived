@@ -1,6 +1,6 @@
 ## Aerlon
 
-## [0.11.4]
+## [0.12.0]
 
 ## Project Layout
 

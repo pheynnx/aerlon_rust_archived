@@ -22,7 +22,7 @@
         const storageTheme = localStorage.getItem("theme") || "dark";
         document.documentElement.setAttribute("data-theme", storageTheme);
     </script> #}
-    <script src="/public/js/timeThemer.bundle.js"></script>
+    <script src="/public/js/compiled/timeThemer-compiled.js"></script>
 
     <div class="wip-container">
         <span class="wip-title">Version: {{ env!("CARGO_PKG_VERSION") }}α</span>
@@ -31,7 +31,7 @@
     {% include "./includes/navbar.html.j2" %}
 
     {% block content %}{% endblock %}
-    <script defer src="/public/js/navigation.bundle.js"></script>
+    <script src="/public/js/compiled/navigation-compiled.js"></script>
 </body>
 
 </html>

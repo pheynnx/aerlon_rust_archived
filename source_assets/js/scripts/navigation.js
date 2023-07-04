@@ -28,10 +28,12 @@ navDropDownButton.addEventListener("click", (e) => {
 
 document.addEventListener("click", (e) => {
   if (e.target.closest("#navbar")) return;
+  navbar.classList.remove("expanded");
   navbarLinks.classList.remove("expanded");
 });
 
 document.addEventListener("touchmove", (e) => {
   if (e.target.closest("#navbar")) return;
+  navbar.classList.remove("expanded");
   navbarLinks.classList.remove("expanded");
 });

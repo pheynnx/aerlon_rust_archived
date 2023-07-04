@@ -8,9 +8,9 @@ const currentTime = parseInt(
   })
 );
 
-document.documentElement.setAttribute("data-sky", currentTime);
+// document.documentElement.setAttribute("data-sky", currentTime);
 
-if (currentTime <= 6 || currentTime >= 8) {
+if (currentTime <= 7 || currentTime >= 19) {
   document.documentElement.setAttribute("data-time", "night");
 } else {
   document.documentElement.setAttribute("data-time", "day");

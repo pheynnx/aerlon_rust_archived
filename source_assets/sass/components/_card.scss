@@ -40,13 +40,17 @@
 }
 
 .featured-posts {
-  padding: 10px 10px 0px 10px;
+  padding: 10px;
   background: var(--card-featured-background);
   border: 1px solid var(--card-featured-border);
   border-radius: 0.4rem;
   margin-bottom: 20px;
   height: min-content;
   width: 100%;
+}
+
+.featured-posts .card {
+  margin-bottom: 0px;
 }
 
 .card {
@@ -63,8 +67,11 @@
 .card-header-info {
   width: 100%;
   display: grid;
-  margin-bottom: 7px;
-  line-height: 1.425;
+  margin-bottom: 8px;
+}
+
+.card-header {
+  padding: 5px 0;
 }
 
 .card-header-anchor {
@@ -73,7 +80,7 @@
 
 .card-title {
   color: var(--card-title);
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -96,6 +103,7 @@
 }
 
 .card-snippet {
+  line-height: 1.6;
   font-size: 16px;
   color: var(--card-date);
 }

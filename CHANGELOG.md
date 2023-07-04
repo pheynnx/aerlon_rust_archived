@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.12.0] - 2023-07-03
+
+#### Added
+
+- cleaned up a lot of pages and added heads for a more polished look
+  - this is missing a lot of art and styling but trying to get back to a publishable place
+
+#### Changed
+
+- moved to a day and night only cycle
+  - easier to manage and looks better
+- webpack has been completely removed; all esbuild now
+  - issues with code splitting in esbuild though, might have to rethink this area in the future
+
+#### Fixed
+
+- `expanded` class was not being removed from the navigation bar on close
+
 ## [0.11.4] - 2023-06-30
 
 #### Added
