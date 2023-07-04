@@ -4,17 +4,17 @@
   position: sticky;
   top: 22px;
   width: 100%;
-  // background-color: var(--navbar-background);
+  background-color: var(--nav-bc);
   height: 50px;
 
   &.expanded {
-    background-color: rgb(17, 17, 17);
-    border-bottom: 1px solid var(--theme-main-color);
+    background-color: var(--nav-bc-expanded);
+    border-bottom: 1px solid var(--tmc);
   }
 
   &.scrolled {
     transition: background 0.2s ease-in;
-    background-color: #111111ee;
+    background-color: var(--nav-bc-scrolled);
   }
 }
 
@@ -22,7 +22,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  // padding: 12px 0px;
 }
 
 .navbar-logo {
@@ -31,16 +30,34 @@
   margin-right: 10px;
 }
 
-.navbar-logo-outer {
-  fill: var(--navbar-logo-outer);
-}
-
-.navbar-logo-inner {
-  fill: var(--navbar-logo-inner);
-}
-
-.side-navbar {
+.dropdown-navigation {
   display: none;
+  position: absolute;
+  top: 15px;
+  right: 0;
+}
+
+.dropdown-navigation-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-navigation-button-icon {
+  fill: var(--nav-dd-svg);
+  height: 18px;
+  width: 18px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .dropdown-navigation-button-icon:hover {
+    fill: #1b9bd1;
+    transform: rotate(90deg);
+    transition: 0.2s ease-in-out;
+  }
 }
 
 .navbar-links {
@@ -49,11 +66,11 @@
   justify-content: center;
 
   &.expanded {
-    // border-bottom: 2px solid var(--theme-main-color);
+    border-bottom: 1px solid var(--tmc);
     display: flex;
     padding: 20px 0;
     margin-top: 50px;
-    background-color: rgb(17, 17, 17);
+    background-color: #111111;
     position: sticky;
     justify-content: start;
     height: min-content;
@@ -74,25 +91,24 @@
 }
 
 .navbar-link {
-  // align-self: center;
   padding: 0px 10px;
   font-size: 17px;
   font-weight: 400;
   line-height: 1;
   color: var(--navbar-link);
   text-decoration: none;
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
-  user-select: none; /* Standard */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   @media (hover: hover) {
     &:hover {
-      color: var(--navbar-link-hover);
+      color: var(--nav-lh);
     }
   }
 
   &.active {
-    color: var(--navbar-link-hover);
+    color: var(--nav-lh);
   }
 }

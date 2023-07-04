@@ -13,21 +13,9 @@
 }
 
 @media only screen and (min-width: 800px) {
-  .main-container {
-    margin-left: 15%;
-    margin-right: 15%;
-  }
-
   .cards-container {
     grid-template-columns: 1fr 1fr;
-    column-gap: 1.5rem;
-  }
-}
-
-@media only screen and (min-width: 961px) {
-  .main-container {
-    margin-left: 20%;
-    margin-right: 20%;
+    column-gap: 2rem;
   }
 }
 
@@ -35,6 +23,13 @@
   .navbar {
     margin-left: 5%;
     margin-right: 5%;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .main-container {
+    margin-left: 20%;
+    margin-right: 20%;
   }
 }
 

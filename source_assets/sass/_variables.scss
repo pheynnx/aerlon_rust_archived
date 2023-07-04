@@ -1,45 +1,40 @@
-$theme-color: #185c9c;
+$tmc: #185c9c;
 
 :root {
-  --theme-main-color: #{$theme-color};
+  // used for when I am being lazy and just want to grab the main color for now
+  --tmc: #{$tmc};
 
   // Html
-  --html-color: #ffffff;
-  --background: linear-gradient(to bottom left, #90dffe, #38a3d1);
+  --html-c: #ffffff;
+  --html-bc: linear-gradient(to bottom left, #90dffe, #38a3d1);
 
   // Navbar
-  --navbar-background: #{$theme-color};
-  // --navbar-background: #111111ee;
-  --navbar-border-color: #333;
-  --navbar-link: #ffffff;
-  --navbar-link-hover: #0f63e2;
-  --navbar-link-hover-background: #3f3f46;
-  --navbar-logo-inner: #fff;
-  --navbar-logo-outer: #{$theme-color};
-  --navbar-settings: #fff;
-
-  // Sidebar
-  --themer-content-background: #000000;
+  --nav-bc: #7ed1f7;
+  --nav-bc-expanded: #111111;
+  --nav-bc-scrolled: #111111f6;
+  --nav-l: #ffffff;
+  --nav-lh: #0f63e2;
+  --nav-lhbc: #3f3f46;
+  --nav-dd-svg: #fff;
 
   // Card
-  --card-title: #ffffff;
-  --card-title-hover: #3b57d4;
-  --card-date: #c8c8c8;
-  --card-category-info: #1f1f1f;
-  --card-category-hover-background: #525252;
+  --card-tc: #ffffff;
+  --card-tch: #3b57d4;
+  --card-dc: #ffffff;
+  --card-cat: #1f1f1f;
+  --card-cathbc: #525252;
 
   // Series Card
-  --card-series-background: #161b22;
-  --card-series-border: #30363d;
-  --card-series: #fafafa;
-  --card-series-hover-background: #71717a;
-  --card-series-hover-span: #fdfdfd;
+  --card-serbc: #161b22;
+  --card-serbrdc: #30363d;
+  --card-ser: #fafafa;
+  --card-serhbc: #71717a;
+  --card-serhs: #fdfdfd;
 
   // Featured Card
-  --card-featured-background: #{rgba($theme-color, 0.3)};
-  // --card-featured-border: #fff;
+  --card-fbc: #{rgba($tmc, 0.3)};
 
-  --container-header: #{$theme-color};
+  --container-header: #{$tmc};
   --main-header-color: #d4d4da;
 
   // Markdown
@@ -54,13 +49,18 @@ $theme-color: #185c9c;
   --markdown-a-hover-color: #40d0f0c0;
 
   --code-background-color: #01790b07;
+
+  // wip
+  --wip-bc: #030303;
 }
 
 [data-time="day"] {
   --card-date: #fff;
-  --background: linear-gradient(to bottom, #69bee9 0%, #2f68aa 100%);
+  --html-bc: linear-gradient(to bottom, #69bee9 0%, #2f68aa 100%);
 }
 
 [data-time="night"] {
-  --background: linear-gradient(to bottom, #00000c 80%, #150800 100%);
+  --html-bc: linear-gradient(to bottom, #010118 60%, #140a04 90%, #1d0c01 100%);
+  --wip-bc: #185c9c;
+  --nav-bc: none;
 }

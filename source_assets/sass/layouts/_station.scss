@@ -35,11 +35,11 @@
 
   @media (hover: hover) {
     &:hover {
-      color: var(--navbar-link-hover);
+      color: var(--nav-lh);
     }
   }
 
   &.active {
-    color: var(--navbar-link-hover);
+    color: var(--nav-lh);
   }
 }

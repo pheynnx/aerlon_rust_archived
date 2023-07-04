@@ -2,4 +2,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-items: center;
+  margin-bottom: 30px;
+}
+
+.featured-header {
+  align-self: flex-start;
+  line-height: 1;
+  margin: 0;
+  margin-bottom: 15px;
+  padding-left: 10px;
 }

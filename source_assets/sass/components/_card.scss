@@ -10,18 +10,18 @@
   padding: 11px 10px;
   margin: 10px 8px;
   text-decoration: none;
-  background: var(--card-series-background);
+  background: var(--card-serbc);
   border-radius: 0.25rem;
-  border: 1px solid var(--card-series-border);
+  border: 1px solid var(--card-serbrdc);
   line-height: 1;
   text-align: center;
 
   &:hover {
-    background: var(--card-series-hover-background);
+    background: var(--card-serhbc);
   }
 
   &:hover span {
-    color: var(--card-series-hover-span);
+    color: var(--card-serhs);
   }
 }
 
@@ -29,7 +29,7 @@
   font-size: 18px;
   text-transform: capitalize;
   font-weight: 400;
-  color: var(--card-series);
+  color: var(--card-ser);
 }
 
 .cards-container {
@@ -40,28 +40,33 @@
 }
 
 .featured-posts {
-  padding: 10px;
-  background: var(--card-featured-background);
-  border: 1px solid var(--card-featured-border);
-  border-radius: 0.4rem;
-  margin-bottom: 20px;
+  // padding: 20px;
+  background: var(--card-fbc);
+  border-radius: 0.2rem;
+  // margin-bottom: 15px;
   height: min-content;
   width: 100%;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
 }
 
 .featured-posts .card {
   margin-bottom: 0px;
+  padding: 15px;
 }
 
 .card {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
+  padding: 0 10px;
 }
 
 .card-header-info {
@@ -79,7 +84,7 @@
 }
 
 .card-title {
-  color: var(--card-title);
+  color: var(--card-tc);
   font-size: 22px;
   font-weight: 700;
   word-wrap: break-word;
@@ -93,19 +98,19 @@
   }
 
   &:hover {
-    color: var(--card-title-hover);
+    color: var(--card-th);
   }
 }
 
 .card-date {
   font-size: 16px;
-  color: var(--card-date);
+  color: var(--card-dc);
 }
 
 .card-snippet {
   line-height: 1.6;
   font-size: 16px;
-  color: var(--card-date);
+  color: var(--card-dc);
 }
 
 .card-categories {
@@ -121,14 +126,14 @@
 }
 
 .card-category-info {
-  background: var(--card-category-info);
+  background: var(--card-cat);
   border-radius: 0.25rem;
   font-size: 13px;
   color: #fafafa;
   padding: 4px 8px;
 
   &:hover {
-    background: var(--card-category-hover-background);
+    background: var(--card-cathbc);
   }
 }
 

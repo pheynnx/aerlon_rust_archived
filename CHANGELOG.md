@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.12.2] - 2023-07-04
+
+#### Changed
+
+- shortening css variable names (wip)
+- cleaning up css variables (wip)
+
+#### Fixed
+
+- navbar active color
+- html background color view height for page changes on mobile
+- expanded class wasn't being removed on resize event
+- admin site background color
+
 ## [0.12.1] - 2023-07-04
 
 #### Fixed

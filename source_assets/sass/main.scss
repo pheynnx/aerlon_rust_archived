@@ -4,10 +4,9 @@
 html {
   font-family: "Gx", sans-serif;
   -webkit-tap-highlight-color: transparent;
-  background: var(--background);
-  // background-size: 100% 100vh;
-  color: var(--html-color);
-  min-height: 100%;
+  background: var(--html-bc);
+  color: var(--html-c);
+  min-height: 100vh;
 
   &:focus {
     outline: 0;
@@ -39,7 +38,7 @@ body {
   background: #f1f1f100;
 }
 
-// FIXME
+// TODO
 ::-webkit-scrollbar-thumb {
   background: #237498;
   border-radius: 4px;

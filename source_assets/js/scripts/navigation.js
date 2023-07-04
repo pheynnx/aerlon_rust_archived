@@ -16,6 +16,7 @@ window.addEventListener("scroll", () => {
 
 window.addEventListener("resize", () => {
   if (window.innerWidth >= 530) {
+    navbar.classList.remove("expanded");
     navbarLinks.classList.remove("expanded");
   }
 });
@@ -32,8 +33,8 @@ document.addEventListener("click", (e) => {
   navbarLinks.classList.remove("expanded");
 });
 
-document.addEventListener("touchmove", (e) => {
-  if (e.target.closest("#navbar")) return;
-  navbar.classList.remove("expanded");
-  navbarLinks.classList.remove("expanded");
-});
+// document.addEventListener("touchmove", (e) => {
+//   if (e.target.closest("#navbar")) return;
+//   navbar.classList.remove("expanded");
+//   navbarLinks.classList.remove("expanded");
+// });
