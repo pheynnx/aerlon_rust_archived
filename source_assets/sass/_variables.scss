@@ -8,7 +8,7 @@ $tmc: #185c9c;
   --html-c: #ffffff;
   --html-bc: linear-gradient(to bottom left, #90dffe, #38a3d1);
 
-  // Navbar
+  // Nav
   --nav-bc: #7ed1f7;
   --nav-bc-expanded: #111111;
   --nav-bc-scrolled: #111111f6;
@@ -19,10 +19,13 @@ $tmc: #185c9c;
 
   // Card
   --card-tc: #ffffff;
-  --card-tch: #3b57d4;
+  --card-th: #3b57d4;
   --card-dc: #ffffff;
   --card-cat: #1f1f1f;
   --card-cathbc: #525252;
+
+  // Featured Card
+  --card-fbc: #{rgba($tmc, 0.4)};
 
   // Series Card
   --card-serbc: #161b22;
@@ -30,9 +33,6 @@ $tmc: #185c9c;
   --card-ser: #fafafa;
   --card-serhbc: #71717a;
   --card-serhs: #fdfdfd;
-
-  // Featured Card
-  --card-fbc: #{rgba($tmc, 0.3)};
 
   --container-header: #{$tmc};
   --main-header-color: #d4d4da;

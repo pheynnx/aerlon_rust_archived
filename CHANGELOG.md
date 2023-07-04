@@ -5,12 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.12.3] - 2023-07-04
+
+#### Added
+
+- `#![allow(unused)]` to the top of `main.rs` to ignore these compiler warnings for now; placed a `TODO` on it to clean this up in a later version
+
+#### Changed
+
+- more work on the cards post system and css styling
+
 ## [0.12.2] - 2023-07-04
 
 #### Changed
 
-- shortening css variable names (wip)
-- cleaning up css variables (wip)
+- started shortening some css variable names
+- cleaning up some of the css variables
 
 #### Fixed
 
