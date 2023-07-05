@@ -6,7 +6,7 @@ $tmc: #185c9c;
 
   // Html
   --html-c: #ffffff;
-  --html-bc: linear-gradient(to bottom left, #90dffe, #38a3d1);
+  --html-bc: linear-gradient(to bottom, #08070c 10%, #16103d 100%);
 
   // Nav
   --nav-bc: #7ed1f7;
@@ -51,16 +51,76 @@ $tmc: #185c9c;
   --code-background-color: #01790b07;
 
   // wip
-  --wip-bc: #030303;
-}
-
-[data-time="day"] {
-  --card-date: #fff;
-  --html-bc: linear-gradient(to bottom, #69bee9 0%, #2f68aa 100%);
-}
-
-[data-time="night"] {
-  --html-bc: linear-gradient(to bottom, #010118 60%, #140a04 90%, #1d0c01 100%);
   --wip-bc: #185c9c;
   --nav-bc: none;
+}
+
+$starFieldWidth: 4000;
+$starFieldHeight: 400;
+$starStartOffset: 600px;
+
+@function create-stars($n) {
+  $stars: "#{random($starFieldWidth)}px #{random($starFieldHeight)}px #FFF";
+
+  @for $i from 2 through $n {
+    $stars: "#{$stars} , #{random($starFieldWidth)}px #{random($starFieldHeight)}px #FFF";
+  }
+  @return unquote($stars);
+}
+
+.stars {
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: create-stars(150);
+  animation: animStar 1000s ease-in-out infinite;
+  &:after {
+    content: "";
+    top: -$starStartOffset;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    position: absolute;
+    background: transparent;
+    box-shadow: create-stars(150);
+  }
+}
+
+.stars2 {
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: create-stars(150);
+  animation: animStar 700s linear infinite;
+  &:after {
+    content: "";
+    top: -$starStartOffset;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    position: absolute;
+    background: transparent;
+    box-shadow: create-stars(100);
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-#{$starFieldHeight}px)
+      translateX(-#{$starFieldWidth}px);
+  }
 }

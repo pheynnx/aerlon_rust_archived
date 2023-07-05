@@ -1,6 +1,6 @@
 ## Aerlon
 
-## [0.12.4]
+## [0.12.5]
 
 ## Project Layout
 
@@ -16,4 +16,3 @@
 ### Database stack
 
 - CockroachDB
-- Redis

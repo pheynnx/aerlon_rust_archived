@@ -17,16 +17,14 @@
 </head>
 
 <body>
-    {#
-    <script>
-        const storageTheme = localStorage.getItem("theme") || "dark";
-        document.documentElement.setAttribute("data-theme", storageTheme);
-    </script> #}
     <script src="/public/js/compiled/timeThemer-compiled.js"></script>
 
     <div class="wip-container">
         <span class="wip-title">Version: {{ env!("CARGO_PKG_VERSION") }}α</span>
     </div>
+
+    <div class="stars"></div>
+    <div class="stars2"></div>
 
     {% include "./includes/navbar.html.j2" %}
 
