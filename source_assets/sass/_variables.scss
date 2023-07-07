@@ -10,8 +10,8 @@ $tmc: #185c9c;
 
   // Nav
   --nav-bc: #7ed1f7;
-  --nav-bc-expanded: #111111;
-  --nav-bc-scrolled: #111111f6;
+  --nav-bc-expanded: #0e0e0e;
+  --nav-bc-scrolled: #0e0e0ef6;
   --nav-l: #ffffff;
   --nav-lh: #0f63e2;
   --nav-lhbc: #3f3f46;
@@ -25,7 +25,7 @@ $tmc: #185c9c;
   --card-cathbc: #525252;
 
   // Featured Card
-  --card-fbc: #{rgba($tmc, 0.4)};
+  --card-fbc: #{$tmc};
 
   // Series Card
   --card-serbc: #161b22;
@@ -69,6 +69,7 @@ $starStartOffset: 600px;
 }
 
 .stars {
+  z-index: -11;
   width: 2px;
   height: 2px;
   border-radius: 50%;
@@ -76,7 +77,7 @@ $starStartOffset: 600px;
   box-shadow: create-stars(150);
   animation: animStar 1000s ease-in-out infinite;
   &:after {
-    content: "";
+    content: " ";
     top: -$starStartOffset;
     width: 2px;
     height: 2px;
@@ -88,6 +89,7 @@ $starStartOffset: 600px;
 }
 
 .stars2 {
+  z-index: -10;
   width: 1px;
   height: 1px;
   border-radius: 50%;
@@ -95,7 +97,7 @@ $starStartOffset: 600px;
   box-shadow: create-stars(150);
   animation: animStar 700s linear infinite;
   &:after {
-    content: "";
+    content: " ";
     top: -$starStartOffset;
     width: 1px;
     height: 1px;
