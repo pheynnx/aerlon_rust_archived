@@ -5,57 +5,47 @@
 {% block content %}
 <div class="main-container">
     <h1>Blog Posts</h1>
+
     <h2 class="featured-header">Featured</h2>
     {% if !(featured.is_empty()) %}
-    <div class="featured-posts-container">
+    <div class="featured-cards-container">
         {% for meta in featured %}
-        <div class="featured-posts" hx-boost="true">
-            <div class="card">
-                <div class="card-header-info">
-                    <span class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</span>
-                    <div class="card-header">
-                        <a class="card-header-anchor" href="/blog/{{ meta.slug }}">
-                            <p class="card-title">{{ meta.title }}</p>
-                        </a>
+        {# <div class="featured-posts"> #}
+            <div class="featured card">
+                <a class="card-anchor" href="/blog/{{ meta.slug }}">
+                    <div class="card-header-info">
+                        <p class="card-title">{{ meta.title }}</p>
+                        <p class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</p>
                     </div>
-                    <div class="card-snippet-container">
-                        <p class="card-snippet">{{ meta.post_snippet }}</p>
-                    </div>
-                </div>
-                <span class="card-categories">
+                </a>
+                <div class="card-categories">
                     {% for category in meta.categories %}
                     <a class="card-category" href="/category/{{ category }}">
-                        <span class="card-category-info">{{ category }}</span>
+                        <p class="card-category-info">{{ category }}</p>
                     </a>
                     {% endfor %}
-                </span>
+                </div>
             </div>
-        </div>
+            {#
+        </div> #}
         {% endfor %}
     </div>
     {% endif %}
     <div class="cards-container">
         {% for meta in metas %}
-        <div class="card-box">
-            <div class="card" hx-boost="true">
+        <div class="card">
+            <a class="card-anchor" href="/blog/{{ meta.slug }}">
                 <div class="card-header-info">
-                    <span class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</span>
-                    <div class="card-header">
-                        <a class="card-header-anchor" href="/blog/{{ meta.slug }}">
-                            <p class="card-title">{{ meta.title }}</p>
-                        </a>
-                    </div>
-                    <div class="card-snippet-container">
-                        <p class="card-snippet">{{ meta.post_snippet }}</p>
-                    </div>
+                    <p class="card-title">{{ meta.title }}</p>
+                    <p class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</p>
                 </div>
-                <span class="card-categories">
-                    {% for category in meta.categories %}
-                    <a class="card-category" href="/category/{{ category }}">
-                        <span class="card-category-info">{{ category }}</span>
-                    </a>
-                    {% endfor %}
-                </span>
+            </a>
+            <div class="card-categories">
+                {% for category in meta.categories %}
+                <a class="card-category" href="/category/{{ category }}">
+                    <p class="card-category-info">{{ category }}</p>
+                </a>
+                {% endfor %}
             </div>
         </div>
         {% endfor %}

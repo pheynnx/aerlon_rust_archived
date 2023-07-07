@@ -17,12 +17,12 @@
 </head>
 
 <body>
+    <div class="stars"></div>
+    <div class="stars2"></div>
+
     <div class="wip-container">
         <span class="wip-title">Version: {{ env!("CARGO_PKG_VERSION") }}α</span>
     </div>
-
-    <div class="stars"></div>
-    <div class="stars2"></div>
 
     {% block content %}{% endblock %}
 </body>

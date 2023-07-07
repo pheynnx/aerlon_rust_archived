@@ -6,7 +6,7 @@ $tmc: #185c9c;
 
   // Html
   --html-c: #ffffff;
-  --html-bc: linear-gradient(to bottom, #08070c 10%, #16103d 100%);
+  --html-bc: linear-gradient(to bottom, rgb(31, 29, 54) 10%, #16103d 100%);
 
   // Nav
   --nav-bc: #7ed1f7;
@@ -21,7 +21,7 @@ $tmc: #185c9c;
   --card-tc: #ffffff;
   --card-th: #3b57d4;
   --card-dc: #ffffff;
-  --card-cat: #1f1f1f;
+  --card-cat: #161616;
   --card-cathbc: #525252;
 
   // Featured Card
@@ -73,6 +73,7 @@ $starStartOffset: 600px;
   width: 2px;
   height: 2px;
   border-radius: 50%;
+  position: absolute;
   background: transparent;
   box-shadow: create-stars(150);
   animation: animStar 1000s ease-in-out infinite;
@@ -93,6 +94,7 @@ $starStartOffset: 600px;
   width: 1px;
   height: 1px;
   border-radius: 50%;
+  position: absolute;
   background: transparent;
   box-shadow: create-stars(150);
   animation: animStar 700s linear infinite;
@@ -105,15 +107,6 @@ $starStartOffset: 600px;
     position: absolute;
     background: transparent;
     box-shadow: create-stars(100);
-  }
-}
-
-@keyframes flicker {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
   }
 }
 
