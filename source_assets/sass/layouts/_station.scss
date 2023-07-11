@@ -4,6 +4,15 @@
   // gap: 5px;
 }
 
+.station-title {
+  margin-top: 20px;
+  margin-bottom: 0;
+  text-align: center;
+  font-weight: 100;
+  font-family: "Alagard";
+  font-size: min(25vw, 110px);
+}
+
 .station-navigation {
   display: grid;
   height: 43px;

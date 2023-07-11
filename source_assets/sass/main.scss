@@ -51,8 +51,8 @@ body {
 .main-container {
   display: flex;
   flex-direction: column;
-  margin-left: 6%;
-  margin-right: 6%;
+  margin-left: 8%;
+  margin-right: 8%;
   align-items: center;
   margin-bottom: 20px;
 }
@@ -79,6 +79,7 @@ body {
 
 @import "./layouts/_station.scss";
 @import "./layouts/_blog.scss";
+@import "./layouts/_benchmarks.scss";
 @import "./layouts/_markdown.scss";
 @import "./layouts/_about.scss";
 @import "./layouts/_admin-login";

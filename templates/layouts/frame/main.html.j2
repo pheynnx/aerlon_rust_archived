@@ -12,13 +12,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="/public/css/main.css" />
-    {% block head %}{% endblock %}
+    <link rel="preload" href="/public/fonts/Alagard.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/public/fonts/Gx.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/public/fonts/CascadiaMono.woff2" as="font" type="font/woff2" crossorigin>
     <script src="/public/js/htmx.min.js"></script>
+    <script src="/public/js/idiomorph-ext.min.js"></script>
 </head>
 
 <body>
-    <script src="/public/js/compiled/timeThemer-compiled.js"></script>
-
     <div class="stars"></div>
     <div class="stars2"></div>
 
@@ -26,10 +27,7 @@
         <span class="wip-title">Version: {{ env!("CARGO_PKG_VERSION") }}α</span>
     </div>
 
-    {% include "./includes/navbar.html.j2" %}
-
-    {% block content %}{% endblock %}
-    <script src="/public/js/compiled/navigation-compiled.js"></script>
+    {% block main %}{% endblock %}
 </body>
 
 </html>

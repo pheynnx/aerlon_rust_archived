@@ -19,7 +19,10 @@ use tokio::{fs, sync::Mutex};
 use tower::ServiceBuilder;
 use tower_cookies::CookieManagerLayer;
 use tower_governor::{errors::display_error, governor::GovernorConfigBuilder, GovernorLayer};
-use tower_http::services::{ServeDir, ServeFile};
+use tower_http::{
+    compression::CompressionLayer,
+    services::{ServeDir, ServeFile},
+};
 use utilities::templates::HtmlTemplate;
 
 use database::{initialize_connections, DatabaseState};

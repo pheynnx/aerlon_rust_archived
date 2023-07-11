@@ -1,11 +1,11 @@
-{% extends "./layouts/master.html.j2" %}
+{% extends "./layouts/app.html.j2" %}
 
 {% block title %}{% endblock %}
 
 {% block content %}
 <div class="main-container">
     <h1>RNG</h1>
-    <h3 class="rng-number" hx-get="/rng_value" hx-trigger="load" id="value-one">0</h3>
+    <h3 class="rng-number" hx-get="/rng_value" id="value-one">0</h3>
     <button class="rng-button" hx-get="/rng_value" hx-target="#value-one" hx-trigger="click">Generate</button>
 </div>
 {% endblock %}

@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.12.8] - 2023-07-10
+
+#### Added
+
+- Alagard font
+- preload font scripts from html head
+
+#### Changed
+
+- reworked askama templates to use a higher level block
+  - so now everything draws from a main frame and then either an app layout or station layout
+- adjusted some of the header to use new font
+  - working on logoing still
+- lightened the background gradient color, so site looks better on mobile screens with lower brightness
+
 ## [0.12.7] - 2023-07-07
 
 #### Changed
