@@ -191,17 +191,23 @@ async fn error_fallback<T>(req: Request<T>) -> Result<impl IntoResponse, AppErro
 #[template(path = "readme.html.j2")]
 struct ReadmeTemplate {
     readme_markdown: String,
+    changelog_markdown: String,
     uri: String,
 }
 
 // Temp handler; need to be handled correctly and moved
 async fn readme_handler<T>(req: Request<T>) -> Result<impl IntoResponse, AppError> {
-    let file_contents = fs::read_to_string("./README.md").await.unwrap_or_default();
+    let file_contents_readme = fs::read_to_string("./README.md").await.unwrap_or_default();
+    let file_contents_changelog = fs::read_to_string("./CHANGELOG.md")
+        .await
+        .unwrap_or_default();
 
-    let readme_markdown = markdown_to_html(&file_contents, &ComrakOptions::default());
+    let readme_markdown = markdown_to_html(&file_contents_readme, &ComrakOptions::default());
+    let changelog_markdown = markdown_to_html(&file_contents_changelog, &ComrakOptions::default());
 
     Ok(HtmlTemplate(ReadmeTemplate {
         readme_markdown,
+        changelog_markdown,
         uri: req.uri().to_string(),
     }))
 }
@@ -212,6 +218,7 @@ struct BenchmarksTemplate {
     uri: String,
 }
 
+// Temp handler; need to be handled correctly and moved
 async fn benchmarks_handler<T>(req: Request<T>) -> Result<impl IntoResponse, AppError> {
     Ok(HtmlTemplate(BenchmarksTemplate {
         uri: req.uri().to_string(),

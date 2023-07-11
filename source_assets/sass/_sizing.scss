@@ -1,17 +1,3 @@
-// @media only screen and (min-width: 400px) {
-//   .main-container {
-//     margin-left: 8%;
-//     margin-right: 8%;
-//   }
-// }
-
-@media only screen and (min-width: 600px) {
-  .main-container {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-}
-
 @media only screen and (min-width: 651px) {
   .cards-container {
     grid-template-columns: 1fr 1fr;
@@ -23,13 +9,6 @@
   .navbar {
     margin-left: 5%;
     margin-right: 5%;
-  }
-}
-
-@media only screen and (min-width: 1400px) {
-  .main-container {
-    margin-left: 20%;
-    margin-right: 20%;
   }
 }
 
@@ -47,41 +26,6 @@
   code {
     font-size: 14px;
   }
-
-  // .featured-posts-container {
-  //   width: 100%;
-  // }
-
-  // .cards-container {
-  //   display: flex;
-  //   width: 100%;
-  // }
-
-  // .card-box {
-  //   display: flex;
-  //   width: 100%;
-  // }
-
-  // .featured-posts .card {
-  //   padding: 10px;
-  // }
-
-  // .card {
-  //   padding: 10px;
-  // }
-
-  // .card-header-info {
-  //   margin-bottom: 3px;
-  //   justify-items: center;
-  // }
-
-  // .card-categories {
-  //   justify-content: center;
-  // }
-
-  // .card-snippet-container {
-  //   display: none;
-  // }
 }
 
 @media only screen and (max-width: 530px) {
@@ -118,9 +62,6 @@
     &:horizontal {
       height: 6px;
     }
-  }
-
-  pre {
   }
 
   code {

@@ -5,7 +5,7 @@
 {% block content %}
 <div class="blog-container">
     <div class="markdown-container">
-        <h1>{{post.title}}</h1>
+        <h1 class="markdown-title">{{post.title}}</h1>
         <div class="card-categories-markdown-container">
             {% for c in post.categories %}
             <a hx-boost="true" class="card-category-anchor-markdown" href="/category/{{ c }}">

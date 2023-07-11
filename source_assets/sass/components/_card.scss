@@ -54,11 +54,11 @@
 // }
 
 .featured .card-anchor {
-  background-color: #{$tmc};
+  background-color: #5a68e2;
   border: none;
 
   &:hover {
-    background-color: #173597;
+    background-color: #414ec4;
   }
 }
 
@@ -76,7 +76,7 @@
   text-decoration: none;
   text-align: center;
   height: min-content;
-  padding: 8px;
+  padding: 13px;
   margin-bottom: 6px;
 
   &:hover {
@@ -91,10 +91,11 @@
 
 .card-title {
   margin: 0;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   color: var(--card-tc);
   font-size: 25px;
   font-weight: 700;
+  line-height: 1;
   word-wrap: break-word;
   overflow-wrap: break-word;
   -webkit-hyphens: auto;

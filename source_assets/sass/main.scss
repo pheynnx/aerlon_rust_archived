@@ -16,8 +16,8 @@ html {
 body {
   margin: 0;
   padding: 0;
-  // -webkit-font-smoothing: antialiased;
-  // -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 *,
@@ -27,7 +27,8 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
+  background-color: #324372;
+  width: 5px;
 
   &:horizontal {
     height: 4px;
@@ -40,11 +41,11 @@ body {
 
 // TODO
 ::-webkit-scrollbar-thumb {
-  background: #237498;
+  background: #00b7ff;
   border-radius: 4px;
 
   &:hover {
-    background: #555;
+    background: #ffffff;
   }
 }
 
@@ -73,7 +74,6 @@ body {
 
 @import "./components/_navbar.scss";
 @import "./components/_card.scss";
-@import "./components/_readme.scss";
 @import "./components/_404.scss";
 @import "./components/_wip.scss";
 
@@ -85,5 +85,6 @@ body {
 @import "./layouts/_admin-login";
 @import "./layouts/_admin";
 @import "./layouts/_rng";
+@import "./layouts/_readme";
 
 @import "_sizing.scss";

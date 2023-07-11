@@ -3,11 +3,8 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-<div class="main-container">
-    <div>
-        <h1 class="blog-title">Blog Posts</h1>
-    </div>
-
+<div class="blog-index-container">
+    <h1 class="blog-title">Blog Posts</h1>
     <h2 class="featured-header">Featured</h2>
     {% if !(featured.is_empty()) %}
     <div class="featured-cards-container">

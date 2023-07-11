@@ -1,8 +1,23 @@
+.blog-index-container {
+  display: grid;
+  margin-left: 8%;
+  margin-right: 8%;
+  margin-bottom: 20px;
+}
+
 .blog-title {
   margin: 15px 0;
-  font-weight: 100;
-  font-family: "Alagard";
-  font-size: min(15vw, 70px);
+  font-size: min(15vw, 50px);
+  text-align: center;
+}
+
+.featured-header {
+  align-self: flex-start;
+  line-height: 1;
+  margin: 0;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  text-align: center;
 }
 
 .featured-cards-container {
@@ -12,12 +27,4 @@
   margin-bottom: 30px;
   z-index: 1;
   width: 100%;
-}
-
-.featured-header {
-  align-self: flex-start;
-  line-height: 1;
-  margin: 0;
-  margin-bottom: 15px;
-  padding-left: 10px;
 }

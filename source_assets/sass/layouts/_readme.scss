@@ -1,10 +1,13 @@
 .readme-container {
   display: flex;
   flex-direction: column;
-  margin-left: 3%;
-  margin-right: 3%;
+  margin-left: 6%;
+  margin-right: 6%;
   align-items: center;
   margin-bottom: 20px;
+}
+
+.readme-title {
 }
 
 .readme-source-link {
@@ -12,10 +15,10 @@
   font-size: 20px;
   font-weight: 600;
   color: var(--html-c);
-  border-bottom: 1px solid #237498;
+  border-bottom: 1px solid #17adee;
 
   &:hover {
-    color: #237498;
+    color: #86d8fc;
   }
 }
 
@@ -23,7 +26,14 @@
   max-width: 56rem;
   word-wrap: break-word;
 
-  h2:first-of-type {
-    color: #237498;
+  h1:first-of-type {
+    // color: #17adee;
+    text-decoration: underline;
+  }
+
+  a {
+    text-decoration: none;
+    color: #17adee;
+    font-weight: bold;
   }
 }
