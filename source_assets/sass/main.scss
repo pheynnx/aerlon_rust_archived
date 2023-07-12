@@ -1,5 +1,6 @@
 @import "_variables.scss";
 @import "_fonts.scss";
+@import "_mixins.scss";
 
 html {
   font-family: "Gx", sans-serif;
@@ -81,7 +82,6 @@ body {
 @import "./layouts/_blog.scss";
 @import "./layouts/_benchmarks.scss";
 @import "./layouts/_markdown.scss";
-@import "./layouts/_about.scss";
 @import "./layouts/_admin-login";
 @import "./layouts/_admin";
 @import "./layouts/_rng";

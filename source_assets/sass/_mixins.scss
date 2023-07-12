@@ -1,0 +1,6 @@
+@mixin page-headers($size) {
+  margin: 30px 0;
+  font-size: $size;
+  text-align: center;
+  font-family: "Pondar";
+}

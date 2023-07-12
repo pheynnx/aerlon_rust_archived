@@ -11,7 +11,7 @@
         {% for meta in featured %}
         {# <div class="featured-posts"> #}
             <div class="featured card">
-                <a class="card-anchor" href="/blog/{{ meta.slug }}">
+                <a hx-boost="true" class="card-anchor" href="/blog/{{ meta.slug }}">
                     <div class="card-header-info">
                         <p class="card-title">{{ meta.title }}</p>
                         <p class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</p>
@@ -33,7 +33,7 @@
     <div class="cards-container">
         {% for meta in metas %}
         <div class="card">
-            <a class="card-anchor" href="/blog/{{ meta.slug }}">
+            <a hx-boost="true" class="card-anchor" href="/blog/{{ meta.slug }}">
                 <div class="card-header-info">
                     <p class="card-title">{{ meta.title }}</p>
                     <p class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</p>

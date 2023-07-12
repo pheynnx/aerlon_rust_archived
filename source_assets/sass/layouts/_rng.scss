@@ -6,9 +6,7 @@
 }
 
 .rng-title {
-  margin: 15px 0;
-  font-size: min(15vw, 50px);
-  text-align: center;
+  @include page-headers(min(15vw, 50px));
 }
 
 .rng-number {

@@ -8,6 +8,7 @@
 }
 
 .readme-title {
+  @include page-headers(min(15vw, 50px));
 }
 
 .readme-source-link {
