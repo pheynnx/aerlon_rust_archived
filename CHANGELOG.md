@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.12.11] - 2023-07-12
+
+#### Added
+
+- aerlon logo in navbar
+- station page now contains the logo as well
+
+#### Changed
+
+- page headers now scale a little better
+
+#### Fixed
+
+- overflow-x issue on navbar-links in expanded mode
+  - this is now written much better in css
+
 ## [0.12.10] - 2023-07-11
 
 #### Added

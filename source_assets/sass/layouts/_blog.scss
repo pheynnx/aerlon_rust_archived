@@ -6,7 +6,7 @@
 }
 
 .blog-title {
-  @include page-headers(min(15vw, 50px));
+  @include page-headers(min(8vw, 50px));
 }
 
 .featured-header {

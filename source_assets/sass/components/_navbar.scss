@@ -23,10 +23,20 @@
   align-items: center;
 }
 
+.navbar-logo-container {
+  height: 50px;
+  display: none;
+}
+
+.navbar-logo-anchor {
+  height: 25px;
+  width: 35px;
+  justify-self: center;
+}
+
 .navbar-logo {
-  height: 37px;
-  width: 37px;
-  margin-right: 10px;
+  height: 25px;
+  // width: 35px;
 }
 
 .dropdown-navigation {
@@ -69,12 +79,13 @@
     border-bottom: 1px solid #292929;
     display: flex;
     padding: 20px 0;
-    margin-top: 50px;
+    margin-top: 0px;
     background-color: #111111;
     position: sticky;
     justify-content: start;
     height: min-content;
-    width: 100vw;
+    // width: 100vw;
+    width: 100%;
     z-index: 100;
     user-select: none;
     flex-direction: column;

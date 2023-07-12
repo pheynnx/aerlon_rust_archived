@@ -30,16 +30,18 @@
 
 @media only screen and (max-width: 530px) {
   .navbar {
-    justify-content: start;
+    display: grid;
+    grid-template-columns: 1fr;
   }
 
   .navbar-links {
     display: none;
   }
 
-  .navbar-logo {
-    margin-left: 24px;
-    margin-right: 0px;
+  .navbar-logo-container {
+    display: grid;
+    height: 50px;
+    align-items: center;
   }
 
   .dropdown-navigation {
