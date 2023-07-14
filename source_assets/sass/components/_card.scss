@@ -54,11 +54,11 @@
 // }
 
 .featured .card-anchor {
-  background-color: #5a68e2;
-  border: none;
+  background-color: #0f0f0f7e;
+  border: 1px solid #f7f7f759;
 
   &:hover {
-    background-color: #414ec4;
+    background-color: #20297e79;
   }
 }
 
@@ -71,7 +71,7 @@
 
 .card-anchor {
   border: 1px solid #5a68e2;
-  background-color: #17359756;
+  background-color: #22367542;
   border-radius: 0.2rem;
   text-decoration: none;
   text-align: center;
@@ -130,15 +130,15 @@
   margin: 0;
   background: var(--card-cat);
   border-radius: 0.25rem;
-  border: 1px solid #5a68e2;
+  border: 1px solid #2e2e2e;
   font-size: 15px;
   line-height: 1;
   color: #fafafa;
   padding: 4px 8px 6px 8px;
 
-  &:hover {
-    background: var(--card-cathbc);
-  }
+  // &:hover {
+  //   background: var(--card-cathbc);
+  // }
 }
 
 @supports (-webkit-touch-callout: none) and (not (translate: none)) {

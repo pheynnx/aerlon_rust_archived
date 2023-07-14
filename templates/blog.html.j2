@@ -6,11 +6,35 @@
 <div class="blog-index-container">
     <h1 class="blog-title">Blog Posts</h1>
     <h2 class="featured-header">Featured</h2>
-    {% if !(featured.is_empty()) %}
-    <div class="featured-cards-container">
-        {% for meta in featured %}
-        {# <div class="featured-posts"> #}
-            <div class="featured card">
+    <div class="blog-index-posts-container">
+        {% if !(featured.is_empty()) %}
+        <div class="featured-cards-container">
+            {% for meta in featured %}
+            {# <div class="featured-posts"> #}
+                <div class="featured card">
+                    <a hx-boost="true" class="card-anchor" href="/blog/{{ meta.slug }}">
+                        <div class="card-header-info">
+                            <p class="card-title">{{ meta.title }}</p>
+                            <p class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</p>
+                        </div>
+                    </a>
+                    <div class="card-categories">
+                        {% for category in meta.categories %}
+                        {# <a class="card-category" href="/category/{{ category }}"> #}
+                            <p class="card-category-info">{{ category }}</p>
+                            {#
+                        </a> #}
+                        {% endfor %}
+                    </div>
+                </div>
+                {#
+            </div> #}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div class="cards-container">
+            {% for meta in metas %}
+            <div class="card">
                 <a hx-boost="true" class="card-anchor" href="/blog/{{ meta.slug }}">
                     <div class="card-header-info">
                         <p class="card-title">{{ meta.title }}</p>
@@ -19,35 +43,15 @@
                 </a>
                 <div class="card-categories">
                     {% for category in meta.categories %}
-                    <a class="card-category" href="/category/{{ category }}">
+                    {# <a class="card-category" href="/category/{{ category }}"> #}
                         <p class="card-category-info">{{ category }}</p>
-                    </a>
+                        {#
+                    </a> #}
                     {% endfor %}
                 </div>
             </div>
-            {#
-        </div> #}
-        {% endfor %}
-    </div>
-    {% endif %}
-    <div class="cards-container">
-        {% for meta in metas %}
-        <div class="card">
-            <a hx-boost="true" class="card-anchor" href="/blog/{{ meta.slug }}">
-                <div class="card-header-info">
-                    <p class="card-title">{{ meta.title }}</p>
-                    <p class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</p>
-                </div>
-            </a>
-            <div class="card-categories">
-                {% for category in meta.categories %}
-                <a class="card-category" href="/category/{{ category }}">
-                    <p class="card-category-info">{{ category }}</p>
-                </a>
-                {% endfor %}
-            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 </div>
 {% endblock %}

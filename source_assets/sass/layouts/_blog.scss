@@ -1,7 +1,7 @@
 .blog-index-container {
   display: grid;
-  margin-left: 8%;
-  margin-right: 8%;
+  margin-left: 3%;
+  margin-right: 3%;
   margin-bottom: 20px;
 }
 
@@ -18,11 +18,20 @@
   text-align: center;
 }
 
+.blog-index-posts-container {
+  max-width: 800px;
+  width: 100%;
+  justify-self: center;
+  display: grid;
+}
+
 .featured-cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-items: center;
+  display: grid;
+  // flex-wrap: wrap;
+  // justify-items: center;
+  justify-self: center;
   margin-bottom: 30px;
   z-index: 1;
+  max-width: 400px;
   width: 100%;
 }
