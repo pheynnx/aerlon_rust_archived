@@ -15,7 +15,7 @@ use generator::CachedBlogState;
 use http::{Request, StatusCode};
 use models::post::Post;
 use std::{collections::HashMap, net::SocketAddr, sync::Arc};
-use tokio::{fs, sync::Mutex};
+use tokio::{fs, process::Command, sync::Mutex};
 use tower::ServiceBuilder;
 use tower_cookies::CookieManagerLayer;
 use tower_governor::{errors::display_error, governor::GovernorConfigBuilder, GovernorLayer};
@@ -55,6 +55,18 @@ pub struct AppState {
 
 #[tokio::main]
 async fn main() -> Result<(), AppError> {
+    Command::new("cmd")
+        .args(&[
+            "/C",
+            "sass",
+            "--no-source-map",
+            "--style=compressed",
+            "web/source/scss:web/static/css",
+        ])
+        .output()
+        .await
+        .expect("command failed to parse scss");
+
     dotenv().expect(".env file not found");
 
     let database_state = initialize_connections().await?;
