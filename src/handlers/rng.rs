@@ -5,7 +5,7 @@ use rand::Rng;
 use crate::{errors::AppError, utilities::templates::HtmlTemplate};
 
 #[derive(Template)]
-#[template(path = "rng.html.j2")]
+#[template(path = "rng.aska")]
 struct RngTemplate {
     uri: String,
 }

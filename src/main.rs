@@ -55,10 +55,8 @@ pub struct AppState {
 
 #[tokio::main]
 async fn main() -> Result<(), AppError> {
-    Command::new("cmd")
+    Command::new("sass")
         .args(&[
-            "/C",
-            "sass",
             "--no-source-map",
             "--style=compressed",
             "web/source/scss:web/static/css",
@@ -86,15 +84,15 @@ async fn main() -> Result<(), AppError> {
     );
 
     let site_router = Router::new()
-        .route(
-            "/",
-            get(|| async {
-                HtmlTemplate(StationTemplate {
-                    uri: "".to_string(),
-                })
-            }),
-        )
-        .route("/blog", get(get_metas_handler))
+        // .route(
+        //     "/",
+        //     get(|| async {
+        //         HtmlTemplate(StationTemplate {
+        //             uri: "".to_string(),
+        //         })
+        //     }),
+        // )
+        .route("/", get(get_metas_handler))
         .route("/blog/:slug", get(get_post_handler))
         // .route("/series", get(get_series_handler))
         // .route("/series/:series", get(get_series_metas_handler))
@@ -156,11 +154,11 @@ async fn main() -> Result<(), AppError> {
     let app = Router::new()
         .route_service(
             "/favicon.ico",
-            ServeFile::new("./public/favicon/favicon.ico"),
+            ServeFile::new("./web/static/favicon/favicon.ico"),
         )
         .nest("/", site_router)
         .nest("/admin", admin_router)
-        .nest_service("/public", ServeDir::new("./public"))
+        .nest_service("/static", ServeDir::new("./web/static"))
         .fallback(error_fallback)
         .layer(ServiceBuilder::new().layer(CookieManagerLayer::new()))
         .with_state(shared_state);
@@ -176,13 +174,13 @@ async fn main() -> Result<(), AppError> {
 }
 
 #[derive(Template)]
-#[template(path = "station.html.j2")]
+#[template(path = "station.aska")]
 struct StationTemplate {
     uri: String,
 }
 
 #[derive(Template)]
-#[template(path = "error.html.j2")]
+#[template(path = "error.aska")]
 struct ErrorTemplate {
     error: String,
     status_code: u16,
@@ -200,7 +198,7 @@ async fn error_fallback<T>(req: Request<T>) -> Result<impl IntoResponse, AppErro
 }
 
 #[derive(Template)]
-#[template(path = "readme.html.j2")]
+#[template(path = "readme.aska")]
 struct ReadmeTemplate {
     readme_markdown: String,
     changelog_markdown: String,
@@ -225,7 +223,7 @@ async fn readme_handler<T>(req: Request<T>) -> Result<impl IntoResponse, AppErro
 }
 
 #[derive(Template)]
-#[template(path = "benchmarks.html.j2")]
+#[template(path = "benchmarks.aska")]
 struct BenchmarksTemplate {
     uri: String,
 }

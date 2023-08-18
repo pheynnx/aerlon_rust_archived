@@ -1,5 +1,8 @@
+use std::fs;
+
 use chrono::{DateTime, Utc};
 use comrak::{
+    adapters::SyntaxHighlighterAdapter,
     markdown_to_html_with_plugins,
     plugins::syntect::{SyntectAdapter, SyntectAdapterBuilder},
     ComrakOptions, ComrakPlugins,
@@ -7,20 +10,52 @@ use comrak::{
 use once_cell::sync::Lazy;
 use serde::{Deserialize, Serialize};
 use sqlx::{query_as, FromRow, Pool, Postgres};
-use syntect::highlighting::ThemeSet;
+use syntect::{
+    highlighting::{Theme, ThemeSet},
+    html::{ClassStyle, ClassedHTMLGenerator},
+    parsing::SyntaxSet,
+    util::LinesWithEndings,
+};
 use uuid::Uuid;
 
 use crate::{database::redis::RedisConnection, errors::AppError};
 
-static SYNTECT_ADAPTER: Lazy<SyntectAdapter> = {
-    Lazy::new(|| {
-        let themes = ThemeSet::load_from_folder("./code_themes").unwrap();
-        SyntectAdapterBuilder::new()
-            .theme_set(themes)
-            .theme("eac")
-            .build()
-    })
-};
+pub struct CustomSyntectAdapter {}
+impl SyntaxHighlighterAdapter for CustomSyntectAdapter {
+    fn write_highlighted(
+        &self,
+        output: &mut dyn std::io::Write,
+        lang: Option<&str>,
+        code: &str,
+    ) -> std::io::Result<()> {
+        let syntax_set = SyntaxSet::load_defaults_newlines();
+        let syntax = syntax_set.find_syntax_by_token(lang.unwrap()).unwrap();
+        let mut html_generator =
+            ClassedHTMLGenerator::new_with_class_style(syntax, &syntax_set, ClassStyle::Spaced);
+        for line in LinesWithEndings::from(code) {
+            html_generator.parse_html_for_line_which_includes_newline(line);
+        }
+        let output_html = html_generator.finalize();
+
+        write!(output, "{}", output_html)
+    }
+
+    fn write_pre_tag(
+        &self,
+        output: &mut dyn std::io::Write,
+        attributes: std::collections::HashMap<String, String>,
+    ) -> std::io::Result<()> {
+        output.write_all(b"<pre>")
+    }
+
+    fn write_code_tag(
+        &self,
+        output: &mut dyn std::io::Write,
+        attributes: std::collections::HashMap<String, String>,
+    ) -> std::io::Result<()> {
+        write!(output, "<code class=\"{}\">", attributes["class"])
+    }
+}
 
 #[derive(FromRow, Debug, Serialize, Deserialize, Clone)]
 pub struct Post {
@@ -51,7 +86,8 @@ impl Post {
         options.render.unsafe_ = true;
         let mut plugins = ComrakPlugins::default();
 
-        plugins.render.codefence_syntax_highlighter = Some(&*SYNTECT_ADAPTER);
+        let adapter = CustomSyntectAdapter {};
+        plugins.render.codefence_syntax_highlighter = Some(&adapter);
 
         let converted = markdown_to_html_with_plugins(&self.markdown, &options, &plugins);
         self.markdown = converted;

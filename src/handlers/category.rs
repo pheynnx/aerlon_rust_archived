@@ -11,7 +11,7 @@ use crate::{
 };
 
 #[derive(Template)]
-#[template(path = "category_$category.html.j2")]
+#[template(path = "category_$category.aska")]
 struct CategoryTemplate {
     metas: Vec<Meta>,
     category_name: String,

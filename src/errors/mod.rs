@@ -38,7 +38,7 @@ impl From<serde_json::Error> for AppError {
 }
 
 #[derive(Template)]
-#[template(path = "error.html.j2")]
+#[template(path = "error.aska")]
 struct ErrorTemplate {
     error: String,
     status_code: u16,

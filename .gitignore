@@ -3,9 +3,8 @@
 .env
 
 # compiled
-public/css/*
-public/js/compiled
+web/static/css/*
+web/static/js/compiled
 
 # node
 node_modules
-admin/dist

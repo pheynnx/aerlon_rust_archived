@@ -15,7 +15,7 @@ pub struct CachedBlogState {
 }
 
 #[derive(Template)]
-#[template(path = "blog_$post.html.j2")]
+#[template(path = "blog_$post.aska")]
 struct BlogPostTemplate {
     post: Post,
     uri: String,
@@ -23,7 +23,7 @@ struct BlogPostTemplate {
 
 #[derive(Template)]
 #[allow(dead_code)]
-#[template(path = "blog.html.j2")]
+#[template(path = "blog.aska")]
 struct BlogTemplate {
     metas: Vec<Meta>,
     featured: Vec<Meta>,
@@ -59,7 +59,7 @@ impl CachedBlogState {
         let blog_index_template = BlogTemplate {
             metas,
             featured,
-            uri: "/blog".to_string(),
+            uri: "/".to_string(),
         };
         let render = blog_index_template.render().unwrap();
 

@@ -14,15 +14,6 @@ use crate::{
     AppState,
 };
 
-// #[derive(Template)]
-// #[allow(dead_code)]
-// #[template(path = "blog.html.j2")]
-// struct BlogTemplate {
-//     metas: Vec<Meta>,
-//     featured: Vec<Meta>,
-//     uri: String,
-// }
-
 pub async fn get_metas_handler(
     State(state): State<Arc<Mutex<AppState>>>,
 ) -> Result<impl IntoResponse, AppError> {

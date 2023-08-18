@@ -1,2 +1,6 @@
 [general]
 dirs = ["web/views"]
+
+[[escaper]]
+path = "::askama::Html"
+extensions = ["aska"]

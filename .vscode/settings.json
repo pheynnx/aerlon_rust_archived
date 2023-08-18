@@ -1,11 +1,10 @@
 {
   "files.associations": {
-    "*.j2": "jinja-html",
+    "*.aska": "django-html",
     "*.tmTheme": "xml"
   },
   "emmet.includeLanguages": {
-    "jinja2": "html",
-    "jinja-html": "html"
+    "django-html": "html"
   },
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#f57c3a",
@@ -25,6 +24,5 @@
     "titleBar.activeForeground": "#e7e7e7",
     "titleBar.inactiveBackground": "#f05d0c99",
     "titleBar.inactiveForeground": "#e7e7e799"
-  },
-  "peacock.color": "#f05d0c"
+  }
 }

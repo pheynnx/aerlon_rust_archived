@@ -1,0 +1,11 @@
+{% extends "./layouts/frame/main.aska" %}
+
+{% block main %}
+
+{% include "./includes/navbar.aska" %}
+
+{% block content %}{% endblock %}
+
+<script src="/static/js/compiled/navigation-compiled.js"></script>
+
+{% endblock %}

@@ -3,10 +3,9 @@ import { solidPlugin } from "esbuild-plugin-solid";
 
 await build({
   entryPoints: [
-    "source_assets/js/scripts/navigation.js",
-    "source_assets/js/scripts/timeThemer.js",
-    "source_assets/js/pages/admin/admin.tsx",
-    "source_assets/js/pages/admin_login/admin_login.tsx",
+    "web/source/js/scripts/navigation.js",
+    "web/source/js/pages/admin/admin.tsx",
+    "web/source/js/pages/admin_login/admin_login.tsx",
   ],
   entryNames: "[name]-compiled",
   bundle: true,

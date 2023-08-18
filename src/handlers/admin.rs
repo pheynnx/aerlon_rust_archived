@@ -10,7 +10,7 @@ use crate::utilities::templates::HtmlTemplate;
 use crate::{errors::AppError, utilities::jwt::generate_auth_jwt};
 
 #[derive(Template)]
-#[template(path = "admin.html.j2")]
+#[template(path = "admin.aska")]
 struct AdminTemplate {}
 
 pub async fn admin_handler() -> Result<impl IntoResponse, AppError> {
@@ -18,7 +18,7 @@ pub async fn admin_handler() -> Result<impl IntoResponse, AppError> {
 }
 
 #[derive(Template)]
-#[template(path = "admin_login.html.j2")]
+#[template(path = "admin_login.aska")]
 struct AdminLoginTemplate {}
 
 pub async fn get_admin_login_handler() -> Result<impl IntoResponse, AppError> {
