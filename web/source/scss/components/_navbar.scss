@@ -1,15 +1,18 @@
 .navigation-container {
   z-index: 100;
   display: grid;
-  position: sticky;
-  top: 23px;
-  width: 100%;
+  // position: sticky;
+  // top: 0px;
+  max-width: 500px;
   background-color: var(--nav-bc);
   height: 50px;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 0.25rem;
 
-  &.expanded {
-    background-color: var(--nav-bc-expanded);
-  }
+  // &.expanded {
+  //   background-color: var(--nav-bc-expanded);
+  // }
 
   &.scrolled {
     transition: background 0.2s ease-in;
@@ -103,7 +106,7 @@
 
 .navbar-link {
   padding: 0px 10px;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 400;
   line-height: 1;
   color: var(--navbar-link);
