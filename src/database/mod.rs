@@ -1,8 +1,7 @@
-use self::{postgres::PostgresDatabase, redis::RedisDatabase};
+use self::postgres::PostgresDatabase;
 use crate::{errors::AppError, models::post::Post};
 
 pub mod postgres;
-pub mod redis;
 
 #[derive(Clone)]
 pub struct DatabaseState {
@@ -11,7 +10,7 @@ pub struct DatabaseState {
 }
 
 pub async fn initialize_connections() -> Result<DatabaseState, AppError> {
-    let redis = RedisDatabase::connect_to_redis().await?;
+    // let redis = RedisDatabase::connect_to_redis().await?;
 
     let postgres = PostgresDatabase::connect_to_postgres().await?;
 

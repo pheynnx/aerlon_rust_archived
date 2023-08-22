@@ -115,8 +115,8 @@
 
 {% block content %}
 <div class="blog-index-container">
-    <h1 class="blog-title">Blog Posts</h1>
-    <h2 class="featured-header">Featured</h2>
+    {# <h1 class="blog-title">Blog Posts</h1> #}
+    {# <h2 class="featured-header">Featured</h2> #}
     <div class="blog-index-posts-container">
         {% if !(featured.is_empty()) %}
         <div class="featured-cards-container">
@@ -127,6 +127,7 @@
                         <div class="card-header-info">
                             <p class="card-title">{{ meta.title }}</p>
                             <p class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</p>
+                            <p class="card-snippet">{{ meta.post_snippet }}</p>
                         </div>
                     </a>
                     <div class="card-categories">
@@ -150,6 +151,7 @@
                     <div class="card-header-info">
                         <p class="card-title">{{ meta.title }}</p>
                         <p class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</p>
+                        <p class="card-snippet">{{ meta.post_snippet }}</p>
                     </div>
                 </a>
                 <div class="card-categories">

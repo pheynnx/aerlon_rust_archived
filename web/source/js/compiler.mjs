@@ -11,6 +11,6 @@ await build({
   bundle: true,
   minify: true,
   sourcemap: false,
-  outdir: "web/static/js/compiled",
+  outdir: "web/static/js",
   plugins: [solidPlugin()],
 }).catch(() => process.exit(1));

@@ -30,6 +30,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - removing more reliance on node and package.json
   - currently still using it for minifying .js files and building /admin solidjs build
 
+## [0.13.1] - 2023-08-22
+
+#### Changed
+
+- cleaning up a lot of the asset building
+- blog post page will be being reworked; begin work here
+- navbar is being rebuilt
+
 ## [0.13.0] - 2023-08-18
 
 #### Changed

@@ -3,8 +3,8 @@
 .env
 
 # compiled
-web/static/css/*
-web/static/js/compiled
+web/static/css/main.css
+web/static/js/*-compiled.js
 
 # node
 node_modules

@@ -55,16 +55,6 @@ pub struct AppState {
 
 #[tokio::main]
 async fn main() -> Result<(), AppError> {
-    Command::new("sass")
-        .args(&[
-            "--no-source-map",
-            "--style=compressed",
-            "web/source/scss:web/static/css",
-        ])
-        .output()
-        .await
-        .expect("command failed to parse scss");
-
     dotenv().expect(".env file not found");
 
     let database_state = initialize_connections().await?;
@@ -163,7 +153,7 @@ async fn main() -> Result<(), AppError> {
         .layer(ServiceBuilder::new().layer(CookieManagerLayer::new()))
         .with_state(shared_state);
 
-    let addr = SocketAddr::from(([0, 0, 0, 0], 8040));
+    let addr = SocketAddr::from(([127, 0, 0, 1], 8040));
     println!("🔶 startup: listening on {}", addr);
     axum::Server::bind(&addr)
         .serve(app.into_make_service_with_connect_info::<SocketAddr>())

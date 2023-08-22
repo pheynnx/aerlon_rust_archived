@@ -35,23 +35,7 @@
 .cards-container {
   display: grid;
   width: 100%;
-  // grid-template-columns: auto;
-  // justify-items: center;
-  // justify-content: center;
 }
-
-// .featured-posts {
-//   // padding: 20px;
-//   background: var(--card-fbc);
-//   border-radius: 0.2rem;
-//   // margin-bottom: 15px;
-//   height: min-content;
-//   width: 100%;
-
-//   &:not(:last-child) {
-//     margin-bottom: 20px;
-//   }
-// }
 
 .featured .card-anchor {
   background-color: #0f0f0f7e;
@@ -66,13 +50,13 @@
   display: grid;
   margin-bottom: 20px;
   height: min-content;
-  width: 100%;
+  // width: 100%;
 }
 
 .card-anchor {
   border: 1px solid #5a68e2;
   background-color: #22367542;
-  border-radius: 0.2rem;
+  border-radius: 0.5rem;
   text-decoration: none;
   text-align: center;
   height: min-content;

@@ -8,6 +8,6 @@
 
 {% block content %}{% endblock %}
 
-<script src="/static/js/compiled/navigation-compiled.js"></script>
+<script src="/static/js/navigation-compiled.js"></script>
 
 {% endblock %}
