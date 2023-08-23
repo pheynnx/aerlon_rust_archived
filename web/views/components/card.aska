@@ -1,0 +1,16 @@
+<div class="card{% if featured %} featured{% endif %}">
+    <a class="card-anchor" href="/blog/{{ meta.slug }}">
+      <p class="card-title">{{ meta.title }}</p>
+    </a>
+    <p class="card-date">{{ meta.date.format("%B %d, %Y").to_string() }}</p>
+    <div class="card-categories">
+      {% for category in meta.categories %}
+      <a class="card-category" href="/category/{{ category }}">
+        <p class="card-category-info">{{ category }}</p>
+      </a>
+      {% endfor %}
+    </div>
+    <div>
+      <p class="card-snippet">{{ meta.post_snippet }}</p>
+    </div>
+</div>

@@ -27,11 +27,8 @@
 
 .featured-cards-container {
   display: grid;
-  // flex-wrap: wrap;
-  // justify-items: center;
   justify-self: center;
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
   z-index: 1;
-  max-width: 400px;
   width: 100%;
 }

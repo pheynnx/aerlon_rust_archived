@@ -29,7 +29,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-  background-color: #324372;
+  // background-color: #324372;
   width: 5px;
 
   &:horizontal {
@@ -43,11 +43,11 @@ body {
 
 // TODO
 ::-webkit-scrollbar-thumb {
-  background: #00b7ff;
+  background: #868686;
   border-radius: 4px;
 
   &:hover {
-    background: #ffffff;
+    background: #9b9b9b;
   }
 }
 

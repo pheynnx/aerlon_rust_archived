@@ -1,81 +1,32 @@
-.series-cards-container {
-  display: flex;
-  justify-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 600px;
-}
-
-.series-card-anchor {
-  padding: 11px 10px;
-  margin: 10px 8px;
-  text-decoration: none;
-  background: var(--card-serbc);
-  border-radius: 0.25rem;
-  border: 1px solid var(--card-serbrdc);
-  line-height: 1;
-  text-align: center;
-
-  &:hover {
-    background: var(--card-serhbc);
-  }
-
-  &:hover span {
-    color: var(--card-serhs);
-  }
-}
-
-.series-card-info {
-  font-size: 18px;
-  text-transform: capitalize;
-  font-weight: 400;
-  color: var(--card-ser);
-}
-
 .cards-container {
   display: grid;
   width: 100%;
 }
 
-.featured .card-anchor {
-  background-color: #0f0f0f7e;
-  border: 1px solid #f7f7f759;
-
-  &:hover {
-    background-color: #20297e79;
-  }
+.featured {
+  // background-color: red;
 }
 
 .card {
   display: grid;
   margin-bottom: 20px;
   height: min-content;
-  // width: 100%;
 }
 
 .card-anchor {
-  border: 1px solid #5a68e2;
-  background-color: #22367542;
-  border-radius: 0.5rem;
   text-decoration: none;
-  text-align: center;
-  height: min-content;
-  padding: 13px;
-  margin-bottom: 6px;
+  width: fit-content;
 
-  &:hover {
-    background-color: #173597;
-  }
+  // &:hover {
+  //   background-color: #173597;
+  // }
 }
 
 .card-header-info {
-  width: 100%;
-  display: grid;
 }
 
 .card-title {
   margin: 0;
-  margin-bottom: 6px;
   color: var(--card-tc);
   font-size: 25px;
   font-weight: 700;
@@ -97,12 +48,16 @@
   color: var(--card-dc);
 }
 
+.card-snippet {
+  color: #fff;
+}
+
 .card-categories {
   display: flex;
   flex-wrap: wrap;
   row-gap: 6px;
   column-gap: 6px;
-  justify-content: center;
+  // justify-content: center;
 }
 
 .card-category {
@@ -130,3 +85,37 @@
     margin-right: 6px;
   }
 }
+
+// .series-cards-container {
+//   display: flex;
+//   justify-items: center;
+//   justify-content: center;
+//   flex-wrap: wrap;
+//   max-width: 600px;
+// }
+
+// .series-card-anchor {
+//   padding: 11px 10px;
+//   margin: 10px 8px;
+//   text-decoration: none;
+//   background: var(--card-serbc);
+//   border-radius: 0.25rem;
+//   border: 1px solid var(--card-serbrdc);
+//   line-height: 1;
+//   text-align: center;
+
+//   &:hover {
+//     background: var(--card-serhbc);
+//   }
+
+//   &:hover span {
+//     color: var(--card-serhs);
+//   }
+// }
+
+// .series-card-info {
+//   font-size: 18px;
+//   text-transform: capitalize;
+//   font-weight: 400;
+//   color: var(--card-ser);
+// }

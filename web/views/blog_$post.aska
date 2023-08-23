@@ -8,7 +8,7 @@
         <h1 class="markdown-title">{{post.title}}</h1>
         <div class="card-categories-markdown-container">
             {% for c in post.categories %}
-            <a hx-boost="true" class="card-category-anchor-markdown" href="/category/{{ c }}">
+            <a class="card-category-anchor-markdown" href="/category/{{ c }}">
                 <span class="card-category-markdown">
                     {{c}}
                 </span>

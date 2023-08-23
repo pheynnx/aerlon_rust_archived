@@ -1,8 +1,8 @@
 @media only screen and (min-width: 651px) {
-  .cards-container {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 2rem;
-  }
+  // .cards-container {
+  //   grid-template-columns: 1fr 1fr;
+  //   column-gap: 2rem;
+  // }
 }
 
 @media only screen and (min-width: 1025px) {
@@ -47,13 +47,13 @@
 
   .navbar-logo-container {
     display: grid;
-    height: 50px;
+    // height: 50px;
     align-items: center;
   }
 
   .dropdown-navigation {
     display: flex;
-    margin-right: 15px;
+    margin-right: 11px;
   }
 
   .side-navbar {
